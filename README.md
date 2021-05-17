@@ -1,7 +1,81 @@
 # CloudMusicQt
 
 ## 开发
+
+### 发起网络请求
+
+> https://www.cnblogs.com/linuxAndMcu/p/14722750.html
+
+使用
+
++ 包含 `httpclient.h`头文件
+
++ `HttpClient(path)`
+
+例子
+
+```c++
+HttpClient("/cloudsearch").success([=](const QString &response) {
+		qDebug() << response;			// 回调写在此，response是相应内容
+	}).param("keywords", "GoodTime")	// 参数
+	  .param("limit", "5")				// 参数
+	  .header("token", "test")			// Header
+	  .get();							// 发起Get请求
+```
+
+### 解析Json
+
+包含以下几个头文件
+
+```c++
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonValue>
+```
+
+例子
+
+```c++
+// response是QString
+QJsonDocument jsonDoc = QJsonDocument::fromJson(response.toUtf8());
+QJsonObject jsonObject = jsonDoc.object().value("result").toObject();
+QJsonArray jsonArray = jsonObject.value("songs").toArray();
+
+
+foreach (const QJsonValue& value, jsonArray)
+{
+    int id = value.toObject().value("id").toInt();
+    QString name = value.toObject().value("name").toString();
+    qDebug() << id << "\t" << name;
+}
+```
+
+```json
+{
+    "code": 200,
+    "result": 
+    {
+        "songCount": 1110,
+        "songs": 
+        [
+            {
+                "name": "这,就是爱",
+                "id": 191060
+            },
+            {
+                "name": "JS-这就是爱（超好听女声）（周标 remix）",
+                "id": 1806679060
+            }
+        ]
+    }    
+}
+```
+
+
+
 ### 网易云音乐API
+
 + 地址: http://150.158.190.228:3000/
 + 文档: https://binaryify.github.io/NeteaseCloudMusicApi/
 + 手机: 16521687458
