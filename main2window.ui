@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Main2Window</class>
+ <widget class="QMainWindow" name="Main2Window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>10</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="NavListView" name="navigation">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>200</width>
+      <height>600</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
+    </property>
+    <property name="tabKeyNavigation">
+     <bool>false</bool>
+    </property>
+    <property name="alternatingRowColors">
+     <bool>true</bool>
+    </property>
+    <property name="layoutMode">
+     <enum>QListView::SinglePass</enum>
+    </property>
+    <property name="items">
+     <string>主界面||0||,搜索|主界面|||0xf03e,发现音乐|主界面|||0xf03d,动态|主界面|||0xf108,我的音乐||0||,本地音乐|我的音乐|||0xf0e8,最近播放|我的音乐|||0xf060,我的收藏|我的音乐|||0xf03e</string>
+    </property>
+    <property name="rightIconVisible">
+     <bool>false</bool>
+    </property>
+    <property name="tipVisible">
+     <bool>false</bool>
+    </property>
+    <property name="tipWidth">
+     <number>200</number>
+    </property>
+    <property name="separateVisible">
+     <bool>false</bool>
+    </property>
+    <property name="separateHeight">
+     <number>1</number>
+    </property>
+    <property name="separateColor">
+     <color>
+      <red>243</red>
+      <green>243</green>
+      <blue>245</blue>
+     </color>
+    </property>
+    <property name="lineLeft">
+     <bool>true</bool>
+    </property>
+    <property name="lineVisible">
+     <bool>true</bool>
+    </property>
+    <property name="lineColor">
+     <color>
+      <red>188</red>
+      <green>47</green>
+      <blue>45</blue>
+     </color>
+    </property>
+    <property name="triangleLeft">
+     <bool>false</bool>
+    </property>
+    <property name="triangleVisible">
+     <bool>false</bool>
+    </property>
+    <property name="triangleWidth">
+     <number>8</number>
+    </property>
+    <property name="parentIconMargin">
+     <number>10</number>
+    </property>
+    <property name="parentMargin">
+     <number>40</number>
+    </property>
+    <property name="parentFontSize">
+     <number>18</number>
+    </property>
+    <property name="parentHeight">
+     <number>40</number>
+    </property>
+    <property name="parentBgNormalColor">
+     <color>
+      <red>243</red>
+      <green>243</green>
+      <blue>245</blue>
+     </color>
+    </property>
+    <property name="parentBgSelectedColor">
+     <color>
+      <red>243</red>
+      <green>243</green>
+      <blue>245</blue>
+     </color>
+    </property>
+    <property name="parentBgHoverColor">
+     <color>
+      <red>243</red>
+      <green>243</green>
+      <blue>225</blue>
+     </color>
+    </property>
+    <property name="parentTextNormalColor">
+     <color>
+      <red>51</red>
+      <green>51</green>
+      <blue>51</blue>
+     </color>
+    </property>
+    <property name="parentTextSelectedColor">
+     <color>
+      <red>51</red>
+      <green>51</green>
+      <blue>51</blue>
+     </color>
+    </property>
+    <property name="parentTextHoverColor">
+     <color>
+      <red>51</red>
+      <green>51</green>
+      <blue>51</blue>
+     </color>
+    </property>
+    <property name="childIconMargin">
+     <number>10</number>
+    </property>
+    <property name="childMargin">
+     <number>40</number>
+    </property>
+    <property name="childFontSize">
+     <number>18</number>
+    </property>
+    <property name="childHeight">
+     <number>50</number>
+    </property>
+    <property name="childBgNormalColor">
+     <color>
+      <red>243</red>
+      <green>243</green>
+      <blue>245</blue>
+     </color>
+    </property>
+    <property name="childBgSelectedColor">
+     <color>
+      <red>221</red>
+      <green>221</green>
+      <blue>225</blue>
+     </color>
+    </property>
+    <property name="childBgHoverColor">
+     <color>
+      <red>221</red>
+      <green>221</green>
+      <blue>225</blue>
+     </color>
+    </property>
+    <property name="childTextNormalColor">
+     <color>
+      <red>51</red>
+      <green>51</green>
+      <blue>51</blue>
+     </color>
+    </property>
+    <property name="childTextSelectedColor">
+     <color>
+      <red>51</red>
+      <green>51</green>
+      <blue>51</blue>
+     </color>
+    </property>
+    <property name="childTextHoverColor">
+     <color>
+      <red>51</red>
+      <green>51</green>
+      <blue>51</blue>
+     </color>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>NavListView</class>
+   <extends>QListView</extends>
+   <header>navlistview.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

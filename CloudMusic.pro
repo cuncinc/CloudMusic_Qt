@@ -16,18 +16,49 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    detailwindow.cpp \
+    eventwindow.cpp \
+    findwindow.cpp \
     httpclient.cpp \
     main.cpp \
-    mainwindow.cpp
+    main2window.cpp \
+    mainwindow.cpp \
+    mewindow.cpp \
+    seachwindow.cpp \
+    songlistwindow.cpp
 
 HEADERS += \
+    detailwindow.h \
+    eventwindow.h \
+    findwindow.h \
     httpclient.h \
-    mainwindow.h
+    main2window.h \
+    mainwindow.h \
+    mewindow.h \
+    seachwindow.h \
+    songlistwindow.h
 
 FORMS += \
-    mainwindow.ui
+    detailwindow.ui \
+    eventwindow.ui \
+    findwindow.ui \
+    main2window.ui \
+    mainwindow.ui \
+    mewindow.ui \
+    seachwindow.ui \
+    songlistwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+#�次�引入自定义控件的所有头文件 懒得�个个拷贝
+INCLUDEPATH += $$PWD/quc/include
+
+#不同的构建套�debug release 依赖不同的链接库
+CONFIG(debug, debug|release){
+LIBS += -L$$PWD/quc/ -lqucd
+} else {
+LIBS += -L$$PWD/quc/ -lquc
+}

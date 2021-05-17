@@ -40,10 +40,29 @@ MainWindow::MainWindow(QWidget *parent)
 	, ui(new Ui::MainWindow)
 {
 	ui->setupUi(this);
+	main2Window = new Main2Window();
+	ui->stackedWidget->addWidget(main2Window);
+	ui->stackedWidget->setCurrentWidget(main2Window);
+	detailWindow = new DetailWindow();
+	ui->stackedWidget->addWidget(detailWindow);
 	test();
 }
 
 MainWindow::~MainWindow()
 {
 	delete ui;
+	delete main2Window;
+	delete detailWindow;
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+	if (ui->stackedWidget->currentWidget() == detailWindow)
+	{
+		ui->stackedWidget->setCurrentWidget(main2Window);
+	}
+	else
+	{
+		ui->stackedWidget->setCurrentWidget(detailWindow);
+	}
 }

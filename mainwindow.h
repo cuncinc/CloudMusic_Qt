@@ -1,3 +1,6 @@
+#include "main2window.h"
+#include "detailwindow.h"
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -15,7 +18,12 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+	void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
+	Main2Window *main2Window;
+	DetailWindow *detailWindow;
 };
 #endif // MAINWINDOW_H
