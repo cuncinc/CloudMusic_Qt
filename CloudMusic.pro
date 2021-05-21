@@ -1,4 +1,4 @@
-QT       += core gui network
+QT       += core gui network multimedia multimediawidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,6 +24,7 @@ SOURCES += \
     main2window.cpp \
     mainwindow.cpp \
     mewindow.cpp \
+    player.cpp \
     searchwindow.cpp \
     songlistwindow.cpp
 
@@ -35,6 +36,7 @@ HEADERS += \
     main2window.h \
     mainwindow.h \
     mewindow.h \
+    player.h \
     searchwindow.h \
     songlistwindow.h
 

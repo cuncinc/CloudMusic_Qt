@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>500</height>
+    <height>600</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -23,9 +23,9 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>10</y>
-     <width>691</width>
-     <height>51</height>
+     <y>20</y>
+     <width>740</width>
+     <height>45</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -40,13 +40,20 @@
      <pointsize>10</pointsize>
     </font>
    </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);
+border-color: rgb(228, 228, 231);</string>
+   </property>
   </widget>
   <widget class="NavBar" name="tabBar">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>70</y>
-     <width>690</width>
+     <y>80</y>
+     <width>740</width>
      <height>35</height>
     </rect>
    </property>
@@ -61,6 +68,11 @@
      <family>Microsoft YaHei</family>
      <pointsize>10</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-width: 3px; 
+border-style: solid;
+border-bottom-color: rgb(0, 85, 255);</string>
    </property>
    <property name="bgColorStart">
     <color>

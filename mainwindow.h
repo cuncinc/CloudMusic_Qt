@@ -21,7 +21,14 @@ public:
 	bool eventFilter(QObject *obj, QEvent *event);	// 事件过滤器，实现QLabel的click
 
 public slots:
-	void setImg(const QString &url);
+	void setCoverUrl(const QString &url);
+
+private slots:
+	void on_lastButton_clicked();
+
+	void on_playButton_clicked();
+
+	void on_nextButton_clicked();
 
 private:
     Ui::MainWindow *ui;

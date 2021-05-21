@@ -42,8 +42,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
 	ui->setupUi(this);
 	ui->imgLabel->installEventFilter(this);	//安装事件过滤器，实现clicked
-	// 音乐封面的默认图片
-	ui->imgLabel->setPixmap(QPixmap(":/img/default-cover").scaled(ui->imgLabel->size()));
 
 	main2Window = new Main2Window();
 	ui->stackedWidget->addWidget(main2Window);
@@ -61,17 +59,31 @@ MainWindow::~MainWindow()
 	delete detailWindow;
 }
 
-void MainWindow::setImg(const QString &url)
+void MainWindow::setCoverUrl(const QString &path)
 {
-	qDebug() << "img:  " << url;
+	qDebug() << "img:  " << path;
+	QUrl url(path);
+	QNetworkAccessManager manager;
+	QEventLoop loop;
+
+	QNetworkReply *reply = manager.get(QNetworkRequest(url));
+	//请求结束并下载完成后，退出子事件循环
+	connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
+	//开启子事件循环
+	loop.exec();
+
+	QByteArray jpegData = reply->readAll();
+	QPixmap pixmap;
+	pixmap.loadFromData(jpegData);
+	ui->imgLabel->setPixmap(pixmap); // 你在QLabel显示图片
 }
 
 bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
-//	qDebug() << "eventFilter";
+	//	qDebug() << "eventFilter";
 	if (obj == ui->imgLabel && event->type() == QEvent::MouseButtonPress)
 	{
-//		qDebug() << "image Label event";
+		//		qDebug() << "image Label event";
 		QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event); // 事件转换
 		if(mouseEvent->button() == Qt::LeftButton)
 		{
@@ -93,7 +105,22 @@ bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 	else
 	{
 		// pass the event on to the parent class
-//		return QWidget::eventFilter(obj, event);
+		//		return QWidget::eventFilter(obj, event);
 		return false;
 	}
+}
+
+void MainWindow::on_lastButton_clicked()
+{
+
+}
+
+void MainWindow::on_playButton_clicked()
+{
+
+}
+
+void MainWindow::on_nextButton_clicked()
+{
+
 }

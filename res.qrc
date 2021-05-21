@@ -2,4 +2,10 @@
     <qresource prefix="/img">
         <file alias="default-cover">asserts/default_cover_256.png</file>
     </qresource>
+    <qresource prefix="/icon">
+        <file alias="next">asserts/next.png</file>
+        <file alias="pasue">asserts/pause.png</file>
+        <file alias="play">asserts/play.png</file>
+        <file alias="last">asserts/last.png</file>
+    </qresource>
 </RCC>
