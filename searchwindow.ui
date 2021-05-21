@@ -19,129 +19,149 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLineEdit" name="searchLine">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>20</y>
-     <width>740</width>
-     <height>45</height>
-    </rect>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>10</number>
    </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
+   <property name="sizeConstraint">
+    <enum>QLayout::SetDefaultConstraint</enum>
    </property>
-   <property name="font">
-    <font>
-     <family>Microsoft YaHei</family>
-     <pointsize>10</pointsize>
-    </font>
+   <property name="leftMargin">
+    <number>35</number>
    </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
+   <property name="topMargin">
+    <number>20</number>
    </property>
-   <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 255, 255);
+   <property name="bottomMargin">
+    <number>20</number>
+   </property>
+   <item>
+    <widget class="QLineEdit" name="searchLine">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>45</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
 border-color: rgb(228, 228, 231);</string>
-   </property>
-  </widget>
-  <widget class="NavBar" name="tabBar">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>80</y>
-     <width>740</width>
-     <height>35</height>
-    </rect>
-   </property>
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
-   <property name="font">
-    <font>
-     <family>Microsoft YaHei</family>
-     <pointsize>10</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-width: 3px; 
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="NavBar" name="tabBar">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>35</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Microsoft YaHei</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-width: 3px; 
 border-style: solid;
 border-bottom-color: rgb(0, 85, 255);</string>
-   </property>
-   <property name="bgColorStart">
-    <color>
-     <red>250</red>
-     <green>250</green>
-     <blue>252</blue>
-    </color>
-   </property>
-   <property name="bgColorEnd">
-    <color>
-     <red>250</red>
-     <green>250</green>
-     <blue>252</blue>
-    </color>
-   </property>
-   <property name="barColorStart">
-    <color>
-     <red>250</red>
-     <green>250</green>
-     <blue>252</blue>
-    </color>
-   </property>
-   <property name="barColorEnd">
-    <color>
-     <red>250</red>
-     <green>250</green>
-     <blue>252</blue>
-    </color>
-   </property>
-   <property name="textNormalColor">
-    <color>
-     <red>51</red>
-     <green>51</green>
-     <blue>51</blue>
-    </color>
-   </property>
-   <property name="textSelectColor">
-    <color>
-     <red>198</red>
-     <green>46</green>
-     <blue>46</blue>
-    </color>
-   </property>
-   <property name="items">
-    <string>单曲|歌手|专辑|歌单|用户</string>
-   </property>
-   <property name="currentItem">
-    <string>单曲</string>
-   </property>
-   <property name="space">
-    <number>30</number>
-   </property>
-   <property name="lineColor">
-    <color>
-     <red>198</red>
-     <green>46</green>
-     <blue>46</blue>
-    </color>
-   </property>
-   <property name="barStyle">
-    <enum>NavBar::BarStyle_Line_Bottom</enum>
-   </property>
-   <property name="keyMove">
-    <bool>true</bool>
-   </property>
-   <property name="flat">
-    <bool>true</bool>
-   </property>
-  </widget>
+     </property>
+     <property name="bgColorStart">
+      <color>
+       <red>250</red>
+       <green>250</green>
+       <blue>252</blue>
+      </color>
+     </property>
+     <property name="bgColorEnd">
+      <color>
+       <red>250</red>
+       <green>250</green>
+       <blue>252</blue>
+      </color>
+     </property>
+     <property name="barColorStart">
+      <color>
+       <red>250</red>
+       <green>250</green>
+       <blue>252</blue>
+      </color>
+     </property>
+     <property name="barColorEnd">
+      <color>
+       <red>250</red>
+       <green>250</green>
+       <blue>252</blue>
+      </color>
+     </property>
+     <property name="textNormalColor">
+      <color>
+       <red>51</red>
+       <green>51</green>
+       <blue>51</blue>
+      </color>
+     </property>
+     <property name="textSelectColor">
+      <color>
+       <red>198</red>
+       <green>46</green>
+       <blue>46</blue>
+      </color>
+     </property>
+     <property name="items">
+      <string>单曲|歌手|专辑|歌单|用户</string>
+     </property>
+     <property name="currentItem">
+      <string>单曲</string>
+     </property>
+     <property name="space">
+      <number>30</number>
+     </property>
+     <property name="lineColor">
+      <color>
+       <red>198</red>
+       <green>46</green>
+       <blue>46</blue>
+      </color>
+     </property>
+     <property name="barStyle">
+      <enum>NavBar::BarStyle_Line_Bottom</enum>
+     </property>
+     <property name="keyMove">
+      <bool>true</bool>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QListView" name="listView"/>
+   </item>
+  </layout>
  </widget>
  <customwidgets>
   <customwidget>
