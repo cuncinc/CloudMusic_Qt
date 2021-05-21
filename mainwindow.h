@@ -18,17 +18,15 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-	bool eventFilter(QObject *obj, QEvent *event);	// 事件过滤器，实现QLabel的click
 
 public slots:
 	void setCoverUrl(const QString &url);
 
 private slots:
 	void on_lastButton_clicked();
-
 	void on_playButton_clicked();
-
 	void on_nextButton_clicked();
+	void on_coverButton_clicked();
 
 private:
     Ui::MainWindow *ui;

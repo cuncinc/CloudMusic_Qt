@@ -41,7 +41,6 @@ MainWindow::MainWindow(QWidget *parent)
 	, ui(new Ui::MainWindow)
 {
 	ui->setupUi(this);
-	ui->imgLabel->installEventFilter(this);	//安装事件过滤器，实现clicked
 
 	main2Window = new Main2Window();
 	ui->stackedWidget->addWidget(main2Window);
@@ -49,7 +48,8 @@ MainWindow::MainWindow(QWidget *parent)
 	detailWindow = new DetailWindow();
 	ui->stackedWidget->addWidget(detailWindow);
 
-	test();
+	test();	
+	setCoverUrl("http://gimg2.baidu.com/image_search/src=http%3A%2F%2F1812.img.pp.sohu.com.cn%2Fimages%2Fblog%2F2009%2F11%2F18%2F18%2F8%2F125b6560a6ag214.jpg&refer=http%3A%2F%2F1812.img.pp.sohu.com.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1624200858&t=d21b0e63a3f845e45d9ac8fc31fdf01e");
 }
 
 MainWindow::~MainWindow()
@@ -75,39 +75,9 @@ void MainWindow::setCoverUrl(const QString &path)
 	QByteArray jpegData = reply->readAll();
 	QPixmap pixmap;
 	pixmap.loadFromData(jpegData);
-	ui->imgLabel->setPixmap(pixmap); // 你在QLabel显示图片
-}
-
-bool MainWindow::eventFilter(QObject *obj, QEvent *event)
-{
-	//	qDebug() << "eventFilter";
-	if (obj == ui->imgLabel && event->type() == QEvent::MouseButtonPress)
-	{
-		//		qDebug() << "image Label event";
-		QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event); // 事件转换
-		if(mouseEvent->button() == Qt::LeftButton)
-		{
-			if (ui->stackedWidget->currentWidget() == detailWindow)
-			{
-				ui->stackedWidget->setCurrentWidget(main2Window);
-			}
-			else
-			{
-				ui->stackedWidget->setCurrentWidget(detailWindow);
-			}
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	else
-	{
-		// pass the event on to the parent class
-		//		return QWidget::eventFilter(obj, event);
-		return false;
-	}
+	QIcon buttonIcon(pixmap);
+	ui->coverButton->setIcon(buttonIcon);
+//	ui->coverButton->setIconSize(ui->coverButton->size());
 }
 
 void MainWindow::on_lastButton_clicked()
@@ -123,4 +93,16 @@ void MainWindow::on_playButton_clicked()
 void MainWindow::on_nextButton_clicked()
 {
 
+}
+
+void MainWindow::on_coverButton_clicked()
+{
+	if (ui->stackedWidget->currentWidget() == detailWindow)
+	{
+		ui->stackedWidget->setCurrentWidget(main2Window);
+	}
+	else
+	{
+		ui->stackedWidget->setCurrentWidget(detailWindow);
+	}
 }

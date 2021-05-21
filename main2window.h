@@ -6,6 +6,8 @@
 #include "findwindow.h"
 #include "eventwindow.h"
 #include "songlistwindow.h"
+#include "mewindow.h"
+#include "loginwindow.h"
 
 #include <QMainWindow>
 
@@ -32,6 +34,10 @@ private slots:
 	void onDownLoad();
 	void onRecent();
 	void onFavorite();
+	void onMe();
+	void onLogin();
+
+	void on_avatarButton_clicked();
 
 private:
 	Ui::Main2Window *ui;
@@ -39,6 +45,8 @@ private:
 	FindWindow *findWindow;
 	EventWindow *eventWindow;
 	SongListWindow *songListWindow;
+	MeWindow *meWindow;
+	LoginWindow *loginWindow;
 };
 
 #endif // MAIN2WINDOW_H

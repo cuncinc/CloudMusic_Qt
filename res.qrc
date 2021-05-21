@@ -1,11 +1,19 @@
 <RCC>
     <qresource prefix="/img">
         <file alias="default-cover">asserts/default_cover_256.png</file>
+        <file alias="default-avatar">asserts/default_avatar.png</file>
+        <file alias="login-phone">asserts/login_phone.png</file>
+        <file alias="login-bg">asserts/login_bg.png</file>
+        <file alias="login-email">asserts/login_email.png</file>
+        <file alias="login-smile">asserts/login_smile.png</file>
     </qresource>
     <qresource prefix="/icon">
         <file alias="next">asserts/next.png</file>
         <file alias="pasue">asserts/pause.png</file>
         <file alias="play">asserts/play.png</file>
         <file alias="last">asserts/last.png</file>
+    </qresource>
+    <qresource prefix="/logo">
+        <file alias="logo88">asserts/logo_88.png</file>
     </qresource>
 </RCC>

@@ -20,6 +20,8 @@ SOURCES += \
     eventwindow.cpp \
     findwindow.cpp \
     httpclient.cpp \
+    logindialog.cpp \
+    loginwindow.cpp \
     main.cpp \
     main2window.cpp \
     mainwindow.cpp \
@@ -33,6 +35,8 @@ HEADERS += \
     eventwindow.h \
     findwindow.h \
     httpclient.h \
+    logindialog.h \
+    loginwindow.h \
     main2window.h \
     mainwindow.h \
     mewindow.h \
@@ -44,6 +48,8 @@ FORMS += \
     detailwindow.ui \
     eventwindow.ui \
     findwindow.ui \
+    logindialog.ui \
+    loginwindow.ui \
     main2window.ui \
     mainwindow.ui \
     mewindow.ui \
