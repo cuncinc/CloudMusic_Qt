@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1000</width>
+    <height>680</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -26,11 +26,14 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>11</x>
-      <y>11</y>
-      <width>778</width>
-      <height>511</height>
+      <x>0</x>
+      <y>0</y>
+      <width>1000</width>
+      <height>610</height>
      </rect>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page_3"/>
     <widget class="QWidget" name="page_4"/>
@@ -55,17 +58,20 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QLabel" name="imgLabel">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>560</y>
-      <width>93</width>
-      <height>28</height>
+      <x>0</x>
+      <y>610</y>
+      <width>70</width>
+      <height>70</height>
      </rect>
     </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::NoContextMenu</enum>
+    </property>
     <property name="text">
-     <string>Detail</string>
+     <string/>
     </property>
    </widget>
   </widget>

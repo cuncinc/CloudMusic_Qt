@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/img">
+        <file alias="default-cover">asserts/default_cover_256.png</file>
+    </qresource>
+</RCC>

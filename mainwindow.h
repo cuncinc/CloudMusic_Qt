@@ -5,6 +5,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QMouseEvent>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,9 +18,10 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+	bool eventFilter(QObject *obj, QEvent *event);	// 事件过滤器，实现QLabel的click
 
-private slots:
-	void on_pushButton_clicked();
+public slots:
+	void setImg(const QString &url);
 
 private:
     Ui::MainWindow *ui;

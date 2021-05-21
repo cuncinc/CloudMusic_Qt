@@ -24,7 +24,7 @@ SOURCES += \
     main2window.cpp \
     mainwindow.cpp \
     mewindow.cpp \
-    seachwindow.cpp \
+    searchwindow.cpp \
     songlistwindow.cpp
 
 HEADERS += \
@@ -35,7 +35,7 @@ HEADERS += \
     main2window.h \
     mainwindow.h \
     mewindow.h \
-    seachwindow.h \
+    searchwindow.h \
     songlistwindow.h
 
 FORMS += \
@@ -45,7 +45,7 @@ FORMS += \
     main2window.ui \
     mainwindow.ui \
     mewindow.ui \
-    seachwindow.ui \
+    searchwindow.ui \
     songlistwindow.ui
 
 # Default rules for deployment.
@@ -62,3 +62,6 @@ LIBS += -L$$PWD/quc/ -lqucd
 } else {
 LIBS += -L$$PWD/quc/ -lquc
 }
+
+RESOURCES += \
+    res.qrc
