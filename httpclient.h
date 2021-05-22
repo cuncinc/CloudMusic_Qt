@@ -14,20 +14,20 @@
 class HttpClientPrivate;
 
 /**
-* ¶Ô QNetworkAccessManager ¼òµ¥·â×°µÄ HTTP ·ÃÎÊ¿Í»§¶Ë£¬¼ò»¯ GET¡¢POST¡¢PUT¡¢DELETE¡¢ÉÏ´«¡¢ÏÂÔØµÈ²Ù×÷¡£
-* ÔÚÖ´ĞĞÇëÇóÇ°ÉèÖÃĞèÒªµÄ²ÎÊıºÍ»Øµ÷º¯Êı:
-*     1. µ÷ÓÃ header() ÉèÖÃÇëÇóÍ·
-*     2. µ÷ÓÃ param() ÉèÖÃ²ÎÊı£¬Ê¹ÓÃ Form ±íµ¥µÄ·½Ê½Ìá½»ÇëÇó£¬GET ÇëÇóµÄ query parameters Ò²¿ÉÒÔÓÃËüÉèÖÃ
-*     3. µ÷ÓÃ json() ÉèÖÃ JSON ×Ö·û´®µÄ request body£¬Content-Type Îª application/json£¬
-*        µ±È»Ò²¿ÉÒÔ²»ÊÇ JSON ¸ñÊ½£¬ÒòÊ¹ÓÃ request body µÄÇé¿ö¶àÊıÊÇÊ¹ÓÃ JSON ¸ñÊ½´«µİ¸´ÔÓ¶ÔÏó£¬¹ÊÃüÃûÎª json
-*     4. µ÷ÓÃ success() ×¢²áÇëÇó³É¹¦µÄ»Øµ÷º¯Êı
-*     5. µ÷ÓÃ fail() ×¢²áÇëÇóÊ§°ÜµÄ»Øµ÷º¯Êı
-*     6. µ÷ÓÃ complete() ×¢²áÇëÇó½áÊøµÄ»Øµ÷º¯Êı
-*        success(), fail(), complete() µÄ»Øµ÷º¯ÊıÊÇ¿ÉÑ¡µÄ£¬¸ù¾İĞèÒª×¢²á¶ÔÓ¦µÄ»Øµ÷º¯Êı£¬Ò²¿ÉÒÔÒ»¸ö¶¼²»×¢²á
-* È»ºó¸ù¾İÇëÇóµÄÀàĞÍµ÷ÓÃ get(), post(), put(), remove(), download(), upload() Ö´ĞĞ HTTP ÇëÇó
+* å¯¹ QNetworkAccessManager ç®€å•å°è£…çš„ HTTP è®¿é—®å®¢æˆ·ç«¯ï¼Œç®€åŒ– GETã€POSTã€PUTã€DELETEã€ä¸Šä¼ ã€ä¸‹è½½ç­‰æ“ä½œã€‚
+* åœ¨æ‰§è¡Œè¯·æ±‚å‰è®¾ç½®éœ€è¦çš„å‚æ•°å’Œå›è°ƒå‡½æ•°:
+*     1. è°ƒç”¨ header() è®¾ç½®è¯·æ±‚å¤´
+*     2. è°ƒç”¨ param() è®¾ç½®å‚æ•°ï¼Œä½¿ç”¨ Form è¡¨å•çš„æ–¹å¼æäº¤è¯·æ±‚ï¼ŒGET è¯·æ±‚çš„ query parameters ä¹Ÿå¯ä»¥ç”¨å®ƒè®¾ç½®
+*     3. è°ƒç”¨ json() è®¾ç½® JSON å­—ç¬¦ä¸²çš„ request bodyï¼ŒContent-Type ä¸º application/jsonï¼Œ
+*        å½“ç„¶ä¹Ÿå¯ä»¥ä¸æ˜¯ JSON æ ¼å¼ï¼Œå› ä½¿ç”¨ request body çš„æƒ…å†µå¤šæ•°æ˜¯ä½¿ç”¨ JSON æ ¼å¼ä¼ é€’å¤æ‚å¯¹è±¡ï¼Œæ•…å‘½åä¸º json
+*     4. è°ƒç”¨ success() æ³¨å†Œè¯·æ±‚æˆåŠŸçš„å›è°ƒå‡½æ•°
+*     5. è°ƒç”¨ fail() æ³¨å†Œè¯·æ±‚å¤±è´¥çš„å›è°ƒå‡½æ•°
+*     6. è°ƒç”¨ complete() æ³¨å†Œè¯·æ±‚ç»“æŸçš„å›è°ƒå‡½æ•°
+*        success(), fail(), complete() çš„å›è°ƒå‡½æ•°æ˜¯å¯é€‰çš„ï¼Œæ ¹æ®éœ€è¦æ³¨å†Œå¯¹åº”çš„å›è°ƒå‡½æ•°ï¼Œä¹Ÿå¯ä»¥ä¸€ä¸ªéƒ½ä¸æ³¨å†Œ
+* ç„¶åæ ¹æ®è¯·æ±‚çš„ç±»å‹è°ƒç”¨ get(), post(), put(), remove(), download(), upload() æ‰§è¡Œ HTTP è¯·æ±‚
 *
-* Ä¬ÈÏ HttpClient »á´´½¨Ò»¸ö QNetworkAccessManager£¬Èç¹û²»ÏëÊ¹ÓÃÄ¬ÈÏµÄ£¬µ÷ÓÃ manager() ´«Èë¼´¿É¡£
-* µ÷ÓÃ debug(true) ÉèÖÃÎªµ÷ÊÔÄ£Ê½£¬Êä³öµ÷ÊÔĞÅÏ¢Èç URL¡¢²ÎÊıµÈ¡£
+* é»˜è®¤ HttpClient ä¼šåˆ›å»ºä¸€ä¸ª QNetworkAccessManagerï¼Œå¦‚æœä¸æƒ³ä½¿ç”¨é»˜è®¤çš„ï¼Œè°ƒç”¨ manager() ä¼ å…¥å³å¯ã€‚
+* è°ƒç”¨ debug(true) è®¾ç½®ä¸ºè°ƒè¯•æ¨¡å¼ï¼Œè¾“å‡ºè°ƒè¯•ä¿¡æ¯å¦‚ URLã€å‚æ•°ç­‰ã€‚
 */
 class HttpClient {
 public:
@@ -36,149 +36,149 @@ public:
 	void stop2();
 
 	/**
-	* @brief Ã¿´´½¨Ò»¸ö QNetworkAccessManager ¶ÔÏó¶¼»á´´½¨Ò»¸öÏß³Ì£¬µ±Æµ·±µÄ·ÃÎÊÍøÂçÊ±£¬ÎªÁË½ÚÊ¡Ïß³Ì×ÊÔ´£¬
-	*     ¿ÉÒÔ´«Èë QNetworkAccessManager ¸ø¶à¸öÇëÇó¹²Ïí (Ëü²»»á±» HttpClient É¾³ı£¬ÓÃ»§ĞèÒª×Ô¼ºÊÖ¶¯É¾³ı)¡£
-	*     Èç¹ûÃ»ÓĞÊ¹ÓÃ manager() ´«ÈëÒ»¸ö QNetworkAccessManager£¬Ôò HttpClient »á×Ô¶¯µÄ´´½¨Ò»¸ö£¬²¢ÇÒÔÚÍøÂç·ÃÎÊÍê³Éºó×Ô¶¯É¾³ıËü¡£
+	* @brief æ¯åˆ›å»ºä¸€ä¸ª QNetworkAccessManager å¯¹è±¡éƒ½ä¼šåˆ›å»ºä¸€ä¸ªçº¿ç¨‹ï¼Œå½“é¢‘ç¹çš„è®¿é—®ç½‘ç»œæ—¶ï¼Œä¸ºäº†èŠ‚çœçº¿ç¨‹èµ„æºï¼Œ
+	*     å¯ä»¥ä¼ å…¥ QNetworkAccessManager ç»™å¤šä¸ªè¯·æ±‚å…±äº« (å®ƒä¸ä¼šè¢« HttpClient åˆ é™¤ï¼Œç”¨æˆ·éœ€è¦è‡ªå·±æ‰‹åŠ¨åˆ é™¤)ã€‚
+	*     å¦‚æœæ²¡æœ‰ä½¿ç”¨ manager() ä¼ å…¥ä¸€ä¸ª QNetworkAccessManagerï¼Œåˆ™ HttpClient ä¼šè‡ªåŠ¨çš„åˆ›å»ºä¸€ä¸ªï¼Œå¹¶ä¸”åœ¨ç½‘ç»œè®¿é—®å®Œæˆåè‡ªåŠ¨åˆ é™¤å®ƒã€‚
 	*
-	* @param  manager Ö´ĞĞ HTTP ÇëÇóµÄ QNetworkAccessManager ¶ÔÏó
-	* @return ·µ»Ø HttpClient µÄÒıÓÃ£¬¿ÉÒÔÓÃÓÚÁ´Ê½µ÷ÓÃ
+	* @param  manager æ‰§è¡Œ HTTP è¯·æ±‚çš„ QNetworkAccessManager å¯¹è±¡
+	* @return è¿”å› HttpClient çš„å¼•ç”¨ï¼Œå¯ä»¥ç”¨äºé“¾å¼è°ƒç”¨
 	*/
 	HttpClient& manager(QNetworkAccessManager *manager);
 
 	/**
-	* @brief  ²ÎÊı debug Îª true ÔòÊ¹ÓÃ debug Ä£Ê½£¬ÇëÇóÖ´ĞĞÊ±Êä³öÇëÇóµÄ URL ºÍ²ÎÊıµÈ
+	* @brief  å‚æ•° debug ä¸º true åˆ™ä½¿ç”¨ debug æ¨¡å¼ï¼Œè¯·æ±‚æ‰§è¡Œæ—¶è¾“å‡ºè¯·æ±‚çš„ URL å’Œå‚æ•°ç­‰
 	*
-	* @param  debug ÊÇ·ñÆôÓÃµ÷ÊÔÄ£Ê½
-	* @return ·µ»Ø HttpClient µÄÒıÓÃ£¬¿ÉÒÔÓÃÓÚÁ´Ê½µ÷ÓÃ
+	* @param  debug æ˜¯å¦å¯ç”¨è°ƒè¯•æ¨¡å¼
+	* @return è¿”å› HttpClient çš„å¼•ç”¨ï¼Œå¯ä»¥ç”¨äºé“¾å¼è°ƒç”¨
 	*/
 	HttpClient& debug(bool debug);
 
 	/**
-	* @brief Ìí¼ÓÒ»¸öÇëÇóµÄ²ÎÊı£¬¿ÉÒÔ¶à´Îµ÷ÓÃÌí¼Ó¶à¸ö²ÎÊı
+	* @brief æ·»åŠ ä¸€ä¸ªè¯·æ±‚çš„å‚æ•°ï¼Œå¯ä»¥å¤šæ¬¡è°ƒç”¨æ·»åŠ å¤šä¸ªå‚æ•°
 	*
-	* @param name  ²ÎÊıµÄÃû×Ö
-	* @param value ²ÎÊıµÄÖµ
-	* @return ·µ»Ø HttpClient µÄÒıÓÃ£¬¿ÉÒÔÓÃÓÚÁ´Ê½µ÷ÓÃ
+	* @param name  å‚æ•°çš„åå­—
+	* @param value å‚æ•°çš„å€¼
+	* @return è¿”å› HttpClient çš„å¼•ç”¨ï¼Œå¯ä»¥ç”¨äºé“¾å¼è°ƒç”¨
 	*/
 	HttpClient& param(const QString &name, const QVariant &value);
 
 	/**
-	* @brief Ìí¼Ó¶à¸öÇëÇóµÄ²ÎÊı
+	* @brief æ·»åŠ å¤šä¸ªè¯·æ±‚çš„å‚æ•°
 	*
-	* @param ps QMap ÀàĞÍµÄ²ÎÊı£¬key Îª²ÎÊıÃû£¬value Îª²ÎÊıÖµ
-	*           ¿ÉÒÔÊ¹ÓÃ {{"name", 1}, {"box", 2}} µÄ·½Ê½´´½¨ QMap ¶ÔÏó
-	* @return ·µ»Ø HttpClient µÄÒıÓÃ£¬¿ÉÒÔÓÃÓÚÁ´Ê½µ÷ÓÃ
+	* @param ps QMap ç±»å‹çš„å‚æ•°ï¼Œkey ä¸ºå‚æ•°åï¼Œvalue ä¸ºå‚æ•°å€¼
+	*           å¯ä»¥ä½¿ç”¨ {{"name", 1}, {"box", 2}} çš„æ–¹å¼åˆ›å»º QMap å¯¹è±¡
+	* @return è¿”å› HttpClient çš„å¼•ç”¨ï¼Œå¯ä»¥ç”¨äºé“¾å¼è°ƒç”¨
 	*/
 	HttpClient& params(const QMap<QString, QVariant> &ps);
 
 	/**
-	* @brief Ìí¼ÓÇëÇóµÄ²ÎÊı (ÇëÇóÌå)£¬Ê¹ÓÃ Json ¸ñÊ½£¬ÀıÈç "{\"name\": \"Alice\"}"
+	* @brief æ·»åŠ è¯·æ±‚çš„å‚æ•° (è¯·æ±‚ä½“)ï¼Œä½¿ç”¨ Json æ ¼å¼ï¼Œä¾‹å¦‚ "{\"name\": \"Alice\"}"
 	*
-	* @param json ÇëÇóÌå (request body) Îª Json ¸ñÊ½µÄ²ÎÊı×Ö·û´®
-	* @return ·µ»Ø HttpClient µÄÒıÓÃ£¬¿ÉÒÔÓÃÓÚÁ´Ê½µ÷ÓÃ
+	* @param json è¯·æ±‚ä½“ (request body) ä¸º Json æ ¼å¼çš„å‚æ•°å­—ç¬¦ä¸²
+	* @return è¿”å› HttpClient çš„å¼•ç”¨ï¼Œå¯ä»¥ç”¨äºé“¾å¼è°ƒç”¨
 	*/
 	HttpClient& json(const QString &json);
 
 	/**
-	* @brief Ìí¼ÓÇëÇóÍ·
+	* @brief æ·»åŠ è¯·æ±‚å¤´
 	*
-	* @param name  ÇëÇóÍ·µÄÃû×Ö
-	* @param value ÇëÇóÍ·µÄÖµ
-	* @return ·µ»Ø HttpClient µÄÒıÓÃ£¬¿ÉÒÔÓÃÓÚÁ´Ê½µ÷ÓÃ
+	* @param name  è¯·æ±‚å¤´çš„åå­—
+	* @param value è¯·æ±‚å¤´çš„å€¼
+	* @return è¿”å› HttpClient çš„å¼•ç”¨ï¼Œå¯ä»¥ç”¨äºé“¾å¼è°ƒç”¨
 	*/
 	HttpClient& header(const QString &name, const QString &value);
 
 	/**
-	* @brief Ìí¼Ó¶à¸öÇëÇóÍ·
+	* @brief æ·»åŠ å¤šä¸ªè¯·æ±‚å¤´
 	*
-	* @param nameValues ÇëÇóÍ·µÄÃû×ÖºÍÖµ¶Ô
-	*                   ¿ÉÒÔÊ¹ÓÃ {{"name", 1}, {"box", 2}} µÄ·½Ê½´´½¨ QMap ¶ÔÏó
-	* @return ·µ»Ø HttpClient µÄÒıÓÃ£¬¿ÉÒÔÓÃÓÚÁ´Ê½µ÷ÓÃ
+	* @param nameValues è¯·æ±‚å¤´çš„åå­—å’Œå€¼å¯¹
+	*                   å¯ä»¥ä½¿ç”¨ {{"name", 1}, {"box", 2}} çš„æ–¹å¼åˆ›å»º QMap å¯¹è±¡
+	* @return è¿”å› HttpClient çš„å¼•ç”¨ï¼Œå¯ä»¥ç”¨äºé“¾å¼è°ƒç”¨
 	*/
 	HttpClient& headers(const QMap<QString, QString> nameValues);
 
 	/**
-	* @brief ×¢²áÇëÇó³É¹¦µÄ»Øµ÷º¯Êı
+	* @brief æ³¨å†Œè¯·æ±‚æˆåŠŸçš„å›è°ƒå‡½æ•°
 	*
-	* @param successHandler ³É¹¦µÄ»Øµ÷º¯Êı£¬²ÎÊıÎªÏìÓ¦µÄ×Ö·û´®
-	* @return ·µ»Ø HttpClient µÄÒıÓÃ£¬¿ÉÒÔÓÃÓÚÁ´Ê½µ÷ÓÃ
+	* @param successHandler æˆåŠŸçš„å›è°ƒå‡½æ•°ï¼Œå‚æ•°ä¸ºå“åº”çš„å­—ç¬¦ä¸²
+	* @return è¿”å› HttpClient çš„å¼•ç”¨ï¼Œå¯ä»¥ç”¨äºé“¾å¼è°ƒç”¨
 	*/
 	HttpClient& success(std::function<void(const QString &)> successHandler);
 
 	/**
-	* @brief ×¢²áÇëÇóÊ§°ÜµÄ»Øµ÷º¯Êı
+	* @brief æ³¨å†Œè¯·æ±‚å¤±è´¥çš„å›è°ƒå‡½æ•°
 	*
-	* @param failHandler Ê§°ÜµÄ»Øµ÷º¯Êı£¬²ÎÊıÎªÊ§°ÜÔ­ÒòºÍ HTTP ×´Ì¬Âë
-	* @return ·µ»Ø HttpClient µÄÒıÓÃ£¬¿ÉÒÔÓÃÓÚÁ´Ê½µ÷ÓÃ
+	* @param failHandler å¤±è´¥çš„å›è°ƒå‡½æ•°ï¼Œå‚æ•°ä¸ºå¤±è´¥åŸå› å’Œ HTTP çŠ¶æ€ç 
+	* @return è¿”å› HttpClient çš„å¼•ç”¨ï¼Œå¯ä»¥ç”¨äºé“¾å¼è°ƒç”¨
 	*/
 	HttpClient& fail(std::function<void(const QString &, int)> failHandler);
 
 	/**
-	* @brief ×¢²áÇëÇó½áÊøµÄ»Øµ÷º¯Êı£¬²»¹Ü³É¹¦»¹ÊÇÊ§°ÜÇëÇó½áÊøºó¶¼»áÖ´ĞĞ
+	* @brief æ³¨å†Œè¯·æ±‚ç»“æŸçš„å›è°ƒå‡½æ•°ï¼Œä¸ç®¡æˆåŠŸè¿˜æ˜¯å¤±è´¥è¯·æ±‚ç»“æŸåéƒ½ä¼šæ‰§è¡Œ
 	*
-	* @param completeHandler Íê³ÉµÄ»Øµ÷º¯Êı£¬ÎŞ²ÎÊı
-	* @return ·µ»Ø HttpClient µÄÒıÓÃ£¬¿ÉÒÔÓÃÓÚÁ´Ê½µ÷ÓÃ
+	* @param completeHandler å®Œæˆçš„å›è°ƒå‡½æ•°ï¼Œæ— å‚æ•°
+	* @return è¿”å› HttpClient çš„å¼•ç”¨ï¼Œå¯ä»¥ç”¨äºé“¾å¼è°ƒç”¨
 	*/
 	HttpClient& complete(std::function<void()> completeHandler);
 
 	/**
-	* @brief ÉèÖÃÇëÇóÏìÓ¦µÄ×Ö·û¼¯£¬Ä¬ÈÏÊ¹ÓÃ UTF-8
+	* @brief è®¾ç½®è¯·æ±‚å“åº”çš„å­—ç¬¦é›†ï¼Œé»˜è®¤ä½¿ç”¨ UTF-8
 	*
-	* @param cs ×Ö·û¼¯
-	* @return ·µ»Ø HttpClient µÄÒıÓÃ£¬¿ÉÒÔÓÃÓÚÁ´Ê½µ÷ÓÃ
+	* @param cs å­—ç¬¦é›†
+	* @return è¿”å› HttpClient çš„å¼•ç”¨ï¼Œå¯ä»¥ç”¨äºé“¾å¼è°ƒç”¨
 	*/
 	HttpClient& charset(const QString &cs);
 
 	/**
-	* @brief Ö´ĞĞ GET ÇëÇó
+	* @brief æ‰§è¡Œ GET è¯·æ±‚
 	*/
 	void get();
 
 	/**
-	* @brief Ö´ĞĞ POST ÇëÇó
+	* @brief æ‰§è¡Œ POST è¯·æ±‚
 	*/
 	void post();
 
 	/**
-	* @brief Ö´ĞĞ PUT ÇëÇó
+	* @brief æ‰§è¡Œ PUT è¯·æ±‚
 	*/
 	void put();
 
 	/**
-	* @brief Ö´ĞĞ DELETE ÇëÇó£¬ÓÉÓÚ delete ÊÇ C++ µÄÔËËã·û£¬ËùÒÔÓÃÍ¬Òå´Ê remove
-	*        ×¢Òâ: Qt Ìá¹©µÄ DELETE ÇëÇóÊÇ²»Ö§³Ö´«µİ²ÎÊıµÄ£¬
-	*        Çë²Î¿¼ QNetworkAccessManager::deleteResource(const QNetworkRequest &request)
+	* @brief æ‰§è¡Œ DELETE è¯·æ±‚ï¼Œç”±äº delete æ˜¯ C++ çš„è¿ç®—ç¬¦ï¼Œæ‰€ä»¥ç”¨åŒä¹‰è¯ remove
+	*        æ³¨æ„: Qt æä¾›çš„ DELETE è¯·æ±‚æ˜¯ä¸æ”¯æŒä¼ é€’å‚æ•°çš„ï¼Œ
+	*        è¯·å‚è€ƒ QNetworkAccessManager::deleteResource(const QNetworkRequest &request)
 	*/
 	void remove();
 
 	/**
-	* @brief Ê¹ÓÃ GET ½øĞĞÏÂÔØ£¬ÏÂÔØµÄÎÄ¼ş±£´æµ½ savePath
+	* @brief ä½¿ç”¨ GET è¿›è¡Œä¸‹è½½ï¼Œä¸‹è½½çš„æ–‡ä»¶ä¿å­˜åˆ° savePath
 	*
-	* @param savePath ÏÂÔØµÄÎÄ¼ş±£´æÂ·¾¶
+	* @param savePath ä¸‹è½½çš„æ–‡ä»¶ä¿å­˜è·¯å¾„
 	*/
 	void download(const QString &savePath);
 
 	/**
-	* @brief ÉÏ´«µ¥¸öÎÄ¼ş
-	*        Ê¹ÓÃ POST ÉÏ´«£¬·şÎñÆ÷¶Ë»ñÈ¡ÎÄ¼şµÄ²ÎÊıÃûÎª file
+	* @brief ä¸Šä¼ å•ä¸ªæ–‡ä»¶
+	*        ä½¿ç”¨ POST ä¸Šä¼ ï¼ŒæœåŠ¡å™¨ç«¯è·å–æ–‡ä»¶çš„å‚æ•°åä¸º file
 	*
-	* @param path ÒªÉÏ´«µÄÎÄ¼şµÄÂ·¾¶
+	* @param path è¦ä¸Šä¼ çš„æ–‡ä»¶çš„è·¯å¾„
 	*/
 	void upload(const QString &path);
 
 	/**
-	* @brief ÉÏ´«ÎÄ¼ş£¬ÎÄ¼şµÄÄÚÈİÒÑ¾­¶ÁÈ¡µ½ data ÖĞ
-	*        Ê¹ÓÃ POST ÉÏ´«£¬·şÎñÆ÷¶Ë»ñÈ¡ÎÄ¼şµÄ²ÎÊıÃûÎª file
+	* @brief ä¸Šä¼ æ–‡ä»¶ï¼Œæ–‡ä»¶çš„å†…å®¹å·²ç»è¯»å–åˆ° data ä¸­
+	*        ä½¿ç”¨ POST ä¸Šä¼ ï¼ŒæœåŠ¡å™¨ç«¯è·å–æ–‡ä»¶çš„å‚æ•°åä¸º file
 	*
-	* @param path ÒªÉÏ´«µÄÎÄ¼şµÄÂ·¾¶
+	* @param path è¦ä¸Šä¼ çš„æ–‡ä»¶çš„è·¯å¾„
 	*/
 	void upload(const QByteArray &data);
 
 	/**
-	* @brief ÉÏ´«¶à¸öÎÄ¼ş
-	*        Ê¹ÓÃ POST ÉÏ´«£¬·şÎñÆ÷¶Ë»ñÈ¡ÎÄ¼şµÄ²ÎÊıÃûÎª files
+	* @brief ä¸Šä¼ å¤šä¸ªæ–‡ä»¶
+	*        ä½¿ç”¨ POST ä¸Šä¼ ï¼ŒæœåŠ¡å™¨ç«¯è·å–æ–‡ä»¶çš„å‚æ•°åä¸º files
 	*
-	* @param paths ÒªÉÏ´«µÄÎÄ¼şµÄÂ·¾¶
+	* @param paths è¦ä¸Šä¼ çš„æ–‡ä»¶çš„è·¯å¾„
 	*/
 	void upload(const QStringList &paths);
 

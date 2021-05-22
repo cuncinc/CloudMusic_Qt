@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "httpclient.h"
+#include "global.h"
 
 #include <QJsonDocument>
 #include <QJsonArray>
@@ -30,7 +31,7 @@ void test()
 
 		//		qDebug() << response;
 
-	}).param("keywords", "GoodTime")			// ²ÎÊý
+	}).param("keywords", "GoodTime")			// å‚æ•°
 			.param("limit", "5")
 			.header("token", "test")		// Header
 			.get();
@@ -47,9 +48,6 @@ MainWindow::MainWindow(QWidget *parent)
 	ui->stackedWidget->setCurrentWidget(main2Window);
 	detailWindow = new DetailWindow();
 	ui->stackedWidget->addWidget(detailWindow);
-
-	test();	
-	setCoverUrl("http://gimg2.baidu.com/image_search/src=http%3A%2F%2F1812.img.pp.sohu.com.cn%2Fimages%2Fblog%2F2009%2F11%2F18%2F18%2F8%2F125b6560a6ag214.jpg&refer=http%3A%2F%2F1812.img.pp.sohu.com.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1624200858&t=d21b0e63a3f845e45d9ac8fc31fdf01e");
 }
 
 MainWindow::~MainWindow()
@@ -57,19 +55,20 @@ MainWindow::~MainWindow()
 	delete ui;
 	delete main2Window;
 	delete detailWindow;
+	global::StoreToFile();
 }
 
 void MainWindow::setCoverUrl(const QString &path)
 {
-	qDebug() << "img:  " << path;
+//	qDebug() << "img:  " << path;
 	QUrl url(path);
 	QNetworkAccessManager manager;
 	QEventLoop loop;
 
 	QNetworkReply *reply = manager.get(QNetworkRequest(url));
-	//ÇëÇó½áÊø²¢ÏÂÔØÍê³Éºó£¬ÍË³ö×ÓÊÂ¼þÑ­»·
+	//è¯·æ±‚ç»“æŸå¹¶ä¸‹è½½å®ŒæˆåŽï¼Œé€€å‡ºå­äº‹ä»¶å¾ªçŽ¯
 	connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
-	//¿ªÆô×ÓÊÂ¼þÑ­»·
+	//å¼€å¯å­äº‹ä»¶å¾ªçŽ¯
 	loop.exec();
 
 	QByteArray jpegData = reply->readAll();

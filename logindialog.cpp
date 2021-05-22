@@ -1,5 +1,12 @@
 #include "logindialog.h"
 #include "ui_logindialog.h"
+#include "httpclient.h"
+#include "global.h"
+#include "toast.h"
+
+#include <QMap>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 LoginDialog::LoginDialog(QWidget *parent) :
 	QDialog(parent),
@@ -10,6 +17,7 @@ LoginDialog::LoginDialog(QWidget *parent) :
 
 LoginDialog::~LoginDialog()
 {
+	//	emit login(false);
 	delete ui;
 }
 
@@ -33,5 +41,59 @@ void LoginDialog::on_toLogon_clicked()
 
 void LoginDialog::on_toQRCode_clicked()
 {
+	HttpClient("/msg/private").success([=](const QString &response) {
+		qDebug() << response;
+	}).get();
+}
 
+void LoginDialog::on_logonButton_clicked()
+{
+
+}
+
+void LoginDialog::on_emailLogin_clicked()
+{
+	QString email = ui->emeailAccount->text();
+	QString password = ui->emailPassword->text();
+
+	HttpClient("/login").success([=](const QString &response) {
+		login_result(response);
+	}).param("email", email)
+			.param("password", password)
+			.get();
+}
+
+void LoginDialog::on_phoneLogin_clicked()
+{
+	QString phone = ui->phoneAccount->text();
+	QString password = ui->phonePassword->text();
+
+	HttpClient("/login/cellphone").success([=](const QString &response) {
+		login_result(response);
+	}).param("phone", phone)
+			.param("password", password)
+			.get();
+}
+
+void LoginDialog::login_result(const QString &resp)
+{
+	QJsonObject json = QJsonDocument::fromJson(resp.toUtf8()).object();
+	int code = json.value("code").toInt();
+	if (code != 200)
+	{
+		qDebug() << "code is " << code;
+		Toast::showTip(tr("密码错误，请重新输入"));
+		return;
+	}
+	QString token = json.value("token").toString();
+	QString cookie = json.value("cookie").toString();
+	long long meId = json.value("account").toObject().value("id").toVariant().toLongLong();
+
+	global::token = token;
+	global::cookie = cookie;
+	global::meId = meId;
+	global::isLogin = true;
+
+	emit login(true);
+	close();
 }

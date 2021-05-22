@@ -440,6 +440,9 @@ color: rgb(255, 255, 255);</string>
        </item>
        <item>
         <widget class="QPushButton" name="logonButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -453,8 +456,14 @@ color: rgb(255, 255, 255);</string>
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">background-color: rgb(233, 157, 158);
-color: rgb(255, 255, 255);</string>
+          <string notr="true">QPushButton {color: #ffffff}
+
+QPushButton:!enabled {background-color: rgb(233, 157, 158);}
+
+
+QPushButton:enabled {background-color: #D83F3F;}
+
+QPushButton:pressed{background-color: #BF2828;}</string>
          </property>
          <property name="text">
           <string>注 册</string>

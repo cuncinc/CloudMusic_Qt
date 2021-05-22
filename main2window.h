@@ -22,8 +22,10 @@ class Main2Window : public QMainWindow
 public:
 	explicit Main2Window(QWidget *parent = nullptr);
 	~Main2Window();
+	void setAvatarUrl(const QString &path);
 
 public slots:
+	void updateMe();
 
 private slots:
 	void on_navigation_pressed(int childIndex);
@@ -36,7 +38,6 @@ private slots:
 	void onFavorite();
 	void onMe();
 	void onLogin();
-
 	void on_avatarButton_clicked();
 
 private:

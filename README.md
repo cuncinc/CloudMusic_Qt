@@ -78,9 +78,9 @@ foreach (const QJsonValue& value, jsonArray)
 
 + 地址: http://150.158.190.228:3000/
 + 文档: https://binaryify.github.io/NeteaseCloudMusicApi/
-+ 手机: 16521687458
-+ 密码: `16521687458.`
-+ 验证码: https://www.yinsiduanxin.com/china-phone-number/verification-code-16521687458.html
++ 手机: 16521687984
++ 密码: `16521687984.`
++ 验证码: https://www.yinsiduanxin.com/china-phone-number/verification-code-16521687984.html
 
 ### 用户
 

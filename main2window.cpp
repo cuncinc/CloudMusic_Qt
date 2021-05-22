@@ -1,18 +1,25 @@
 #include "logindialog.h"
 #include "main2window.h"
 #include "ui_main2window.h"
+#include "httpclient.h"
+#include "global.h"
 
 #include <QDebug>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonValue>
+#include <QPixmap>
 
 enum Category
 {
-	Search = 1,		//ËÑË÷
-	FindMusic = 2,	//·¢ÏÖÒôÀÖ
-	Event = 3,		//¶¯Ì¬
-	LocalMusic = 5,	//±¾µØÒôÀÖ
-	DownLoad = 6,	//ÏÂÔØ¹ÜÀí
-	Recent = 7,		//×î½ü²¥·Å
-	Favorite = 8	//ÊÕ²Ø¸èµ¥
+	Search = 1,		//æœç´¢
+	FindMusic = 2,	//å‘çŽ°éŸ³ä¹
+	Event = 3,		//åŠ¨æ€
+	LocalMusic = 5,	//æœ¬åœ°éŸ³ä¹
+	DownLoad = 6,	//ä¸‹è½½ç®¡ç†
+	Recent = 7,		//æœ€è¿‘æ’­æ”¾
+	Favorite = 8	//æ”¶è—æ­Œå•
 };
 
 Main2Window::Main2Window(QWidget *parent) :
@@ -35,8 +42,13 @@ Main2Window::Main2Window(QWidget *parent) :
 	ui->stackedWidget->addWidget(meWindow);
 	ui->stackedWidget->addWidget(loginWindow);
 
-	ui->navigation->setCurrentRow(FindMusic);	//³õÊ¼»¯Ö¸Ïò¡°·¢ÏÖÒôÀÖ¡±
+	ui->navigation->setCurrentRow(FindMusic);	//åˆå§‹åŒ–æŒ‡å‘â€œå‘çŽ°éŸ³ä¹â€
 	ui->stackedWidget->setCurrentWidget(findWindow);
+
+	if (global::isLogin)
+	{
+		updateMe();
+	}
 }
 
 Main2Window::~Main2Window()
@@ -48,9 +60,6 @@ Main2Window::~Main2Window()
 	delete ui;
 }
 
-//	  void pressed(const QString &text, const QString &parentText);
-//    void pressed(int index, int parentIndex);
-//    void pressed(int childIndex);
 void Main2Window::on_navigation_pressed(int index)
 {
 	switch (index)
@@ -132,6 +141,46 @@ void Main2Window::onLogin()
 void Main2Window::on_avatarButton_clicked()
 {
 	LoginDialog *dialog = new LoginDialog();
-	dialog->setWindowModality(Qt::ApplicationModal); //ÉèÖÃ½çÃæ²»¿Éµã»÷
+	connect(dialog, &LoginDialog::login, this, &Main2Window::updateMe);
+	dialog->setWindowModality(Qt::ApplicationModal); //è®¾ç½®ç•Œé¢ä¸å¯ç‚¹å‡»
 	dialog->show();
+}
+
+void Main2Window::updateMe()
+{
+	if (!global::isLogin)
+	{
+		ui->nickNameLabel->setText("æœªç™»å½•");
+		QIcon icon(":/img/default-avatar");
+		ui->avatarButton->setIcon(icon);
+		return;
+	}
+
+	HttpClient("/user/account").success([=](const QString &response) {
+		QJsonObject profile = QJsonDocument::fromJson(response.toUtf8()).object().value("profile").toObject();
+		QString nickname = profile.value("nickname").toString();
+		QString avatarUrl = profile.value("avatarUrl").toString();
+		ui->nickNameLabel->setText(nickname);
+		setAvatarUrl(avatarUrl);
+	}).get();
+}
+
+void Main2Window::setAvatarUrl(const QString &path)
+{
+	QUrl url(path);
+	QNetworkAccessManager manager;
+	QEventLoop loop;
+
+	QNetworkReply *reply = manager.get(QNetworkRequest(url));
+	//è¯·æ±‚ç»“æŸå¹¶ä¸‹è½½å®ŒæˆåŽï¼Œé€€å‡ºå­äº‹ä»¶å¾ªçŽ¯
+	connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
+	//å¼€å¯å­äº‹ä»¶å¾ªçŽ¯
+	loop.exec();
+
+	QByteArray jpegData = reply->readAll();
+	QPixmap pixmap;
+	pixmap.loadFromData(jpegData);
+	QIcon buttonIcon(pixmap);
+	ui->avatarButton->setIcon(buttonIcon);
+//	ui->coverButton->setIconSize(ui->coverButton->size());
 }

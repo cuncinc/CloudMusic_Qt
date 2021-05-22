@@ -19,6 +19,7 @@ SOURCES += \
     detailwindow.cpp \
     eventwindow.cpp \
     findwindow.cpp \
+    global.cpp \
     httpclient.cpp \
     logindialog.cpp \
     loginwindow.cpp \
@@ -28,12 +29,14 @@ SOURCES += \
     mewindow.cpp \
     player.cpp \
     searchwindow.cpp \
-    songlistwindow.cpp
+    songlistwindow.cpp \
+    toast.cpp
 
 HEADERS += \
     detailwindow.h \
     eventwindow.h \
     findwindow.h \
+    global.h \
     httpclient.h \
     logindialog.h \
     loginwindow.h \
@@ -42,7 +45,8 @@ HEADERS += \
     mewindow.h \
     player.h \
     searchwindow.h \
-    songlistwindow.h
+    songlistwindow.h \
+    toast.h
 
 FORMS += \
     detailwindow.ui \
@@ -54,7 +58,8 @@ FORMS += \
     mainwindow.ui \
     mewindow.ui \
     searchwindow.ui \
-    songlistwindow.ui
+    songlistwindow.ui \
+    toast.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
