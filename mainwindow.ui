@@ -166,8 +166,10 @@
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(223, 59, 59);
-border-radius: 17px;</string>
+            <string notr="true">QPushButton {background-color: rgb(223, 59, 59);
+border-radius: 17px;}
+
+QPushButton:pressed {background-color:#BC2F2D}</string>
            </property>
            <property name="text">
             <string/>
@@ -202,8 +204,10 @@ border-radius: 17px;</string>
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(223, 59, 59);
-border-radius: 20px;</string>
+            <string notr="true">QPushButton {background-color: rgb(223, 59, 59);
+border-radius: 20px;}
+
+QPushButton:pressed {background-color:#BC2F2D}</string>
            </property>
            <property name="text">
             <string/>
@@ -238,8 +242,10 @@ border-radius: 20px;</string>
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: rgb(223, 59, 59);
-border-radius: 17px;</string>
+            <string notr="true">QPushButton {background-color: rgb(223, 59, 59);
+border-radius: 17px;}
+
+QPushButton:pressed {background-color:#BC2F2D}</string>
            </property>
            <property name="text">
             <string/>

@@ -23,7 +23,7 @@ public:
 	static void showTip(const QString& text, const int time = 2000, QWidget* parent = nullptr);
 
 protected:
-	virtual void paintEvent(QPaintEvent *event);
+	virtual void paintEvent(QPaintEvent *event = nullptr);
 
 private:
 	Ui::Toast ui;

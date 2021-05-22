@@ -22,15 +22,14 @@ SOURCES += \
     global.cpp \
     httpclient.cpp \
     logindialog.cpp \
-    loginwindow.cpp \
     main.cpp \
     main2window.cpp \
     mainwindow.cpp \
-    mewindow.cpp \
     player.cpp \
     searchwindow.cpp \
     songlistwindow.cpp \
-    toast.cpp
+    toast.cpp \
+    userinfowindow.cpp
 
 HEADERS += \
     detailwindow.h \
@@ -39,37 +38,35 @@ HEADERS += \
     global.h \
     httpclient.h \
     logindialog.h \
-    loginwindow.h \
     main2window.h \
     mainwindow.h \
-    mewindow.h \
     player.h \
     searchwindow.h \
     songlistwindow.h \
-    toast.h
+    toast.h \
+    userinfowindow.h
 
 FORMS += \
     detailwindow.ui \
     eventwindow.ui \
     findwindow.ui \
     logindialog.ui \
-    loginwindow.ui \
     main2window.ui \
     mainwindow.ui \
-    mewindow.ui \
     searchwindow.ui \
     songlistwindow.ui \
-    toast.ui
+    toast.ui \
+    userinfowindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-#�次�引入自定义控件的所有头文件 懒得�个个拷贝
+#��次��引入自定义控件的所有头文件 懒得��个个拷贝
 INCLUDEPATH += $$PWD/quc/include
 
-#不同的构建套�debug release 依赖不同的链接库
+#不同的构建套��debug release 依赖不同的链接库
 CONFIG(debug, debug|release){
 LIBS += -L$$PWD/quc/ -lqucd
 } else {

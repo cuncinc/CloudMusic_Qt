@@ -32,15 +32,13 @@ Main2Window::Main2Window(QWidget *parent) :
 	findWindow = new FindWindow();
 	eventWindow = new EventWindow();
 	songListWindow = new SongListWindow();
-	meWindow = new MeWindow();
-	loginWindow = new LoginWindow();
+	meWindow = new UserInfoWindow();
 
 	ui->stackedWidget->addWidget(searchWindow);
 	ui->stackedWidget->addWidget(findWindow);
 	ui->stackedWidget->addWidget(eventWindow);
 	ui->stackedWidget->addWidget(songListWindow);
 	ui->stackedWidget->addWidget(meWindow);
-	ui->stackedWidget->addWidget(loginWindow);
 
 	ui->navigation->setCurrentRow(FindMusic);	//初始化指向“发现音乐”
 	ui->stackedWidget->setCurrentWidget(findWindow);
@@ -133,17 +131,22 @@ void Main2Window::onMe()
 	qDebug() << "Me";
 }
 
-void Main2Window::onLogin()
-{
-	qDebug() << "Login";
-}
-
 void Main2Window::on_avatarButton_clicked()
 {
-	LoginDialog *dialog = new LoginDialog();
-	connect(dialog, &LoginDialog::login, this, &Main2Window::updateMe);
-	dialog->setWindowModality(Qt::ApplicationModal); //设置界面不可点击
-	dialog->show();
+	if (global::isLogin)
+	{
+		meWindow->setUserId(global::meId);
+		ui->stackedWidget->setCurrentWidget(meWindow);
+		ui->navigation->setCurrentRow(0);
+		meWindow->initView();
+	}
+	else
+	{
+		LoginDialog *dialog = new LoginDialog();
+		connect(dialog, &LoginDialog::login, this, &Main2Window::updateMe);
+		dialog->setWindowModality(Qt::ApplicationModal); //设置界面不可点击
+		dialog->show();
+	}
 }
 
 void Main2Window::updateMe()
