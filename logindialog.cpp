@@ -93,6 +93,7 @@ void LoginDialog::login_result(const QString &resp)
 	global::cookie = cookie;
 	global::meId = meId;
 	global::isLogin = true;
+//    global::isSinging=false;
 
 	emit login(true);
 	close();

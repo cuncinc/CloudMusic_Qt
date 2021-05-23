@@ -65,7 +65,14 @@ border-color: rgb(228, 228, 231);</string>
     </widget>
    </item>
    <item>
-    <widget class="NavBar" name="tabBar">
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>搜索</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="NavBar" name="tabBar" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
        <horstretch>0</horstretch>
@@ -89,71 +96,68 @@ border-color: rgb(228, 228, 231);</string>
 border-style: solid;
 border-bottom-color: rgb(0, 85, 255);</string>
      </property>
-     <property name="bgColorStart">
+     <property name="bgColorStart" stdset="0">
       <color>
        <red>250</red>
        <green>250</green>
        <blue>252</blue>
       </color>
      </property>
-     <property name="bgColorEnd">
+     <property name="bgColorEnd" stdset="0">
       <color>
        <red>250</red>
        <green>250</green>
        <blue>252</blue>
       </color>
      </property>
-     <property name="barColorStart">
+     <property name="barColorStart" stdset="0">
       <color>
        <red>250</red>
        <green>250</green>
        <blue>252</blue>
       </color>
      </property>
-     <property name="barColorEnd">
+     <property name="barColorEnd" stdset="0">
       <color>
        <red>250</red>
        <green>250</green>
        <blue>252</blue>
       </color>
      </property>
-     <property name="textNormalColor">
+     <property name="textNormalColor" stdset="0">
       <color>
        <red>51</red>
        <green>51</green>
        <blue>51</blue>
       </color>
      </property>
-     <property name="textSelectColor">
+     <property name="textSelectColor" stdset="0">
       <color>
        <red>198</red>
        <green>46</green>
        <blue>46</blue>
       </color>
      </property>
-     <property name="items">
+     <property name="items" stdset="0">
       <string>单曲|歌手|专辑|歌单|用户</string>
      </property>
-     <property name="currentItem">
+     <property name="currentItem" stdset="0">
       <string>单曲</string>
      </property>
-     <property name="space">
+     <property name="space" stdset="0">
       <number>30</number>
      </property>
-     <property name="lineColor">
+     <property name="lineColor" stdset="0">
       <color>
        <red>198</red>
        <green>46</green>
        <blue>46</blue>
       </color>
      </property>
-     <property name="barStyle">
-      <enum>NavBar::BarStyle_Line_Bottom</enum>
-     </property>
-     <property name="keyMove">
+     <property name="keyMove" stdset="0">
       <bool>true</bool>
      </property>
-     <property name="flat">
+     <property name="flat" stdset="0">
       <bool>true</bool>
      </property>
     </widget>
