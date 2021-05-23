@@ -58,6 +58,8 @@ MainWindow::~MainWindow()
 	global::StoreToFile();
 }
 
+
+
 void MainWindow::setCoverUrl(const QString &path)
 {
 //	qDebug() << "img:  " << path;

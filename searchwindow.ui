@@ -66,6 +66,29 @@ border-color: rgb(228, 228, 231);</string>
    </item>
    <item>
     <widget class="QPushButton" name="pushButton">
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    font-family: &quot;Microsoft YaHei&quot;;
+    font-size: 16px;
+
+    font-style: italic;
+    font-weight: bold;
+
+    
+    padding-left: 25px;
+    padding-top: 0px;
+
+    border-style: solid;
+    border-width: 2px;
+   
+    border-radius: 20px;
+
+    background-color: #DF3B3B;
+    background-repeat: no-repeat;
+    background-position: left center;
+}
+</string>
+     </property>
      <property name="text">
       <string>搜索</string>
      </property>
@@ -163,7 +186,48 @@ border-bottom-color: rgb(0, 85, 255);</string>
     </widget>
    </item>
    <item>
-    <widget class="QListView" name="listView"/>
+    <widget class="QListView" name="listView">
+     <property name="styleSheet">
+      <string notr="true">QListView
+{
+  //子类中使用的备用颜色。如果未设置此属性，则默认值为调色板的AlternateBase角色设置的值
+    alternate-background-color: yellow;
+}
+QListView
+{
+  //控制QListVIew中选择是覆盖整个行还是仅覆盖文本的范围
+    show-decoration-selected: 1; /* make the selection span the entire width of the view */
+}
+QListView::item:alternate //替换状态
+{
+    background: #EEEEEE;
+}
+
+QListView::item:selected //选中项
+{
+    border: 1px solid #6a6ea9;
+}
+//鼠标放上去或键盘选择就选中，激活需要鼠标点击
+QListView::item:selected:!active //选中项处于没有处于活动窗口中时
+{
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #ABAFE5, stop: 1 #8588B2);
+}
+
+QListView::item:selected:active //选中并处于激活状态时
+{
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #6a6ea9, stop: 1 #888dd9);
+}
+
+QListView::item:hover //鼠标放上去时
+{
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+}
+</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

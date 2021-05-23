@@ -59,6 +59,7 @@ void SearchWindow::on_pushButton_clicked()
                            ItemModel->appendRow(item);
                        }
                       ui->listView->setModel(ItemModel);
+
                       ui->listView->setFixedSize(754,422);
 
                       connect(ui->listView,SIGNAL(clicked(QModelIndex)),this,SLOT(showClick(QModelIndex)));
@@ -74,10 +75,11 @@ void SearchWindow::showClick(QModelIndex index)
     QStringList list = strTemp.split(",");
     int id=list[1].toInt();
    //全局变量当前播放的歌曲id记录
+    global::currentId = id;
+    global::isSinging = true;
     qDebug()<<list[1];
 //    QMessageBox msg;
 //    msg.setText(list[1]);
 //    msg.exec();
-    /*qDebug()<<global::isSinging;
-    global::isSinging = true; *///点击后播放歌曲，将系统是否放歌的全局变量改为true
+    qDebug()<<global::isSinging;
 }
