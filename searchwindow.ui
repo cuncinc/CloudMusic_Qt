@@ -59,8 +59,9 @@
       <bool>false</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);
-border-color: rgb(228, 228, 231);</string>
+      <string notr="true">QLineEdit{
+	background-color:#404244
+}</string>
      </property>
     </widget>
    </item>
