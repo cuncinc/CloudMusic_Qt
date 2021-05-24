@@ -39,11 +39,12 @@ public:
 
 signals:
 	void songChanged(SongInfo info);			// 歌曲改变
-	void songStop();			// 单曲播放完毕
+	void songStop();							// 单曲播放完毕
 public:
 	void setSongId(const QString &id);
 	void setSongNetworkUrl(const QString &url);	//待播放音乐的路径
 	void setSongLocalPath(const QString &path);	//待播放音乐的路径
+	SongFromType type() const;
 
 public slots:
 	void pauseSong();			// 暂停
@@ -57,7 +58,7 @@ private:
 	PlayOrder order;
 	QString curSongNetworkUrl;
 	QString curSongLocalPath;
-	SongFromType fromType;
+	SongFromType fromType = SongFromType::None;
 	SongInfo info;
 //	QMediaPlayer *mediaPlayer;
 };

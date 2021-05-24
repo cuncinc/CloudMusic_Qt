@@ -62,7 +62,7 @@ void global::ReadFromFile()
 		isLogin = data["isLogin"].toInt();
 
 		qDebug() << "meId:  " << meId;
-		qDebug() << "cookie:  " << cookie << "\n\n";
+		qDebug() << "cookie:  " << cookie << "";
 	}
 	else
 	{

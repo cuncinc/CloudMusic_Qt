@@ -76,6 +76,10 @@ MainWindow::MainWindow(QWidget *parent)
 	// 时间滑杆 -> 播放时间
 	connect(ui->slider, &XSlider::valueChanged, player, &Player::setPlayTime);
 	/**********************************************************************************/
+
+	connect(player, &Player::songChanged, detailWindow, &DetailWindow::setView);
+
+
 }
 
 MainWindow::~MainWindow()
@@ -148,8 +152,6 @@ void MainWindow::setSongView(SongInfo info)
 	setCoverUrl(info.coverUrl);
 }
 
-
-
 void MainWindow::setCoverUrl(const QString &path)
 {
 	if (nullptr == path)
@@ -198,7 +200,8 @@ void MainWindow::on_coverButton_clicked()
 {
 	if (ui->stackedWidget->currentWidget() == detailWindow)
 	{
-		ui->stackedWidget->setCurrentWidget(main2Window);
+		if (SongFromType::None != player->type())
+			ui->stackedWidget->setCurrentWidget(main2Window);
 	}
 	else
 	{

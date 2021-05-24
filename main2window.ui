@@ -76,12 +76,13 @@
          <bool>true</bool>
         </property>
         <property name="styleSheet">
-         <string notr="true">items{
-	font-color = F3F3F5
-}</string>
+         <string notr="true">background-color: #F3F3F5;</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="autoScrollMargin">
+         <number>8</number>
         </property>
         <property name="editTriggers">
          <set>QAbstractItemView::DoubleClicked|QAbstractItemView::EditKeyPressed</set>
@@ -356,7 +357,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">QStackedWidget{
-background-color:#FFFFFF
+background-color:#FAFAFC
 }</string>
       </property>
       <property name="currentIndex">

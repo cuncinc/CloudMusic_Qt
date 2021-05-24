@@ -18,6 +18,11 @@ Player::~Player()
 //	delete mediaPlayer;
 }
 
+SongFromType Player::type() const
+{
+	return fromType;
+}
+
 
 void Player::pauseSong()
 {
