@@ -67,7 +67,6 @@ void SearchWindow::on_pushButton_clicked()
 
             }).param("keywords", keyword)
                     .get();
-            qDebug()<<global::songUrl;
 }
 
 void SearchWindow::showClick(QModelIndex index)
@@ -87,7 +86,6 @@ void SearchWindow::showClick(QModelIndex index)
     HttpClient("/song/url").success([=](const QString &response) {
     QJsonArray data = QJsonDocument::fromJson(response.toUtf8()).object().value("data").toArray();
     QString url = data[0].toObject().value("url").toString(); // 获取搜索的歌曲的网络url地址
-    global::songUrl=url;
     qDebug()<<url;
 //    MainWindow w;
 //    w.setWindowIcon(QIcon(":/logo/logo88"));
