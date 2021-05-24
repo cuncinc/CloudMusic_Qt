@@ -72,7 +72,6 @@
         <file>asserts/biyingjunUI/video.png</file>
         <file>asserts/biyingjunUI/yun.png</file>
         <file>asserts/biyingjunUI/zanweifu.png</file>
-        <file>asserts/biyingjunUI/音乐条.psd</file>
     </qresource>
     <qresource prefix="/icon">
         <file alias="next">asserts/next.png</file>
