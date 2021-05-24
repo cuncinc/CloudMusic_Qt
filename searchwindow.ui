@@ -59,15 +59,14 @@
       <bool>false</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">border-color: #E4E4E7;</string>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QPushButton" name="pushButton">
      <property name="styleSheet">
-      <string notr="true">
-</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string>搜索</string>
@@ -75,7 +74,7 @@
     </widget>
    </item>
    <item>
-    <widget class="NavBar" name="tabBar" native="true">
+    <widget class="NavBar" name="tabBar">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
        <horstretch>0</horstretch>
@@ -99,68 +98,68 @@
 border-style: solid;
 border-bottom-color: rgb(0, 85, 255);</string>
      </property>
-     <property name="bgColorStart" stdset="0">
+     <property name="bgColorStart">
       <color>
        <red>250</red>
        <green>250</green>
        <blue>252</blue>
       </color>
      </property>
-     <property name="bgColorEnd" stdset="0">
+     <property name="bgColorEnd">
       <color>
        <red>250</red>
        <green>250</green>
        <blue>252</blue>
       </color>
      </property>
-     <property name="barColorStart" stdset="0">
+     <property name="barColorStart">
       <color>
        <red>250</red>
        <green>250</green>
        <blue>252</blue>
       </color>
      </property>
-     <property name="barColorEnd" stdset="0">
+     <property name="barColorEnd">
       <color>
        <red>250</red>
        <green>250</green>
        <blue>252</blue>
       </color>
      </property>
-     <property name="textNormalColor" stdset="0">
+     <property name="textNormalColor">
       <color>
        <red>51</red>
        <green>51</green>
        <blue>51</blue>
       </color>
      </property>
-     <property name="textSelectColor" stdset="0">
+     <property name="textSelectColor">
       <color>
        <red>198</red>
        <green>46</green>
        <blue>46</blue>
       </color>
      </property>
-     <property name="items" stdset="0">
+     <property name="items">
       <string>单曲|歌手|专辑|歌单|用户</string>
      </property>
-     <property name="currentItem" stdset="0">
+     <property name="currentItem">
       <string>单曲</string>
      </property>
-     <property name="space" stdset="0">
+     <property name="space">
       <number>30</number>
      </property>
-     <property name="lineColor" stdset="0">
+     <property name="lineColor">
       <color>
        <red>198</red>
        <green>46</green>
        <blue>46</blue>
       </color>
      </property>
-     <property name="keyMove" stdset="0">
+     <property name="keyMove">
       <bool>true</bool>
      </property>
-     <property name="flat" stdset="0">
+     <property name="flat">
       <bool>true</bool>
      </property>
     </widget>
@@ -172,12 +171,13 @@ border-bottom-color: rgb(0, 85, 255);</string>
 {
   //子类中使用的备用颜色。如果未设置此属性，则默认值为调色板的AlternateBase角色设置的值
     alternate-background-color: yellow;
-}
-QListView
-{
+
   //控制QListVIew中选择是覆盖整个行还是仅覆盖文本的范围
-    show-decoration-selected: 1; /* make the selection span the entire width of the view */
+    show-decoration-selected: 1; 
+	border:none;
+	background-color: #FAFAFC;
 }
+
 QListView::item:alternate //替换状态
 {
     background: #EEEEEE;
@@ -190,22 +190,18 @@ QListView::item:selected //选中项
 //鼠标放上去或键盘选择就选中，激活需要鼠标点击
 QListView::item:selected:!active //选中项处于没有处于活动窗口中时
 {
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                stop: 0 #ABAFE5, stop: 1 #8588B2);
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #ABAFE5, stop: 1 #8588B2);
 }
 
 QListView::item:selected:active //选中并处于激活状态时
 {
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                stop: 0 #6a6ea9, stop: 1 #888dd9);
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #6a6ea9, stop: 1 #888dd9);
 }
 
 QListView::item:hover //鼠标放上去时
 {
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                stop: 0 #FAFBFE, stop: 1 #DCDEF1);
-}
-</string>
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #FAFBFE, stop: 1 #DCDEF1);
+}</string>
      </property>
     </widget>
    </item>

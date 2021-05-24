@@ -13,13 +13,13 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>40</x>
      <y>30</y>
      <width>302</width>
-     <height>362</height>
+     <height>369</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -54,23 +54,44 @@
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="likeButton">
+        <property name="font">
+         <font>
+          <family>Microsoft YaHei</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <property name="text">
-         <string>PushButton</string>
+         <string>喜欢</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="downloadButton">
+        <property name="font">
+         <font>
+          <family>Microsoft YaHei</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="text">
-         <string>PushButton</string>
+         <string>下载</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_3">
+       <widget class="QPushButton" name="favoriteButton">
+        <property name="font">
+         <font>
+          <family>Microsoft YaHei</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
         <property name="text">
-         <string>PushButton</string>
+         <string>收藏</string>
         </property>
        </widget>
       </item>
@@ -78,21 +99,27 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>400</x>
      <y>30</y>
-     <width>502</width>
-     <height>547</height>
+     <width>402</width>
+     <height>492</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <property name="spacing">
-     <number>20</number>
+     <number>10</number>
     </property>
     <item>
      <widget class="QLabel" name="nameLabel">
+      <property name="maximumSize">
+       <size>
+        <width>350</width>
+        <height>30</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>Microsoft YaHei</family>
@@ -111,66 +138,96 @@
      </widget>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <item>
-       <widget class="QLabel" name="label_2">
-        <property name="maximumSize">
-         <size>
-          <width>56</width>
-          <height>20</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Microsoft YaHei</family>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>歌手：</string>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="authorLabel">
-        <property name="font">
-         <font>
-          <family>Microsoft YaHei</family>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: #1A5A99;</string>
-        </property>
-        <property name="text">
-         <string>歌手名</string>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="maximumSize">
+       <size>
+        <width>350</width>
+        <height>40</height>
+       </size>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="maximumSize">
+          <size>
+           <width>56</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>歌手：</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="authorLabel">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>20</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei</family>
+           <pointsize>10</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #1A5A99;</string>
+         </property>
+         <property name="text">
+          <string>歌手名</string>
+         </property>
+         <property name="wordWrap">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </item>
     <item>
      <widget class="QScrollArea" name="scrollArea">
       <property name="minimumSize">
        <size>
-        <width>300</width>
-        <height>450</height>
+        <width>350</width>
+        <height>400</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>16777215</width>
-        <height>450</height>
+        <width>350</width>
+        <height>400</height>
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">border:none;</string>
+       <string notr="true">border:none;
+margin-top:20px;</string>
       </property>
       <property name="verticalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -186,8 +243,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>500</width>
-         <height>450</height>
+         <width>310</width>
+         <height>360</height>
         </rect>
        </property>
        <widget class="QPlainTextEdit" name="lyricLabel">
@@ -195,8 +252,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>500</width>
-          <height>450</height>
+          <width>350</width>
+          <height>400</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -207,20 +264,20 @@
         </property>
         <property name="minimumSize">
          <size>
-          <width>300</width>
-          <height>450</height>
+          <width>350</width>
+          <height>400</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>16777215</width>
-          <height>450</height>
+          <width>350</width>
+          <height>400</height>
          </size>
         </property>
         <property name="font">
          <font>
           <family>Microsoft YaHei</family>
-          <pointsize>11</pointsize>
+          <pointsize>12</pointsize>
          </font>
         </property>
         <property name="styleSheet">
@@ -233,6 +290,9 @@ border:none;</string>
         <property name="horizontalScrollBarPolicy">
          <enum>Qt::ScrollBarAlwaysOff</enum>
         </property>
+        <property name="undoRedoEnabled">
+         <bool>false</bool>
+        </property>
         <property name="lineWrapMode">
          <enum>QPlainTextEdit::WidgetWidth</enum>
         </property>
@@ -240,8 +300,10 @@ border:none;</string>
          <bool>true</bool>
         </property>
         <property name="plainText">
-         <string>不可以的
-你说的是不对的</string>
+         <string/>
+        </property>
+        <property name="textInteractionFlags">
+         <set>Qt::NoTextInteraction</set>
         </property>
         <property name="backgroundVisible">
          <bool>false</bool>

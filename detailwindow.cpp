@@ -6,12 +6,19 @@
 #include <QJsonObject>
 #include <QRegularExpression>
 #include <QDebug>
+#include <QTextBlockFormat>
 
 DetailWindow::DetailWindow(QWidget *parent) :
 	QWidget(parent),
 	ui(new Ui::DetailWindow)
 {
 	ui->setupUi(this);
+
+// 设置行高，但无效
+//	QTextBlockFormat bf = ui->lyricLabel->textCursor().blockFormat();
+////	qDebug() << bf.lineHeight();
+//	bf.setLineHeight(2000, QTextBlockFormat::FixedHeight);
+//	ui->lyricLabel->textCursor().setBlockFormat(bf);
 }
 
 DetailWindow::~DetailWindow()

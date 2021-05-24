@@ -76,7 +76,8 @@
          <bool>true</bool>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: #F3F3F5;</string>
+         <string notr="true">background-color: #F3F3F5;
+border:none;</string>
         </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
@@ -96,155 +97,155 @@
         <property name="layoutMode">
          <enum>QListView::SinglePass</enum>
         </property>
-        <property name="items" stdset="0">
+        <property name="items">
          <string>主界面||0|正常|,搜索|主界面|||0xf03e,发现音乐|主界面|||0xf03d,动态|主界面|||0xf108,我的音乐||0||,本地音乐|我的音乐|||0xf0e8,下载管理|我的音乐|||0xf03e,最近播放|我的音乐|||0xf060,我的收藏|我的音乐|||0xf03e</string>
         </property>
-        <property name="rightIconVisible" stdset="0">
+        <property name="rightIconVisible">
          <bool>false</bool>
         </property>
-        <property name="tipVisible" stdset="0">
+        <property name="tipVisible">
          <bool>false</bool>
         </property>
-        <property name="tipWidth" stdset="0">
+        <property name="tipWidth">
          <number>200</number>
         </property>
-        <property name="separateVisible" stdset="0">
+        <property name="separateVisible">
          <bool>false</bool>
         </property>
-        <property name="separateHeight" stdset="0">
+        <property name="separateHeight">
          <number>1</number>
         </property>
-        <property name="separateColor" stdset="0">
+        <property name="separateColor">
          <color>
           <red>243</red>
           <green>243</green>
           <blue>245</blue>
          </color>
         </property>
-        <property name="lineLeft" stdset="0">
+        <property name="lineLeft">
          <bool>true</bool>
         </property>
-        <property name="lineVisible" stdset="0">
+        <property name="lineVisible">
          <bool>true</bool>
         </property>
-        <property name="lineColor" stdset="0">
+        <property name="lineColor">
          <color>
           <red>188</red>
           <green>47</green>
           <blue>45</blue>
          </color>
         </property>
-        <property name="triangleLeft" stdset="0">
+        <property name="triangleLeft">
          <bool>false</bool>
         </property>
-        <property name="triangleVisible" stdset="0">
+        <property name="triangleVisible">
          <bool>false</bool>
         </property>
-        <property name="triangleWidth" stdset="0">
+        <property name="triangleWidth">
          <number>8</number>
         </property>
-        <property name="parentIconMargin" stdset="0">
+        <property name="parentIconMargin">
          <number>8</number>
         </property>
-        <property name="parentMargin" stdset="0">
+        <property name="parentMargin">
          <number>28</number>
         </property>
-        <property name="parentFontSize" stdset="0">
+        <property name="parentFontSize">
          <number>16</number>
         </property>
-        <property name="parentHeight" stdset="0">
+        <property name="parentHeight">
          <number>50</number>
         </property>
-        <property name="parentBgNormalColor" stdset="0">
+        <property name="parentBgNormalColor">
          <color>
           <red>243</red>
           <green>243</green>
           <blue>245</blue>
          </color>
         </property>
-        <property name="parentBgSelectedColor" stdset="0">
+        <property name="parentBgSelectedColor">
          <color>
           <red>243</red>
           <green>243</green>
           <blue>245</blue>
          </color>
         </property>
-        <property name="parentBgHoverColor" stdset="0">
+        <property name="parentBgHoverColor">
          <color>
           <red>243</red>
           <green>243</green>
           <blue>225</blue>
          </color>
         </property>
-        <property name="parentTextNormalColor" stdset="0">
+        <property name="parentTextNormalColor">
          <color>
           <red>153</red>
           <green>153</green>
           <blue>153</blue>
          </color>
         </property>
-        <property name="parentTextSelectedColor" stdset="0">
+        <property name="parentTextSelectedColor">
          <color>
           <red>153</red>
           <green>153</green>
           <blue>153</blue>
          </color>
         </property>
-        <property name="parentTextHoverColor" stdset="0">
+        <property name="parentTextHoverColor">
          <color>
           <red>153</red>
           <green>153</green>
           <blue>153</blue>
          </color>
         </property>
-        <property name="childIconMargin" stdset="0">
+        <property name="childIconMargin">
          <number>10</number>
         </property>
-        <property name="childMargin" stdset="0">
+        <property name="childMargin">
          <number>40</number>
         </property>
-        <property name="childFontSize" stdset="0">
+        <property name="childFontSize">
          <number>18</number>
         </property>
-        <property name="childHeight" stdset="0">
+        <property name="childHeight">
          <number>50</number>
         </property>
-        <property name="childBgNormalColor" stdset="0">
+        <property name="childBgNormalColor">
          <color>
           <red>243</red>
           <green>243</green>
           <blue>245</blue>
          </color>
         </property>
-        <property name="childBgSelectedColor" stdset="0">
+        <property name="childBgSelectedColor">
          <color>
           <red>221</red>
           <green>221</green>
           <blue>225</blue>
          </color>
         </property>
-        <property name="childBgHoverColor" stdset="0">
+        <property name="childBgHoverColor">
          <color>
           <red>221</red>
           <green>221</green>
           <blue>225</blue>
          </color>
         </property>
-        <property name="childTextNormalColor" stdset="0">
+        <property name="childTextNormalColor">
          <color>
           <red>51</red>
           <green>51</green>
           <blue>51</blue>
          </color>
         </property>
-        <property name="childTextSelectedColor" stdset="0">
+        <property name="childTextSelectedColor">
          <color>
           <red>51</red>
           <green>51</green>
           <blue>51</blue>
          </color>
         </property>
-        <property name="childTextHoverColor" stdset="0">
+        <property name="childTextHoverColor">
          <color>
           <red>51</red>
           <green>51</green>
