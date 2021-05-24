@@ -9,8 +9,9 @@ QString global::token = nullptr;
 QString global::cookie = nullptr;
 QString global::dowloadPath = nullptr;
 bool    global::isLogin = false;
-int  global::currentId =0;            //当前播放歌曲的id
-bool global::isSinging =false;
+int		global::currentId = -1;            //当前播放歌曲的id
+bool	global::isSinging = false;
+Player* global::player = nullptr;
 
 void global::StoreToFile()
 {

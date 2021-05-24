@@ -1,6 +1,8 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
+#include "player.h"
+
 #include <QString>
 
 #define FILE_MAGIC 0xFFCC22CC
@@ -16,6 +18,7 @@ public:
 	static bool    isLogin;
     static int  currentId ;            //当前播放歌曲的id
     static bool isSinging;
+	static Player* player;
 
 	static void ReadFromFile();
 	static void StoreToFile();

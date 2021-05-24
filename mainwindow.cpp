@@ -50,7 +50,8 @@ MainWindow::MainWindow(QWidget *parent)
 	detailWindow = new DetailWindow();
 	ui->stackedWidget->addWidget(detailWindow);
 	// 初始化音乐播放器
-	player = new Player();
+	global::player = new Player();
+	player = global::player;
 	// 暂时放在这里
 	QString songId = "132975";
 	player->setSongId(songId);
