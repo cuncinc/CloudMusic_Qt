@@ -13,6 +13,7 @@
 #include <QStringListModel>
 #include <QStandardItemModel>
 #include <QMessageBox>
+#include "mainwindow.h"
 
 SearchWindow::SearchWindow(QWidget *parent) :
 	QWidget(parent),
@@ -47,7 +48,7 @@ void SearchWindow::on_pushButton_clicked()
                     QString singername = ja[i].toObject().value("ar").toArray()[0].toObject().value("name").toString();
                     int id = ja[i].toObject().value("id").toInt();
                     QString str = QString::number(id);
-                    strList.append(name+"                 "+singername+"                                                                                                            ,"+str);//用逗号分隔id
+                    strList.append(name+"                 "+singername+"                                                                                                                  ."+str);//用逗号分隔id
                     qDebug() << name<<"   "+singername<<id;
                 }
 
@@ -66,13 +67,14 @@ void SearchWindow::on_pushButton_clicked()
 
             }).param("keywords", keyword)
                     .get();
+            qDebug()<<global::songUrl;
 }
 
 void SearchWindow::showClick(QModelIndex index)
 {
     QString strTemp;
     strTemp = index.data().toString();
-    QStringList list = strTemp.split(",");
+    QStringList list = strTemp.split(".");
     int id=list[1].toInt();
    //全局变量当前播放的歌曲id记录
     global::currentId = id;
@@ -82,4 +84,15 @@ void SearchWindow::showClick(QModelIndex index)
 //    msg.setText(list[1]);
 //    msg.exec();
     qDebug()<<global::isSinging;
+    HttpClient("/song/url").success([=](const QString &response) {
+    QJsonArray data = QJsonDocument::fromJson(response.toUtf8()).object().value("data").toArray();
+    QString url = data[0].toObject().value("url").toString(); // 获取搜索的歌曲的网络url地址
+    global::songUrl=url;
+    qDebug()<<url;
+//    MainWindow w;
+//    w.setWindowIcon(QIcon(":/logo/logo88"));
+//    w.show();
+    }).param("id", list[1])
+            .param("br", "32000")
+            .get();
 }

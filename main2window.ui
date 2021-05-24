@@ -355,7 +355,9 @@
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: #404244</string>
+       <string notr="true">QStackedWidget{
+background-color:#FFFFFF
+}</string>
       </property>
       <property name="currentIndex">
        <number>1</number>
