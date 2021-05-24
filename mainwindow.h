@@ -1,5 +1,6 @@
 #include "main2window.h"
 #include "detailwindow.h"
+#include "player.h"
 
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
@@ -21,6 +22,10 @@ public:
 
 public slots:
 	void setCoverUrl(const QString &url);
+	void changePlayIcon(Player::State state);	//修改播放按钮的图标
+	void setNowTimeView(qint64 time);			//修改时间滑杆和时间Label
+	void setSongView(SongInfo info);			// 歌曲、作者、封面
+	void setTimeView(qint64 time);				// 歌曲播放时间
 
 private slots:
 	void on_lastButton_clicked();
@@ -32,5 +37,6 @@ private:
     Ui::MainWindow *ui;
 	Main2Window *main2Window;
 	DetailWindow *detailWindow;
+	Player *player;
 };
 #endif // MAINWINDOW_H
