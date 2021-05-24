@@ -41,7 +41,8 @@ signals:
 	void songChanged(SongInfo info);			// 歌曲改变
 	void songStop();							// 单曲播放完毕
 public:
-	void setSongId(const QString &id);
+	void playSongId(const QString &id);
+	void initViewById(const QString &id);
 	void setSongNetworkUrl(const QString &url);	//待播放音乐的路径
 	void setSongLocalPath(const QString &path);	//待播放音乐的路径
 	SongFromType type() const;

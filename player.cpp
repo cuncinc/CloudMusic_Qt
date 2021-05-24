@@ -74,7 +74,7 @@ void Player::nextPlayOrder()
 {
 }
 
-void Player::setSongId(const QString &id)
+void Player::playSongId(const QString &id)
 {
 	fromType = SongFromType::Network;
 	info.id = id;
@@ -83,8 +83,16 @@ void Player::setSongId(const QString &id)
 		QJsonArray array = QJsonDocument::fromJson(response.toUtf8()).object().value("data").toArray();
 		QString songUrl = array[0].toObject().value("url").toString();
 		curSongNetworkUrl = songUrl;
-	}).param("id", id).param("br", 160000).get();
+		this->stop();
+		playSong();
+	}).param("id", id).param("br", 128000).get();
 
+	initViewById(id);
+}
+
+void Player::initViewById(const QString &id)
+{
+	fromType = SongFromType::Network;
 	HttpClient("/song/detail").success([=](const QString &response) {
 		QJsonArray array = QJsonDocument::fromJson(response.toUtf8()).object().value("songs").toArray();
 		QJsonObject song = array[0].toObject();

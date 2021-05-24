@@ -30,7 +30,7 @@ SearchWindow::~SearchWindow()
 
 void SearchWindow::on_tabBar_currentItemChanged(int index, const QString &item)
 {
-	qDebug() << index <<" " << item;
+//	qDebug() << index <<" " << item;
 }
 
 void SearchWindow::on_pushButton_clicked()
@@ -49,7 +49,7 @@ void SearchWindow::on_pushButton_clicked()
                     int id = ja[i].toObject().value("id").toInt();
                     QString str = QString::number(id);
                     strList.append(name+"                 "+singername+"                                                                                                                  ."+str);//用逗号分隔id
-                    qDebug() << name<<"   "+singername<<id;
+//                    qDebug() << name<<"   "+singername<<id;
                 }
 
                        int nCount = strList.size();
@@ -78,20 +78,12 @@ void SearchWindow::showClick(QModelIndex index)
    //全局变量当前播放的歌曲id记录
     global::currentId = id;
     global::isSinging = true;
-    qDebug()<<list[1];
-//    QMessageBox msg;
-//    msg.setText(list[1]);
-//    msg.exec();
-    global::player->setSongId(list[1]);
-    global::player->playSong();
-    qDebug()<<global::isSinging;
+//    qDebug()<<list[1];
+    global::player->playSongId(list[1]);
     HttpClient("/song/url").success([=](const QString &response) {
     QJsonArray data = QJsonDocument::fromJson(response.toUtf8()).object().value("data").toArray();
     QString url = data[0].toObject().value("url").toString(); // 获取搜索的歌曲的网络url地址
-    qDebug()<<url;
-//    MainWindow w;
-//    w.setWindowIcon(QIcon(":/logo/logo88"));
-//    w.show();
+//    qDebug()<<url;
     }).param("id", list[1])
             .param("br", "32000")
             .get();

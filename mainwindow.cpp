@@ -53,8 +53,7 @@ MainWindow::MainWindow(QWidget *parent)
 	global::player = new Player();
 	player = global::player;
 	// 暂时放在这里
-    QString songId = "132975";
-	player->setSongId(songId);
+//	player->playSongId("132975");
 	// 播放状态 -> 播放按钮图标
 	connect(player, &Player::stateChanged, this, &MainWindow::changePlayIcon);
 	// 歌曲改变 -> 更新view(封面、作者)
