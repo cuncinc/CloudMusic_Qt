@@ -14,6 +14,8 @@ public:
 	static QString dowloadPath;
 	static long long meId;
 	static bool    isLogin;
+    static int  currentId ;            //当前播放歌曲的id
+    static bool isSinging;
 
 	static void ReadFromFile();
 	static void StoreToFile();

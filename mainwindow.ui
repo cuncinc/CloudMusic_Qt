@@ -29,7 +29,12 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);</string>
+   <string notr="true">QWidget{
+	 background: &quot;:/img/asserts/biyingjunUI/mainback.png&quot;
+}
+	
+
+</string>
   </property>
   <property name="animated">
    <bool>true</bool>

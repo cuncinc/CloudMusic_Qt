@@ -147,6 +147,8 @@ void MainWindow::setSongView(SongInfo info)
 	setCoverUrl(info.coverUrl);
 }
 
+
+
 void MainWindow::setCoverUrl(const QString &path)
 {
 	if (nullptr == path)
