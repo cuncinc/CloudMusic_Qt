@@ -82,6 +82,8 @@ void SearchWindow::showClick(QModelIndex index)
 //    QMessageBox msg;
 //    msg.setText(list[1]);
 //    msg.exec();
+    global::player->setSongId(list[1]);
+    global::player->playSong();
     qDebug()<<global::isSinging;
     HttpClient("/song/url").success([=](const QString &response) {
     QJsonArray data = QJsonDocument::fromJson(response.toUtf8()).object().value("data").toArray();
