@@ -192,7 +192,7 @@ void MainWindow::on_playButton_clicked()
 
 void MainWindow::on_nextButton_clicked()
 {
-
+	player->nextSong();
 }
 
 void MainWindow::on_coverButton_clicked()

@@ -79,7 +79,7 @@ void SearchWindow::showClick(QModelIndex index)
     global::currentId = id;
     global::isSinging = true;
 //    qDebug()<<list[1];
-    global::player->playSongId(list[1]);
+	global::player->playSongId(list[1]);
     HttpClient("/song/url").success([=](const QString &response) {
     QJsonArray data = QJsonDocument::fromJson(response.toUtf8()).object().value("data").toArray();
     QString url = data[0].toObject().value("url").toString(); // 获取搜索的歌曲的网络url地址

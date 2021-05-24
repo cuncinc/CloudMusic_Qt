@@ -1,5 +1,6 @@
 #include "findwindow.h"
 #include "ui_findwindow.h"
+#include "global.h"
 
 #include <QDate>
 
@@ -21,6 +22,7 @@ FindWindow::~FindWindow()
 
 void FindWindow::on_fmButton_clicked()
 {
+	global::player->playFM();
 
 }
 

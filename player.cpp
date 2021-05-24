@@ -54,6 +54,8 @@ void Player::playSong()
 
 void Player::nextSong()
 {
+	// bug: 只播放FM的下一首，其他都无效
+	playFM();
 }
 
 void Player::lastSong()
@@ -92,7 +94,6 @@ void Player::playSongId(const QString &id)
 
 void Player::initViewById(const QString &id)
 {
-	fromType = SongFromType::Network;
 	HttpClient("/song/detail").success([=](const QString &response) {
 		QJsonArray array = QJsonDocument::fromJson(response.toUtf8()).object().value("songs").toArray();
 		QJsonObject song = array[0].toObject();
@@ -121,4 +122,29 @@ void Player::setSongLocalPath(const QString &path)
 	curSongLocalPath = path;
 
 //	emit songChanged(info);
+}
+
+void Player::playFM()
+{
+	fromType = SongFromType::PersonalFM;
+	if (!fmIdQueue.isEmpty())
+	{
+		playSongId(fmIdQueue.dequeue());
+//		qDebug() << "FM queue not empty";
+		return;
+	}
+//	qDebug() << "FM queue empty";
+
+	HttpClient("/personal_fm").success([=](const QString &response) {
+		QJsonArray array = QJsonDocument::fromJson(response.toUtf8()).object().value("data").toArray();
+//		qDebug() << "get FM num" << array.size();
+		for (int i=0; i<array.size(); ++i)
+		{
+			long long id = array[i].toObject().value("id").toVariant().toLongLong();
+			QString name = array[i].toObject().value("name").toString();
+			qDebug() << "new FM " << id << "  " << name;
+			fmIdQueue.enqueue(QString::number(id));
+		}
+		playSongId(fmIdQueue.dequeue());
+	}).get();
 }
