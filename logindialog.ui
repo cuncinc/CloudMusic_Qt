@@ -591,10 +591,18 @@ QPushButton:pressed{background-color: #BF2828;}</string>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(255,255,255,0);
+           <string notr="true">QPushButton
+{
+background-color: rgb(255,255,255,0);
 color: rgb(211, 58, 49);
 border: 2px solid rgb(223, 59, 59);
-border-radius: 25px;</string>
+border-radius: 25px;
+}
+
+QPushButton:pressed
+{
+background-color: rgb(223, 59, 59,30);
+}</string>
           </property>
           <property name="text">
            <string>二维码登录</string>
@@ -622,10 +630,18 @@ border-radius: 25px;</string>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(255,255,255,0);
+           <string notr="true">QPushButton
+{
+background-color: rgb(255,255,255,0);
 color: rgb(211, 58, 49);
 border: 2px solid rgb(223, 59, 59);
-border-radius: 25px;</string>
+border-radius: 25px;
+}
+
+QPushButton:pressed
+{
+background-color: rgb(223, 59, 59,30);
+}</string>
           </property>
           <property name="text">
            <string>网易邮箱登录</string>
@@ -647,10 +663,18 @@ border-radius: 25px;</string>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(255,255,255,0);
+           <string notr="true">QPushButton
+{
+background-color: rgb(255,255,255,0);
 color: rgb(211, 58, 49);
 border: 2px solid rgb(223, 59, 59);
-border-radius: 25px;</string>
+border-radius: 25px;
+}
+
+QPushButton:pressed
+{
+background-color: rgb(223, 59, 59,30);
+}</string>
           </property>
           <property name="text">
            <string>手机号登录</string>
@@ -672,10 +696,18 @@ border-radius: 25px;</string>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(255,255,255,0);
+           <string notr="true">QPushButton
+{
+background-color: rgb(255,255,255,0);
 color: rgb(211, 58, 49);
 border: 2px solid rgb(223, 59, 59);
-border-radius: 25px;</string>
+border-radius: 25px;
+}
+
+QPushButton:pressed
+{
+background-color: rgb(223, 59, 59,30);
+}</string>
           </property>
           <property name="text">
            <string>注册</string>

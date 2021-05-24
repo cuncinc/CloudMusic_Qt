@@ -78,6 +78,10 @@
         <file alias="pasue">asserts/pause.png</file>
         <file alias="play">asserts/play.png</file>
         <file alias="last">asserts/last.png</file>
+        <file alias="icon_fm">asserts/fm.png</file>
+        <file alias="ic_rec">asserts/recommend.png</file>
+        <file alias="icon_top">asserts/top.png</file>
+        <file alias="icon_return">asserts/return.png</file>
     </qresource>
     <qresource prefix="/logo">
         <file alias="logo88">asserts/logo_88.png</file>
