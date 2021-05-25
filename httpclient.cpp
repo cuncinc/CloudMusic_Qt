@@ -383,7 +383,10 @@ QNetworkRequest HttpClientPrivate::createRequest(HttpClientPrivate *d, HttpClien
 
 	// [1] 如果是 GET 请求，并且参数不为空，则编码请求的参数，放到 URL 后面
 //	qDebug() << "in network request, cookie " << global::cookie;
-	d->params.addQueryItem("cookie", global::cookie);
+	if (global::isLogin)
+	{
+		d->params.addQueryItem("cookie", global::cookie);
+	}
 	if (get && !d->params.isEmpty()) {
 		d->url += "?" + d->params.toString(QUrl::FullyEncoded);
 	}
