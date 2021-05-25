@@ -92,7 +92,7 @@ void DetailWindow::setCoverUrl(const QString &path)
 void DetailWindow::comment(CommentType type, const QString text)
 {
 	QMap<QString, QVariant> map;
-	map.insert("t", type);
+	map.insert("t", 1);
 	map.insert("type", 0);
 	map.insert("id", curSongId);
 	map.insert("content", text);
@@ -103,14 +103,19 @@ void DetailWindow::comment(CommentType type, const QString text)
 //		map.insert("commentId", 11111);
 	}
 
+	// To Do 似乎这个api评论不了，也许是我不会用
 	HttpClient("/comment").success([=](const QString &response) {
+		qDebug() << response;
 		QJsonObject object = QJsonDocument::fromJson(response.toUtf8()).object();
 		int code = object.value("code").toInt();
-		if (code != 200)
+		if (code == 200)
+		{
+			Toast::showTip("评论成功");
+		}
+		else
 		{
 			QString msg = object.value("msg").toString();
 			Toast::showTip(msg, 4000);
-			return;
 		}
 	}).params(map).get();
 }

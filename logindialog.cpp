@@ -98,3 +98,37 @@ void LoginDialog::login_result(const QString &resp)
 	emit login(true);
 	close();
 }
+
+void LoginDialog::on_phoneAccount_textChanged(const QString &arg1)
+{
+	if (ui->phoneAccount->text().length()  == 11 && ui->phonePassword->text().length() > 0)
+	{
+		ui->phoneLogin->setEnabled(true);
+	}
+	else
+	{
+		ui->phoneLogin->setEnabled(false);
+	}
+}
+
+void LoginDialog::on_phonePassword_textChanged(const QString &arg1)
+{
+	on_phoneAccount_textChanged(arg1);
+}
+
+void LoginDialog::on_emeailAccount_textChanged(const QString &arg1)
+{
+	if (ui->emeailAccount->text().length()>0 && ui->emailPassword->text().length()>0)
+	{
+		ui->emailLogin->setEnabled(true);
+	}
+	else
+	{
+		ui->emailLogin->setEnabled(false);
+	}
+}
+
+void LoginDialog::on_emailPassword_textChanged(const QString &arg1)
+{
+	on_emeailAccount_textChanged(arg1);
+}

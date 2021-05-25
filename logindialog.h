@@ -29,6 +29,10 @@ private slots:
 	void on_logonButton_clicked();
 	void on_emailLogin_clicked();
 	void on_phoneLogin_clicked();
+	void on_phoneAccount_textChanged(const QString &arg1);
+	void on_phonePassword_textChanged(const QString &arg1);
+	void on_emeailAccount_textChanged(const QString &arg1);
+	void on_emailPassword_textChanged(const QString &arg1);
 
 private:
 	Ui::LoginDialog *ui;

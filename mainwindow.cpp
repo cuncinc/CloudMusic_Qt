@@ -9,33 +9,31 @@
 #include <QJsonValue>
 #include <QPixmap>
 
-void test()
-{
-	HttpClient("/cloudsearch").success([=](const QString &response) {
-		QJsonDocument jsonDoc = QJsonDocument::fromJson(response.toUtf8());
-		QJsonObject jsonObject = jsonDoc.object().value("result").toObject();
-		QJsonArray jsonArray = jsonObject.value("songs").toArray();
+//void test()
+//{
+//	HttpClient("/cloudsearch").success([=](const QString &response) {
+//		QJsonDocument jsonDoc = QJsonDocument::fromJson(response.toUtf8());
+//		QJsonObject jsonObject = jsonDoc.object().value("result").toObject();
+//		QJsonArray jsonArray = jsonObject.value("songs").toArray();
 
-		//		for (int i=0; i<jsonArray.size(); ++i)
-		//		{
-		//			QString name = jsonArray[i].toObject().value("name").toString();
-		//			qDebug() << name;
-		//		}
+//				for (int i=0; i<jsonArray.size(); ++i)
+//				{
+//					QString name = jsonArray[i].toObject().value("name").toString();
+//					qDebug() << name;
+//				}
 
-		foreach (const QJsonValue& value, jsonArray)
-		{
-			int id = value.toObject().value("id").toInt();
-			QString name = value.toObject().value("name").toString();
-			qDebug() << id << "\t" << name;
-		}
+//		foreach (const QJsonValue& value, jsonArray)
+//		{
+//			int id = value.toObject().value("id").toInt();
+//			QString name = value.toObject().value("name").toString();
+//			qDebug() << id << "\t" << name;
+//		}
 
-		//		qDebug() << response;
-
-	}).param("keywords", "GoodTime")			// 参数
-			.param("limit", "5")
-			.header("token", "test")		// Header
-			.get();
-}
+//	}).param("keywords", "GoodTime")
+//			.param("limit", "5")
+//			.header("token", "test")
+//			.get();
+//}
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
@@ -49,36 +47,23 @@ MainWindow::MainWindow(QWidget *parent)
 	ui->stackedWidget->setCurrentWidget(main2Window);
 	detailWindow = new DetailWindow();
 	ui->stackedWidget->addWidget(detailWindow);
+
 	// 初始化音乐播放器
 	global::player = new Player();
 	player = global::player;
-	// 暂时放在这里
-//	player->playSongId("132975");
+
 	// 播放状态 -> 播放按钮图标
 	connect(player, &Player::stateChanged, this, &MainWindow::changePlayIcon);
 	// 歌曲改变 -> 更新view(封面、作者)
 	connect(player, &Player::songChanged, this, &MainWindow::setSongView);
-
-//	connect(player, &Player::mediaChanged, this, &MainWindow::setSongView);
-
+	// 歌曲改变 -> 设置歌曲时间、滑杆最大值
 	connect(player, &Player::durationChanged, this, &MainWindow::setTimeView);
-
-	/**********************************************************************************/
-	/*这2个信号槽会相互调用，导致递归
-	* 我的解决方法是在setPlayTime里判断传入的时间与当前时间的间隔，
-	* 如果太近就不进行跳转。
-	* 但是这会导致拉了拉杆，却不改变播放时间
-	*/
-
 	// 播放时间 -> 时间滑杆和时间Label
 	connect(player, &Player::positionChanged, this, &MainWindow::setNowTimeView);
 	// 时间滑杆 -> 播放时间
 	connect(ui->slider, &XSlider::valueChanged, player, &Player::setPlayTime);
-	/**********************************************************************************/
-
+	// 歌曲改变 -> 初始化view
 	connect(player, &Player::songChanged, detailWindow, &DetailWindow::setView);
-
-
 }
 
 MainWindow::~MainWindow()
@@ -202,11 +187,11 @@ void MainWindow::on_coverButton_clicked()
 {
 	if (ui->stackedWidget->currentWidget() == detailWindow)
 	{
-		if (SongFromType::None != player->type())
-			ui->stackedWidget->setCurrentWidget(main2Window);
+		ui->stackedWidget->setCurrentWidget(main2Window);
 	}
 	else
 	{
-		ui->stackedWidget->setCurrentWidget(detailWindow);
+		if (SongFromType::None != player->type())
+			ui->stackedWidget->setCurrentWidget(detailWindow);
 	}
 }
