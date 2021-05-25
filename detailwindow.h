@@ -2,6 +2,7 @@
 #define DETAILWINDOW_H
 
 #include "player.h"
+#include "commentdialog.h"
 
 #include <QWidget>
 
@@ -22,11 +23,11 @@ public slots:
 	void setView(SongInfo info);
 
 private slots:
+	void comment(CommentType type, const QString text);
 	void on_likeButton_clicked();
-
 	void on_downloadButton_clicked();
-
 	void on_favoriteButton_clicked();
+	void on_toCommentButton_clicked();
 
 private:
 	Ui::DetailWindow *ui;

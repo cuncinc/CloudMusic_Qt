@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    commentdialog.cpp \
     detailwindow.cpp \
     eventwindow.cpp \
     findwindow.cpp \
@@ -32,6 +33,7 @@ SOURCES += \
     userinfowindow.cpp
 
 HEADERS += \
+    commentdialog.h \
     detailwindow.h \
     eventwindow.h \
     findwindow.h \
@@ -47,6 +49,7 @@ HEADERS += \
     userinfowindow.h
 
 FORMS += \
+    commentdialog.ui \
     detailwindow.ui \
     eventwindow.ui \
     findwindow.ui \

@@ -16,11 +16,11 @@ DetailWindow::DetailWindow(QWidget *parent) :
 {
 	ui->setupUi(this);
 
-// 设置行高，但无效
-//	QTextBlockFormat bf = ui->lyricLabel->textCursor().blockFormat();
-////	qDebug() << bf.lineHeight();
-//	bf.setLineHeight(2000, QTextBlockFormat::FixedHeight);
-//	ui->lyricLabel->textCursor().setBlockFormat(bf);
+	// 设置行高，但无效
+	//	QTextBlockFormat bf = ui->lyricLabel->textCursor().blockFormat();
+	////	qDebug() << bf.lineHeight();
+	//	bf.setLineHeight(2000, QTextBlockFormat::FixedHeight);
+	//	ui->lyricLabel->textCursor().setBlockFormat(bf);
 }
 
 DetailWindow::~DetailWindow()
@@ -42,11 +42,27 @@ void DetailWindow::setView(SongInfo info)
 	HttpClient("/lyric").success([=](const QString &response) {
 		QJsonObject object = QJsonDocument::fromJson(response.toUtf8()).object().value("lrc").toObject();
 		QString lyric = object.value("lyric").toString();
-		QRegularExpression re("\\[.*\\]");
-		lyric.replace(re, "");
-//		qDebug() << lyric;
+		if (nullptr == lyric || 0 == lyric.size())
+		{
+			lyric = "暂无歌词";
+		}
+		else
+		{
+			QRegularExpression re("\\[.*\\]");
+			lyric.replace(re, "");
+		}
+		//		qDebug() << lyric;
 		ui->lyricLabel->setPlainText(lyric);
 	}).param("id", curSongId).get();
+
+	// comment
+	HttpClient("/comment/music").success([=](const QString &response) {
+		QJsonObject object = QJsonDocument::fromJson(response.toUtf8()).object();
+		int count = object.value("total").toInt();
+		ui->comNumLabel->setNum(count);
+	}).param("id", curSongId).get();
+
+
 	setCoverUrl(info.coverUrl);
 }
 
@@ -71,6 +87,32 @@ void DetailWindow::setCoverUrl(const QString &path)
 	QPixmap pixmap;
 	pixmap.loadFromData(jpegData);
 	ui->coverLabel->setPixmap(pixmap);
+}
+
+void DetailWindow::comment(CommentType type, const QString text)
+{
+	QMap<QString, QVariant> map;
+	map.insert("t", type);
+	map.insert("type", 0);
+	map.insert("id", curSongId);
+	map.insert("content", text);
+
+	// To-Do reply
+	if (CommentType::Reply == type)
+	{
+//		map.insert("commentId", 11111);
+	}
+
+	HttpClient("/comment").success([=](const QString &response) {
+		QJsonObject object = QJsonDocument::fromJson(response.toUtf8()).object();
+		int code = object.value("code").toInt();
+		if (code != 200)
+		{
+			QString msg = object.value("msg").toString();
+			Toast::showTip(msg, 4000);
+			return;
+		}
+	}).params(map).get();
 }
 
 void DetailWindow::on_likeButton_clicked()
@@ -103,4 +145,12 @@ void DetailWindow::on_favoriteButton_clicked()
 		Toast::showTip("请先登录");
 		return;
 	}
+}
+
+void DetailWindow::on_toCommentButton_clicked()
+{
+	CommentDialog *dialog = new CommentDialog();
+	connect(dialog, &CommentDialog::textInputed, this, &DetailWindow::comment);
+	dialog->setWindowModality(Qt::ApplicationModal); //设置界面不可点击
+	dialog->show();
 }

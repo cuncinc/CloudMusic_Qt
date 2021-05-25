@@ -130,10 +130,8 @@ void Player::playFM()
 	if (!fmIdQueue.isEmpty())
 	{
 		playSongId(fmIdQueue.dequeue());
-//		qDebug() << "FM queue not empty";
 		return;
 	}
-//	qDebug() << "FM queue empty";
 
 	HttpClient("/personal_fm").success([=](const QString &response) {
 		QJsonArray array = QJsonDocument::fromJson(response.toUtf8()).object().value("data").toArray();
