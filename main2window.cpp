@@ -10,6 +10,8 @@
 #include <QJsonObject>
 #include <QJsonValue>
 #include <QPixmap>
+#include <QPainterPath>
+#include <QPainter>
 
 enum Category
 {
@@ -21,6 +23,33 @@ enum Category
 	Recent = 7,		//最近播放
 	Favorite = 8	//收藏歌单
 };
+
+// 图片圆形化，使用完要delete
+QPixmap* roundedPixmap(QPixmap& orig)
+{
+	// getting size if the original picture is not square
+	int size = qMax(orig.width(), orig.height());
+
+	// creating a new transparent pixmap with equal sides
+	QPixmap *rounded = new QPixmap(size, size);
+	rounded->fill(Qt::transparent);
+
+	// creating circle clip area
+	QPainterPath painterPath;
+	painterPath.addEllipse(rounded->rect());
+
+	QPainter painter(rounded);
+	painter.setClipPath(painterPath);
+
+	// filling rounded area if needed
+	painter.fillRect(rounded->rect(), Qt::black);
+
+	// getting offsets if the original picture is not square
+	int x = qAbs(orig.width() - size) / 2;
+	int y = qAbs(orig.height() - size) / 2;
+	painter.drawPixmap(x, y, orig.width(), orig.height(), orig);
+	return rounded;
+}
 
 Main2Window::Main2Window(QWidget *parent) :
 	QMainWindow(parent),
@@ -43,6 +72,13 @@ Main2Window::Main2Window(QWidget *parent) :
 	ui->navigation->setCurrentRow(FindMusic);	//初始化指向“发现音乐”
 	ui->stackedWidget->setCurrentWidget(findWindow);
 
+	// 图片圆形化
+	QPixmap pix(":/img/default-avatar");
+	QPixmap *rounded = roundedPixmap(pix);
+	QIcon buttonIcon(*rounded);
+	delete rounded;
+	ui->avatarButton->setIcon(buttonIcon);
+	// 初始化登录信息View
 	if (global::isLogin)
 	{
 		updateMe();
@@ -183,7 +219,8 @@ void Main2Window::setAvatarUrl(const QString &path)
 	QByteArray jpegData = reply->readAll();
 	QPixmap pixmap;
 	pixmap.loadFromData(jpegData);
-	QIcon buttonIcon(pixmap);
+	QPixmap *rounded = roundedPixmap(pixmap);
+	QIcon buttonIcon(*rounded);
+	delete rounded;
 	ui->avatarButton->setIcon(buttonIcon);
-//	ui->coverButton->setIconSize(ui->coverButton->size());
 }
