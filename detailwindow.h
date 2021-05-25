@@ -21,6 +21,13 @@ public:
 public slots:
 	void setView(SongInfo info);
 
+private slots:
+	void on_likeButton_clicked();
+
+	void on_downloadButton_clicked();
+
+	void on_favoriteButton_clicked();
+
 private:
 	Ui::DetailWindow *ui;
 	QString curSongId;

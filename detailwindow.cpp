@@ -1,6 +1,8 @@
 #include "detailwindow.h"
 #include "ui_detailwindow.h"
 #include "httpclient.h"
+#include "toast.h"
+#include "global.h"
 
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -69,4 +71,36 @@ void DetailWindow::setCoverUrl(const QString &path)
 	QPixmap pixmap;
 	pixmap.loadFromData(jpegData);
 	ui->coverLabel->setPixmap(pixmap);
+}
+
+void DetailWindow::on_likeButton_clicked()
+{
+	if (!global::isLogin)
+	{
+		Toast::showTip("请先登录");
+		return;
+	}
+
+	HttpClient("/like").success([=](const QString &response) {
+		int code = QJsonDocument::fromJson(response.toUtf8()).object().value("code").toInt();
+		if (200 == code)
+		{
+			Toast::showTip("已添加到我喜欢的音乐");
+			ui->likeButton->setText("取消喜欢");
+		}
+	}).param("id", curSongId).get();
+}
+
+void DetailWindow::on_downloadButton_clicked()
+{
+
+}
+
+void DetailWindow::on_favoriteButton_clicked()
+{
+	if (!global::isLogin)
+	{
+		Toast::showTip("请先登录");
+		return;
+	}
 }

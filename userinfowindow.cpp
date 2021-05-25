@@ -51,3 +51,11 @@ void UserInfoWindow::setAvatarUrl(const QString &path)
 	pixmap.loadFromData(jpegData);
 	ui->avatarLabel->setPixmap(pixmap);
 }
+
+void UserInfoWindow::on_quitButton_clicked()
+{
+	global::meId = -1;
+	global::token = nullptr;
+	global::cookie = nullptr;
+	global::isLogin = false;
+}

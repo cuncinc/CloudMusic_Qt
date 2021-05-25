@@ -19,6 +19,9 @@ public:
 	void initView();
 	void setAvatarUrl(const QString &path);
 
+private slots:
+	void on_quitButton_clicked();
+
 private:
 	Ui::UserInfoWindow *ui;
 	long long userId;

@@ -161,6 +161,13 @@
            </item>
           </layout>
          </item>
+         <item>
+          <widget class="QPushButton" name="quitButton">
+           <property name="text">
+            <string>退出登录</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
        <item>
