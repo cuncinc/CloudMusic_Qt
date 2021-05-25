@@ -30,6 +30,7 @@ SOURCES += \
     searchwindow.cpp \
     songlistwindow.cpp \
     toast.cpp \
+    trackdialog.cpp \
     userinfowindow.cpp
 
 HEADERS += \
@@ -46,6 +47,7 @@ HEADERS += \
     searchwindow.h \
     songlistwindow.h \
     toast.h \
+    trackdialog.h \
     userinfowindow.h
 
 FORMS += \
@@ -59,6 +61,7 @@ FORMS += \
     searchwindow.ui \
     songlistwindow.ui \
     toast.ui \
+    trackdialog.ui \
     userinfowindow.ui
 
 # Default rules for deployment.

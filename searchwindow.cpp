@@ -38,6 +38,7 @@ SearchWindow::SearchWindow(QWidget *parent) :
     ui->searchLine->addAction(pTrailingAction, QLineEdit::TrailingPosition);
     // 连接信号和槽
     connect(pTrailingAction, SIGNAL(triggered(bool)), this, SLOT(onSearch(bool)));
+	connect(ui->tableView,SIGNAL(doubleClicked(QModelIndex)),this,SLOT(showClick(QModelIndex)));
     }
 
 
@@ -97,20 +98,18 @@ void SearchWindow::onSearch(bool)
 //                           ItemModel->appendRow(item);
 //                       }
                       ui->tableView->setModel(ItemModel);
-                      ui->tableView->setColumnWidth(0,350);
-                      ui->tableView->setColumnWidth(1,200);
-                      ui->tableView->setColumnWidth(2,200);
-                      ui->tableView->setColumnWidth(3,200);
+					  ui->tableView->setColumnWidth(0,350);
+					  ui->tableView->setColumnWidth(1,200);
+					  ui->tableView->setColumnWidth(2,200);
+					  ui->tableView->setColumnWidth(3,200);
 
                       for(int i=0;i<ja.size();i++)
                       {
                           ui->tableView->setRowHeight(i,55);
                       }
-                      ui->tableView->setFixedSize(1600,672);
+					  ui->tableView->setFixedSize(1600,672);
 
-                      connect(ui->tableView,SIGNAL(clicked(QModelIndex)),this,SLOT(showClick(QModelIndex)));
-
-            }).param("keywords", keyword)
+			}).param("keywords", keyword).param("type","1")
                     .get();
 }
 
@@ -144,4 +143,3 @@ void SearchWindow::showClick(QModelIndex index)
 //            .param("br", "32000")
 //            .get();
 }
-
