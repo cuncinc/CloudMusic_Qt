@@ -14,27 +14,31 @@ class SearchWindow;
 
 class SearchWindow : public QWidget
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	explicit SearchWindow(QWidget *parent = nullptr);
-	~SearchWindow();
+    explicit SearchWindow(QWidget *parent = nullptr);
+    ~SearchWindow();
 
 private slots:
-	void on_tabBar_currentItemChanged(int index, const QString &item);
-
-    void on_pushButton_clicked();
+    void on_tabBar_currentItemChanged(int index, const QString &item);
 
     void showClick(QModelIndex index); // 点击listView后的响应
 
+    void onSearch(bool);
+
 private:
-	Ui::SearchWindow *ui;
+    Ui::SearchWindow *ui;
 
 public:
     QJsonObject result;
     QJsonArray ja;
     QStringListModel *Model;
     QStandardItemModel *ItemModel;
+    QList<QStandardItem*> list;
+
+    QAction *pTrailingAction;
+    int ql[] ;
 };
 
 #endif // SEARCHWINDOW_H

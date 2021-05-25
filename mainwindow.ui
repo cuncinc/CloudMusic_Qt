@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1290</width>
+    <height>788</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -585,38 +585,38 @@ QPushButton:pressed {background-color:#BC2F2D}</string>
            <property name="tickPosition">
             <enum>QSlider::NoTicks</enum>
            </property>
-           <property name="sliderHeight">
+           <property name="sliderHeight" stdset="0">
             <number>8</number>
            </property>
-           <property name="normalColor">
+           <property name="normalColor" stdset="0">
             <color>
              <red>229</red>
              <green>229</green>
              <blue>229</blue>
             </color>
            </property>
-           <property name="grooveColor">
+           <property name="grooveColor" stdset="0">
             <color>
              <red>209</red>
              <green>60</green>
              <blue>58</blue>
             </color>
            </property>
-           <property name="handleBorderColor">
+           <property name="handleBorderColor" stdset="0">
             <color>
              <red>203</red>
              <green>203</green>
              <blue>203</blue>
             </color>
            </property>
-           <property name="handleColor">
+           <property name="handleColor" stdset="0">
             <color>
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
             </color>
            </property>
-           <property name="textColor">
+           <property name="textColor" stdset="0">
             <color>
              <red>255</red>
              <green>255</green>

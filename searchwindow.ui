@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1300</width>
+    <height>850</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -64,17 +64,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="pushButton">
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="text">
-      <string>搜索</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="NavBar" name="tabBar">
+    <widget class="NavBar" name="tabBar" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
        <horstretch>0</horstretch>
@@ -98,110 +88,76 @@
 border-style: solid;
 border-bottom-color: rgb(0, 85, 255);</string>
      </property>
-     <property name="bgColorStart">
+     <property name="bgColorStart" stdset="0">
       <color>
        <red>250</red>
        <green>250</green>
        <blue>252</blue>
       </color>
      </property>
-     <property name="bgColorEnd">
+     <property name="bgColorEnd" stdset="0">
       <color>
        <red>250</red>
        <green>250</green>
        <blue>252</blue>
       </color>
      </property>
-     <property name="barColorStart">
+     <property name="barColorStart" stdset="0">
       <color>
        <red>250</red>
        <green>250</green>
        <blue>252</blue>
       </color>
      </property>
-     <property name="barColorEnd">
+     <property name="barColorEnd" stdset="0">
       <color>
        <red>250</red>
        <green>250</green>
        <blue>252</blue>
       </color>
      </property>
-     <property name="textNormalColor">
+     <property name="textNormalColor" stdset="0">
       <color>
        <red>51</red>
        <green>51</green>
        <blue>51</blue>
       </color>
      </property>
-     <property name="textSelectColor">
+     <property name="textSelectColor" stdset="0">
       <color>
        <red>198</red>
        <green>46</green>
        <blue>46</blue>
       </color>
      </property>
-     <property name="items">
+     <property name="items" stdset="0">
       <string>单曲|歌手|专辑|歌单|用户</string>
      </property>
-     <property name="currentItem">
+     <property name="currentItem" stdset="0">
       <string>单曲</string>
      </property>
-     <property name="space">
+     <property name="space" stdset="0">
       <number>30</number>
      </property>
-     <property name="lineColor">
+     <property name="lineColor" stdset="0">
       <color>
        <red>198</red>
        <green>46</green>
        <blue>46</blue>
       </color>
      </property>
-     <property name="keyMove">
+     <property name="keyMove" stdset="0">
       <bool>true</bool>
      </property>
-     <property name="flat">
+     <property name="flat" stdset="0">
       <bool>true</bool>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QListView" name="listView">
+    <widget class="QTableView" name="tableView">
      <property name="styleSheet">
-      <string notr="true">QListView
-{
-  //子类中使用的备用颜色。如果未设置此属性，则默认值为调色板的AlternateBase角色设置的值
-    alternate-background-color: yellow;
-
-  //控制QListVIew中选择是覆盖整个行还是仅覆盖文本的范围
-    show-decoration-selected: 1; 
-	border:none;
-	background-color: #FAFAFC;
-}
-
-QListView::item:alternate //替换状态
-{
-    background: #EEEEEE;
-}
-
-QListView::item:selected //选中项
-{
-    border: 1px solid #6a6ea9;
-}
-//鼠标放上去或键盘选择就选中，激活需要鼠标点击
-QListView::item:selected:!active //选中项处于没有处于活动窗口中时
-{
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #ABAFE5, stop: 1 #8588B2);
-}
-
-QListView::item:selected:active //选中并处于激活状态时
-{
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #6a6ea9, stop: 1 #888dd9);
-}
-
-QListView::item:hover //鼠标放上去时
-{
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,stop: 0 #FAFBFE, stop: 1 #DCDEF1);
-}</string>
+      <string notr="true"/>
      </property>
     </widget>
    </item>

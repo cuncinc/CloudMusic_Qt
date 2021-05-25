@@ -17,8 +17,8 @@ public:
 	static QString dowloadPath;
 	static long long meId;
 	static bool    isLogin;
-	static int  currentId ;		//当前播放歌曲的id
 	static bool isSinging;		//是否在播放歌曲
+    static QString  currentId;            //当前播放歌曲的id
 	static Player* player;
 	static int  xSize;			//窗口尺寸x
 	static int  ySize;			//窗口尺寸y
