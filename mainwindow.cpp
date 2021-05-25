@@ -87,6 +87,9 @@ MainWindow::~MainWindow()
 	delete main2Window;
 	delete detailWindow;
 	delete player;
+	// 保留窗口大小，下一次打开软件，恢复此窗口大小
+	global::xSize = this->width();
+	global::ySize = this->height();
 	global::StoreToFile();	// 保存一些配置信息到文件中
 }
 

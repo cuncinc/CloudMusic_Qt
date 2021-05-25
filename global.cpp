@@ -12,6 +12,8 @@ bool    global::isLogin = false;
 int		global::currentId = -1;            //当前播放歌曲的id
 bool	global::isSinging = false;
 Player* global::player = nullptr;
+int		global::xSize = 800;
+int		global::ySize = 600;
 
 void global::StoreToFile()
 {
@@ -27,7 +29,8 @@ void global::StoreToFile()
 	map.insert("meId", QString::number(meId));
 	map.insert("cookie", cookie);
 	map.insert("isLogin", QString::number(isLogin));
-
+	map.insert("xSize", QString::number(xSize));
+	map.insert("ySize", QString::number(ySize));
 
 	QDataStream out(&file);
 	out << quint32(FILE_MAGIC) << map;
@@ -57,9 +60,11 @@ void global::ReadFromFile()
 
 	if (!data.isEmpty())
 	{
-		meId = data["meId"].toLongLong();
-		cookie = data["cookie"];
+		meId    = data["meId"].toLongLong();
+		cookie  = data["cookie"];
 		isLogin = data["isLogin"].toInt();
+		xSize   = data["xSize"].toInt();
+		ySize   = data["ySize"].toInt();
 
 		qDebug() << "meId:  " << meId;
 		qDebug() << "cookie:  " << cookie << "";

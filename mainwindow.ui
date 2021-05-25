@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Netease Music</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="res.qrc">
+    <normaloff>:/logo/logo88</normaloff>:/logo/logo88</iconset>
+  </property>
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
@@ -326,6 +330,9 @@ QPushButton:pressed {background-color:#BC2F2D}</string>
             </property>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_2">
+              <property name="spacing">
+               <number>5</number>
+              </property>
               <property name="sizeConstraint">
                <enum>QLayout::SetDefaultConstraint</enum>
               </property>
@@ -442,6 +449,9 @@ QPushButton:pressed {background-color:#BC2F2D}</string>
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_3">
+              <property name="spacing">
+               <number>5</number>
+              </property>
               <property name="sizeConstraint">
                <enum>QLayout::SetDefaultConstraint</enum>
               </property>
@@ -456,7 +466,7 @@ QPushButton:pressed {background-color:#BC2F2D}</string>
                 <property name="font">
                  <font>
                   <family>Microsoft YaHei</family>
-                  <pointsize>9</pointsize>
+                  <pointsize>8</pointsize>
                  </font>
                 </property>
                 <property name="autoFillBackground">
@@ -487,7 +497,7 @@ QPushButton:pressed {background-color:#BC2F2D}</string>
                 <property name="font">
                  <font>
                   <family>Microsoft YaHei</family>
-                  <pointsize>9</pointsize>
+                  <pointsize>8</pointsize>
                  </font>
                 </property>
                 <property name="autoFillBackground">
@@ -518,7 +528,7 @@ QPushButton:pressed {background-color:#BC2F2D}</string>
                 <property name="font">
                  <font>
                   <family>Microsoft YaHei</family>
-                  <pointsize>9</pointsize>
+                  <pointsize>8</pointsize>
                  </font>
                 </property>
                 <property name="autoFillBackground">
@@ -575,38 +585,38 @@ QPushButton:pressed {background-color:#BC2F2D}</string>
            <property name="tickPosition">
             <enum>QSlider::NoTicks</enum>
            </property>
-           <property name="sliderHeight" stdset="0">
+           <property name="sliderHeight">
             <number>8</number>
            </property>
-           <property name="normalColor" stdset="0">
+           <property name="normalColor">
             <color>
              <red>229</red>
              <green>229</green>
              <blue>229</blue>
             </color>
            </property>
-           <property name="grooveColor" stdset="0">
+           <property name="grooveColor">
             <color>
              <red>209</red>
              <green>60</green>
              <blue>58</blue>
             </color>
            </property>
-           <property name="handleBorderColor" stdset="0">
+           <property name="handleBorderColor">
             <color>
              <red>203</red>
              <green>203</green>
              <blue>203</blue>
             </color>
            </property>
-           <property name="handleColor" stdset="0">
+           <property name="handleColor">
             <color>
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
             </color>
            </property>
-           <property name="textColor" stdset="0">
+           <property name="textColor">
             <color>
              <red>255</red>
              <green>255</green>
