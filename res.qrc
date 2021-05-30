@@ -72,6 +72,7 @@
         <file>asserts/biyingjunUI/video.png</file>
         <file>asserts/biyingjunUI/yun.png</file>
         <file>asserts/biyingjunUI/zanweifu.png</file>
+        <file>asserts/icon_sequence.png</file>
     </qresource>
     <qresource prefix="/icon">
         <file alias="next">asserts/next.png</file>
@@ -82,6 +83,7 @@
         <file alias="ic_rec">asserts/recommend.png</file>
         <file alias="icon_top">asserts/top.png</file>
         <file alias="icon_return">asserts/return.png</file>
+        <file alias="sequence">asserts/icon_sequence.png</file>
     </qresource>
     <qresource prefix="/logo">
         <file alias="logo88">asserts/logo_88.png</file>

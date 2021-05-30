@@ -33,6 +33,8 @@ private slots:
 	void on_nextButton_clicked();
 	void on_coverButton_clicked();
 
+	void on_orderButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 	Main2Window *main2Window;

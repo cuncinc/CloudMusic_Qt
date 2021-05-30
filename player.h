@@ -4,6 +4,7 @@
 #include <QMediaPlayer>
 #include <QMediaContent>
 #include <QQueue>
+#include <QList>
 
 // 播放顺序
 enum PlayOrder
@@ -14,13 +15,12 @@ enum PlayOrder
 	Random = 4,		//随机
 };
 
-// 歌曲类型
+// 歌曲类型`
 enum SongFromType
 {
 	None,		//未设置
 	Local,		//来自本地
 	Network,	//来自网络
-	PersonalFM	//私人FM
 };
 
 struct SongInfo
@@ -47,7 +47,9 @@ public:
 	void initViewById(const QString &id);
 	void setSongNetworkUrl(const QString &url);	//待播放音乐的路径
 	void setSongLocalPath(const QString &path);	//待播放音乐的路径
+	void setPlayIdList(const QList<QString>& list);
 	SongFromType type() const;
+	PlayOrder playOrder() const;
 
 public slots:
 	void pauseSong();			// 暂停
@@ -58,6 +60,9 @@ public slots:
 	void nextPlayOrder();		// 切换播放顺序
 	void playFM();				// 播放私人FM的音乐
 
+private slots:
+	void on_stateChanged(QMediaPlayer::State newState);
+
 private:
 	PlayOrder order;
 	QString curSongNetworkUrl;
@@ -65,7 +70,9 @@ private:
 	SongFromType fromType = SongFromType::None;
 	SongInfo info;
 	QQueue<QString> fmIdQueue;
-//	QMediaPlayer *mediaPlayer;
+	bool isFM = false;
+	QList<QString> playIdList;
+	int curPlayIndex = 0;
 };
 
 #endif // PLAYER_H

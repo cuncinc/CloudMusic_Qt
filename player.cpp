@@ -1,5 +1,7 @@
 #include "player.h"
 #include "httpclient.h"
+#include "global.h"
+#include "toast.h"
 
 #include <QDebug>
 #include <QJsonDocument>
@@ -8,14 +10,16 @@
 
 Player::Player()
 {
-//	mediaPlayer = new QMediaPlayer();
-
-	this->setVolume(50);
+	global::playVolume = 61;
+	this->setVolume(global::playVolume);
+	order = global::playOrder;
+	connect(this, &Player::stateChanged, this, &Player::on_stateChanged);
 }
 
 Player::~Player()
 {
-//	delete mediaPlayer;
+	global::playOrder = order;
+	global::playVolume = volume();
 }
 
 SongFromType Player::type() const
@@ -23,13 +27,29 @@ SongFromType Player::type() const
 	return fromType;
 }
 
+PlayOrder Player::playOrder() const
+{
+	return order;
+}
+
+void Player::on_stateChanged(QMediaPlayer::State newState)
+{
+	// bug: 歌曲缓存太久，会一直切歌，也有可能是在nextSong中调用了playSong，
+	// 而playSong里又调用stop，导致一直在循环
+	// 要想办法避免
+	qDebug() << "stateChanged: " << newState;
+	if (State::StoppedState == newState)
+	{
+		nextSong();
+	}
+}
 
 void Player::pauseSong()
 {
 }
 
 void Player::playSong()
-{
+{	
 	// 暂停
 	if (State::PausedState == this->state())
 	{
@@ -54,8 +74,50 @@ void Player::playSong()
 
 void Player::nextSong()
 {
-	// bug: 只播放FM的下一首，其他都无效
-	playFM();
+	if (isFM)
+	{
+		playFM();
+		return;
+	}
+	else if (playIdList.isEmpty())
+	{
+		qDebug() << "player: playIdList is empty";
+		return;
+	}
+	else if (SongFromType::Network == fromType)
+	{
+		switch (order)
+		{
+		case PlayOrder::Random:		//随机播放
+			curPlayIndex = rand() % playIdList.size();
+			playSongId(playIdList.at(curPlayIndex));
+			break;
+		case PlayOrder::Sequence:	//顺序播放
+			curPlayIndex++;
+			if (curPlayIndex < playIdList.size())
+			{
+				playSongId(playIdList.at(curPlayIndex));
+			}
+			else
+			{
+				Toast::showTip("播放列表到底了~", 5000);
+			}
+			break;
+		case PlayOrder::OneCircle:	//单曲循环
+			this->playSongId(info.id);
+			break;
+		case PlayOrder::ListCircle:	//列表循环
+			curPlayIndex++;
+			if (curPlayIndex >= playIdList.size())
+			{
+				curPlayIndex = 0;
+			}
+			playSongId(playIdList.at(curPlayIndex));
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void Player::lastSong()
@@ -74,6 +136,13 @@ void Player::setPlayTime(int time)
 
 void Player::nextPlayOrder()
 {
+	int d = static_cast<int>(order);
+	++d;
+	if (d >= 5)
+	{
+		d = 1;
+	}
+	order = static_cast<PlayOrder>(d);
 }
 
 void Player::playSongId(const QString &id)
@@ -126,7 +195,7 @@ void Player::setSongLocalPath(const QString &path)
 
 void Player::playFM()
 {
-	fromType = SongFromType::PersonalFM;
+	isFM = true;
 	if (!fmIdQueue.isEmpty())
 	{
 		playSongId(fmIdQueue.dequeue());
@@ -145,4 +214,13 @@ void Player::playFM()
 		}
 		playSongId(fmIdQueue.dequeue());
 	}).get();
+}
+
+void Player::setPlayIdList(const QList<QString>& list)
+{
+	playIdList.clear();
+	foreach (QString id, list)
+	{
+		playIdList.push_back(id);
+	}
 }

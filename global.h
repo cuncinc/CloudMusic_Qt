@@ -22,6 +22,8 @@ public:
 	static Player* player;
 	static int  xSize;			//窗口尺寸x
 	static int  ySize;			//窗口尺寸y
+	static PlayOrder playOrder;
+	static int  playVolume;
 
 	static void ReadFromFile();
 	static void StoreToFile();

@@ -2,38 +2,13 @@
 #include "ui_mainwindow.h"
 #include "httpclient.h"
 #include "global.h"
+#include "toast.h"
 
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QJsonValue>
 #include <QPixmap>
-
-//void test()
-//{
-//	HttpClient("/cloudsearch").success([=](const QString &response) {
-//		QJsonDocument jsonDoc = QJsonDocument::fromJson(response.toUtf8());
-//		QJsonObject jsonObject = jsonDoc.object().value("result").toObject();
-//		QJsonArray jsonArray = jsonObject.value("songs").toArray();
-
-//				for (int i=0; i<jsonArray.size(); ++i)
-//				{
-//					QString name = jsonArray[i].toObject().value("name").toString();
-//					qDebug() << name;
-//				}
-
-//		foreach (const QJsonValue& value, jsonArray)
-//		{
-//			int id = value.toObject().value("id").toInt();
-//			QString name = value.toObject().value("name").toString();
-//			qDebug() << id << "\t" << name;
-//		}
-
-//	}).param("keywords", "GoodTime")
-//			.param("limit", "5")
-//			.header("token", "test")
-//			.get();
-//}
 
 MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
@@ -193,5 +168,26 @@ void MainWindow::on_coverButton_clicked()
 	{
 		if (SongFromType::None != player->type())
 			ui->stackedWidget->setCurrentWidget(detailWindow);
+	}
+}
+
+void MainWindow::on_orderButton_clicked()
+{
+	player->nextPlayOrder();
+
+	switch (player->playOrder())
+	{
+	case PlayOrder::Sequence:
+		Toast::showTip("顺序播放");
+		break;
+	case PlayOrder::Random:
+		Toast::showTip("随机播放");
+		break;
+	case PlayOrder::OneCircle:
+		Toast::showTip("单曲循环");
+		break;
+	case PlayOrder::ListCircle:
+		Toast::showTip("列表循环");
+		break;
 	}
 }

@@ -35,6 +35,7 @@ FindWindow::~FindWindow()
 void FindWindow::onItemClick(QModelIndex index)
 {
 	int d = index.row();
+	global::player->setPlayIdList(recIdList);
 	global::player->playSongId(recIdList.at(d));
 }
 

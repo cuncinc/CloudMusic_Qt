@@ -124,7 +124,7 @@ void DetailWindow::on_likeButton_clicked()
 {
 	if (!global::isLogin)
 	{
-		Toast::showTip("请先登录");
+		Toast::showTip("需要登录");
 		return;
 	}
 
@@ -147,7 +147,7 @@ void DetailWindow::on_favoriteButton_clicked()
 {
 	if (!global::isLogin)
 	{
-		Toast::showTip("请先登录");
+		Toast::showTip("需要登录");
 		return;
 	}
 }

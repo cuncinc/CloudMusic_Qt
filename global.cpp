@@ -9,11 +9,11 @@ QString global::token = nullptr;
 QString global::cookie = nullptr;
 QString global::dowloadPath = nullptr;
 bool    global::isLogin = false;
-QString	global::currentId = "132975";            //当前播放歌曲的id
-bool	global::isSinging = false;
 Player* global::player = nullptr;
 int		global::xSize = 800;
 int		global::ySize = 600;
+PlayOrder global::playOrder = PlayOrder::Sequence;
+int     global::playVolume = 60;
 
 void global::StoreToFile()
 {
@@ -31,7 +31,8 @@ void global::StoreToFile()
 	map.insert("isLogin", QString::number(isLogin));
 	map.insert("xSize", QString::number(xSize));
 	map.insert("ySize", QString::number(ySize));
-
+	map.insert("playOrder", QString::number(playOrder));
+	map.insert("playVolume", QString::number(playVolume));
 	QDataStream out(&file);
 	out << quint32(FILE_MAGIC) << map;
 	file.close();
@@ -65,9 +66,10 @@ void global::ReadFromFile()
 		isLogin = data["isLogin"].toInt();
 		xSize   = data["xSize"].toInt();
 		ySize   = data["ySize"].toInt();
+		playOrder  = static_cast<PlayOrder>(data["playOrder"].toInt());
+		playVolume = data["palyVolume"].toInt();
 
 		qDebug() << "meId:  " << meId;
-		qDebug() << "cookie:  " << cookie << "";
 	}
 	else
 	{
