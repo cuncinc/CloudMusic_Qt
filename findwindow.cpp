@@ -40,10 +40,6 @@ void FindWindow::onItemClick(QModelIndex index)
 
 void FindWindow::setTableView(const QJsonArray &songs)
 {
-	recIdList.clear();
-	recItemModel.clear();
-	qDebug() << songs.size();
-
 	for (int i=0; i<songs.size(); ++i)
 	{
 		QString id = QString::number(songs[i].toObject().value("id").toVariant().toLongLong());
@@ -55,8 +51,6 @@ void FindWindow::setTableView(const QJsonArray &songs)
 		QString author = songs[i].toObject().value("ar").toArray()[0].toObject().value("name").toString();
 
 		recIdList.push_back(id);
-
-		qDebug() << id << name << timeStr;
 
 		recItemModel.setItem(i, 0, new QStandardItem(name));
 		recItemModel.setItem(i, 1, new QStandardItem(author));
@@ -74,6 +68,12 @@ void FindWindow::on_fmButton_clicked()
 
 void FindWindow::on_recButton_clicked()
 {
+	if (!recIdList.isEmpty())
+	{
+		ui->startWidget->setVisible(false);
+		ui->recWidget->setVisible(true);
+	}
+
 	HttpClient("/recommend/songs").success([=](const QString &response) {
 		QJsonObject json = QJsonDocument::fromJson(response.toUtf8()).object();
 		int code = json.value("code").toInt();
