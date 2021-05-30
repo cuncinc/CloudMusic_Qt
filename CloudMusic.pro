@@ -45,6 +45,7 @@ HEADERS += \
     mainwindow.h \
     player.h \
     searchwindow.h \
+    song.h \
     songlistwindow.h \
     toast.h \
     trackdialog.h \

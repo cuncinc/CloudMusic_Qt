@@ -2,11 +2,17 @@
 #define SEARCHWINDOW_H
 
 #include "quc/include/navbar.h"
+#include "song.h"
+
 #include <QWidget>
+#include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QStringListModel>
 #include <QStandardItemModel>
+#include <QModelIndex>
+#include <QDebug>
+#include <QAction>
 
 namespace Ui {
 class SearchWindow;
@@ -22,23 +28,15 @@ public:
 
 private slots:
     void on_tabBar_currentItemChanged(int index, const QString &item);
-
     void showClick(QModelIndex index); // 点击listView后的响应
-
-    void onSearch(bool);
+	void onSearch();
 
 private:
     Ui::SearchWindow *ui;
-
-public:
-    QJsonObject result;
-    QJsonArray ja;
-    QStringListModel *Model;
-    QStandardItemModel *ItemModel;
-    QList<QStandardItem*> list;
-
-    QAction *pTrailingAction;
-    int ql[] ;
+	QStandardItemModel itemModel;
+	QList<QString> idList;
+	QAction *searchAction;
+	void setTableView(const QJsonArray &songs);
 };
 
 #endif // SEARCHWINDOW_H
