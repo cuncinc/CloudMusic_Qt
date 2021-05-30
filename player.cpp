@@ -34,11 +34,11 @@ PlayOrder Player::playOrder() const
 
 void Player::on_stateChanged(QMediaPlayer::State newState)
 {
-	// bug: 歌曲缓存太久，会一直切歌，也有可能是在nextSong中调用了playSong，
-	// 而playSong里又调用stop，导致一直在循环
-	// 要想办法避免
-	qDebug() << "stateChanged: " << newState;
-	if (State::StoppedState == newState)
+//	qDebug() << "on_stateChanged: " << newState;
+	// 只有判断出当为播放完的停止时，才自动切歌。
+	// 若不判断duration() == position()，即已经播放完毕，也就是手动切歌，
+	// 那么会递归调用，循环切歌
+	if (State::StoppedState == newState && duration() == position())
 	{
 		nextSong();
 	}
@@ -53,17 +53,17 @@ void Player::playSong()
 	// 暂停
 	if (State::PausedState == this->state())
 	{
-//		qDebug() << "paused";
+//		qDebug() << "playSong():  paused";
 		this->play();
 	}
 	else if (State::PlayingState == this->state())
 	{
-//		qDebug() << "playing";
+//		qDebug() << "playSong():  playing";
 		this->pause();
 	}
 	else if (State::StoppedState == this->state())
 	{
-//		qDebug() << "stopped";
+//		qDebug() << "playSong():  stopped";
 		if (SongFromType::Network == fromType)
 			this->setMedia(QUrl(curSongNetworkUrl));
 		else if (SongFromType::Local == fromType)
@@ -74,6 +74,7 @@ void Player::playSong()
 
 void Player::nextSong()
 {
+//	qDebug() << "nextSong()";
 	if (isFM)
 	{
 		playFM();
@@ -100,7 +101,7 @@ void Player::nextSong()
 			}
 			else
 			{
-				Toast::showTip("播放列表到底了~", 5000);
+				Toast::showTip("播放列表到底了~", 4000);
 			}
 			break;
 		case PlayOrder::OneCircle:	//单曲循环
@@ -113,8 +114,6 @@ void Player::nextSong()
 				curPlayIndex = 0;
 			}
 			playSongId(playIdList.at(curPlayIndex));
-			break;
-		default:
 			break;
 		}
 	}
@@ -154,7 +153,10 @@ void Player::playSongId(const QString &id)
 		QJsonArray array = QJsonDocument::fromJson(response.toUtf8()).object().value("data").toArray();
 		QString songUrl = array[0].toObject().value("url").toString();
 		curSongNetworkUrl = songUrl;
-		this->stop();
+		if (state() == State::PlayingState)
+		{
+			this->stop();
+		}
 		playSong();
 	}).param("id", id).param("br", 128000).get();
 
