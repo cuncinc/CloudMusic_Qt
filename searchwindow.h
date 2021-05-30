@@ -8,7 +8,6 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
-#include <QStringListModel>
 #include <QStandardItemModel>
 #include <QModelIndex>
 #include <QDebug>
