@@ -28,6 +28,7 @@ SOURCES += \
     mainwindow.cpp \
     player.cpp \
     searchwindow.cpp \
+    settingdialog.cpp \
     songlistwindow.cpp \
     toast.cpp \
     trackdialog.cpp \
@@ -45,6 +46,7 @@ HEADERS += \
     mainwindow.h \
     player.h \
     searchwindow.h \
+    settingdialog.h \
     song.h \
     songlistwindow.h \
     toast.h \
@@ -60,6 +62,7 @@ FORMS += \
     main2window.ui \
     mainwindow.ui \
     searchwindow.ui \
+    settingdialog.ui \
     songlistwindow.ui \
     toast.ui \
     trackdialog.ui \

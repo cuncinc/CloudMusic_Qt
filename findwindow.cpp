@@ -40,13 +40,11 @@ FindWindow::~FindWindow()
 void FindWindow::onItemClick(QModelIndex index)
 {
 	int d = index.row();
-	global::player->setPlayIdList(recIdList);
-	global::player->playSongId(recIdList.at(d));
+	global::player->playNetSongId(recIdList.at(d), &recIdList);
 }
 
 void FindWindow::initBannerView()
 {
-
 	HttpClient("/banner").success([=](const QString &response) {
 		QJsonObject json = QJsonDocument::fromJson(response.toUtf8()).object();
 		int code = json.value("code").toInt();
@@ -58,11 +56,19 @@ void FindWindow::initBannerView()
 		}
 
 		QJsonArray banners = json.value("banners").toArray();
-
+		QString titles;
 		for (int i=0; i<banners.size(); ++i)
 		{
+			QString title = banners[i].toObject().value("typeTitle").toString();
+			if (0 == titles.length())
+			{
+				titles += title;
+			}
+			else
+			{
+				titles += "|" + title;
+			}
 			QString url = banners[i].toObject().value("imageUrl").toString();
-			qDebug() << url;
 			HttpClient(url, false).download(QString::number(i) + ".jpg");
 		}
 		QString names = "0.jpg";
@@ -70,6 +76,7 @@ void FindWindow::initBannerView()
 		{
 			names += "|" + QString::number(i) + ".jpg";
 		}
+		ui->banner->setImageTips(titles);
 		ui->banner->setImageNames(names);
 	}).param("type", 0).get();
 }

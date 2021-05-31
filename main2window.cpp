@@ -3,6 +3,7 @@
 #include "ui_main2window.h"
 #include "httpclient.h"
 #include "global.h"
+#include "settingdialog.h"
 
 #include <QDebug>
 #include <QJsonDocument>
@@ -223,4 +224,11 @@ void Main2Window::setAvatarUrl(const QString &path)
 	QIcon buttonIcon(*rounded);
 	delete rounded;
 	ui->avatarButton->setIcon(buttonIcon);
+}
+
+void Main2Window::on_nextButton_clicked()
+{
+	SettingDialog *dialog = new SettingDialog();
+	dialog->setWindowModality(Qt::ApplicationModal); //设置界面不可点击
+	dialog->show();
 }

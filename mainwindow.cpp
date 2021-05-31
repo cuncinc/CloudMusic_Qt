@@ -166,7 +166,7 @@ void MainWindow::on_coverButton_clicked()
 	}
 	else
 	{
-		if (SongFromType::None != player->type())
+		if (SongFromType::None != player->getType())
 			ui->stackedWidget->setCurrentWidget(detailWindow);
 	}
 }
@@ -175,7 +175,7 @@ void MainWindow::on_orderButton_clicked()
 {
 	player->nextPlayOrder();
 
-	switch (player->playOrder())
+	switch (player->getOrder())
 	{
 	case PlayOrder::Sequence:
 		Toast::showTip("顺序播放");

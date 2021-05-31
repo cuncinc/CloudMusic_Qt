@@ -84,5 +84,5 @@ void SearchWindow::setTableView(const QJsonArray &songs)
 void SearchWindow::showClick(QModelIndex index)
 {
 	int d = index.row();
-	global::player->playSongId(idList.at(d));
+	global::player->playNetSongId(idList.at(d));
 }

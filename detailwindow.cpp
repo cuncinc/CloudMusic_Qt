@@ -6,6 +6,7 @@
 
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QJsonArray>
 #include <QRegularExpression>
 #include <QDebug>
 #include <QTextBlockFormat>
@@ -140,7 +141,33 @@ void DetailWindow::on_likeButton_clicked()
 
 void DetailWindow::on_downloadButton_clicked()
 {
+	if (global::downloadPath.isEmpty())
+	{
+		Toast::showTip("请设置下载路径");
+		return;
+	}
 
+	SongInfo info = global::player->getInfo();
+	QString fileBaseNmae = info.author + " - " + info.name;
+	HttpClient("/song/url").success([=](const QString &response) {
+		QJsonObject object = QJsonDocument::fromJson(response.toUtf8()).object();
+		int code = object.value("code").toInt();
+		QString msg = object.value("msg").toString();
+		if (200 != code)
+		{
+			Toast::showTip("下载失败:" + msg);
+			return;
+		}
+
+		QJsonObject song = object.value("data").toArray().at(0).toObject();
+		QString url = song.value("url").toString();
+		QString type = song.value("type").toString();
+		QString fileName = fileBaseNmae + "." + type;
+		QString path = global::downloadPath + "/" + fileName;
+		HttpClient(url, false).success([=](const QString &response) {
+			Toast::showTip(info.name+"下载完成");
+		}).download(path);
+	}).param("id", info.id).param("br", global::downloadQuality).get();
 }
 
 void DetailWindow::on_favoriteButton_clicked()

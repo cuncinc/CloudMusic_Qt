@@ -38,6 +38,8 @@ private slots:
 	void onMe();
 	void on_avatarButton_clicked();
 
+	void on_nextButton_clicked();
+
 private:
 	Ui::Main2Window *ui;
 	SearchWindow *searchWindow;

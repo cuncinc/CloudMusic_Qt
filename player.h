@@ -21,6 +21,7 @@ enum SongFromType
 	None,		//未设置
 	Local,		//来自本地
 	Network,	//来自网络
+	PersonalFM,	//私人FM
 };
 
 struct SongInfo
@@ -44,13 +45,13 @@ signals:
 	void songChanged(SongInfo info);			// 歌曲改变
 	void songStop();							// 单曲播放完毕
 public:
-	void playSongId(const QString &id);
+	void playNetSongId(const QString &id, const QList<QString>* list = nullptr);
 	void initViewById(const QString &id);
 	void setSongNetworkUrl(const QString &url);	//待播放音乐的路径
 	void setSongLocalPath(const QString &path);	//待播放音乐的路径
-	void setPlayIdList(const QList<QString>& list);
-	SongFromType type() const;
-	PlayOrder playOrder() const;
+	SongFromType getType() const;
+	PlayOrder getOrder() const;
+	SongInfo  getInfo() const;
 
 public slots:
 	void pauseSong();			// 暂停
@@ -71,9 +72,10 @@ private:
 	SongFromType fromType = SongFromType::None;
 	SongInfo info;
 	QQueue<QString> fmIdQueue;
-	bool isFM = false;
 	QList<QString> playIdList;
 	int curPlayIndex = 0;
+	void playSongId(const QString &id);
+	void setPlayIdList(const QList<QString>& list);
 };
 
 #endif // PLAYER_H

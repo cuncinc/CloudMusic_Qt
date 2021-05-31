@@ -22,14 +22,19 @@ Player::~Player()
 	global::playVolume = volume();
 }
 
-SongFromType Player::type() const
+SongFromType Player::getType() const
 {
 	return fromType;
 }
 
-PlayOrder Player::playOrder() const
+PlayOrder Player::getOrder() const
 {
 	return order;
+}
+
+SongInfo Player::getInfo() const
+{
+	return info;
 }
 
 void Player::on_stateChanged(QMediaPlayer::State newState)
@@ -44,12 +49,22 @@ void Player::on_stateChanged(QMediaPlayer::State newState)
 	}
 }
 
+void Player::playNetSongId(const QString &id, const QList<QString>* list)
+{
+	fromType = SongFromType::Network;
+	if (list != nullptr)
+	{
+		setPlayIdList(*list);
+	}
+	playSongId(id);
+}
+
 void Player::pauseSong()
 {
 }
 
 void Player::playSong()
-{	
+{
 	// 暂停
 	if (State::PausedState == this->state())
 	{
@@ -64,10 +79,18 @@ void Player::playSong()
 	else if (State::StoppedState == this->state())
 	{
 //		qDebug() << "playSong():  stopped";
-		if (SongFromType::Network == fromType)
+		switch (fromType)
+		{
+		case SongFromType::Network:
+		case SongFromType::PersonalFM:
 			this->setMedia(QUrl(curSongNetworkUrl));
-		else if (SongFromType::Local == fromType)
+			break;
+		case SongFromType::Local:
 			this->setMedia(QUrl::fromLocalFile(curSongLocalPath));
+			break;
+		default:
+			break;
+		}
 		this->play();
 	}
 }
@@ -75,7 +98,7 @@ void Player::playSong()
 void Player::nextSong()
 {
 //	qDebug() << "nextSong()";
-	if (isFM)
+	if (PersonalFM == fromType)
 	{
 		playFM();
 		return;
@@ -146,16 +169,14 @@ void Player::nextPlayOrder()
 
 void Player::playSongId(const QString &id)
 {
-	fromType = SongFromType::Network;
 	info.id = id;
-
 	HttpClient("/song/url").success([=](const QString &response) {
 		QJsonArray array = QJsonDocument::fromJson(response.toUtf8()).object().value("data").toArray();
 		QString songUrl = array[0].toObject().value("url").toString();
 		curSongNetworkUrl = songUrl;
 		this->stop();
 		playSong();
-	}).param("id", id).param("br", 128000).get();
+	}).param("id", id).param("br", global::onlineQuality).get();
 
 	initViewById(id);
 }
@@ -180,21 +201,17 @@ void Player::setSongNetworkUrl(const QString &url)
 {
 	fromType = SongFromType::Network;
 	curSongNetworkUrl = url;
-
-//	emit songChanged(info);
 }
 
 void Player::setSongLocalPath(const QString &path)
 {
 	fromType = SongFromType::Local;
 	curSongLocalPath = path;
-
-//	emit songChanged(info);
 }
 
 void Player::playFM()
 {
-	isFM = true;
+	fromType = SongFromType::PersonalFM;
 	if (!fmIdQueue.isEmpty())
 	{
 		playSongId(fmIdQueue.dequeue());

@@ -7,13 +7,15 @@
 long long global::meId = -1;
 QString global::token = nullptr;
 QString global::cookie = nullptr;
-QString global::dowloadPath = nullptr;
 bool    global::isLogin = false;
 Player* global::player = nullptr;
 int		global::xSize = 800;
 int		global::ySize = 600;
 PlayOrder global::playOrder = PlayOrder::Sequence;
 int     global::playVolume = 60;
+int     global::onlineQuality;
+int     global::downloadQuality;
+QString global::downloadPath;
 
 void global::StoreToFile()
 {
@@ -26,13 +28,16 @@ void global::StoreToFile()
 	}
 
 	QMap<QString, QString> map;
-	map.insert("meId", QString::number(meId));
-	map.insert("cookie", cookie);
-	map.insert("isLogin", QString::number(isLogin));
-	map.insert("xSize", QString::number(xSize));
-	map.insert("ySize", QString::number(ySize));
-	map.insert("playOrder", QString::number(playOrder));
-	map.insert("playVolume", QString::number(playVolume));
+	map.insert("meId",			QString::number(meId));
+	map.insert("cookie",		cookie);
+	map.insert("isLogin",		QString::number(isLogin));
+	map.insert("xSize",			QString::number(xSize));
+	map.insert("ySize",			QString::number(ySize));
+	map.insert("playOrder",		QString::number(playOrder));
+	map.insert("playVolume",	QString::number(playVolume));
+	map.insert("onlineQuality", QString::number(onlineQuality));
+	map.insert("downloadQuality", QString::number(downloadQuality));
+	map.insert("dowloadPath",	downloadPath);
 	QDataStream out(&file);
 	out << quint32(FILE_MAGIC) << map;
 	file.close();
@@ -61,13 +66,16 @@ void global::ReadFromFile()
 
 	if (!data.isEmpty())
 	{
-		meId    = data["meId"].toLongLong();
-		cookie  = data["cookie"];
-		isLogin = data["isLogin"].toInt();
-		xSize   = data["xSize"].toInt();
-		ySize   = data["ySize"].toInt();
-		playOrder  = static_cast<PlayOrder>(data["playOrder"].toInt());
-		playVolume = data["palyVolume"].toInt();
+		meId			= data["meId"].toLongLong();
+		cookie			= data["cookie"];
+		isLogin			= data["isLogin"].toInt();
+		xSize			= data["xSize"].toInt();
+		ySize			= data["ySize"].toInt();
+		playOrder		= static_cast<PlayOrder>(data["playOrder"].toInt());
+		playVolume		= data["palyVolume"].toInt();
+		downloadQuality	= data["downloadQuality"].toInt();
+		onlineQuality	= data["onlineQuality"].toInt();
+		downloadPath	= data["dowloadPath"];
 
 		qDebug() << "meId:  " << meId;
 	}

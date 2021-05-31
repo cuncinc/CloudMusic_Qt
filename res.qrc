@@ -84,6 +84,7 @@
         <file alias="icon_top">asserts/top.png</file>
         <file alias="icon_return">asserts/return.png</file>
         <file alias="sequence">asserts/icon_sequence.png</file>
+        <file alias="icon_setting">asserts/icon_setting.png</file>
     </qresource>
     <qresource prefix="/logo">
         <file alias="logo88">asserts/logo_88.png</file>

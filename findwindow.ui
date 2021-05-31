@@ -10,6 +10,12 @@
     <height>545</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>Microsoft YaHei</family>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -455,6 +461,12 @@ QTableView::item::selected
              <height>0</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <family>Microsoft YaHei</family>
+             <pointsize>15</pointsize>
+            </font>
+           </property>
            <property name="layoutDirection">
             <enum>Qt::LeftToRight</enum>
            </property>
@@ -465,16 +477,19 @@ QTableView::item::selected
             <bool>false</bool>
            </property>
            <property name="minHeight">
-            <number>200</number>
+            <number>6</number>
            </property>
            <property name="minWidth">
-            <number>540</number>
+            <number>6</number>
            </property>
            <property name="maxWidth">
-            <number>780</number>
+            <number>25</number>
            </property>
            <property name="interval">
             <number>7000</number>
+           </property>
+           <property name="navRadius">
+            <number>3</number>
            </property>
            <property name="navColor">
             <color alpha="200">
@@ -492,9 +507,9 @@ QTableView::item::selected
            </property>
            <property name="tipColor">
             <color>
-             <red>255</red>
-             <green>255</green>
-             <blue>255</blue>
+             <red>217</red>
+             <green>79</green>
+             <blue>78</blue>
             </color>
            </property>
            <property name="darkColor">
@@ -508,7 +523,7 @@ QTableView::item::selected
             <string>:/img/login-bg</string>
            </property>
            <property name="imageTips">
-            <string>.</string>
+            <string>数字专辑</string>
            </property>
            <property name="navPosition">
             <enum>AdsWidget2::NavPosition_Center</enum>
