@@ -32,10 +32,37 @@
    <item>
     <widget class="QScrollArea" name="scrollArea">
      <property name="styleSheet">
-      <string notr="true">border:none;</string>
+      <string notr="true">QScrollArea
+{
+border:none;
+}
+
+QScrollBar:vertical {
+	width: 10px;
+	background: transparent;
+}
+
+QScrollBar::handle:vertical {
+	width: 10px;
+	min-height: 20px;
+	background: #C8C9CC;
+	border-radius: 5px;
+}
+QScrollBar::handle:vertical:hover {
+        background: #ADAFB2;
+}
+
+QScrollBar::sub-line:vertical {
+        height: 0px;
+        background: transparent;
+}
+QScrollBar::add-line:vertical {
+        height: 0px;
+        background: transparent;
+}</string>
      </property>
      <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOff</enum>
+      <enum>Qt::ScrollBarAsNeeded</enum>
      </property>
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -343,14 +370,41 @@
                </font>
               </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgba(255, 255, 255, 0);
-border:none;</string>
+               <string notr="true">QPlainTextEdit
+{
+background-color: rgba(255, 255, 255, 0);
+border:none;
+}
+
+QScrollBar:vertical {
+	width: 10px;
+	background: transparent;
+}
+
+QScrollBar::handle:vertical {
+	width: 10px;
+	min-height: 20px;
+	background: #A4A4A4;
+	border-radius: 5px;
+}
+QScrollBar::handle:vertical:hover {
+        background: #A5A5A5;
+}
+
+QScrollBar::sub-line:vertical {
+        height: 0px;
+        background: transparent;
+}
+QScrollBar::add-line:vertical {
+        height: 0px;
+        background: transparent;
+}</string>
               </property>
               <property name="midLineWidth">
                <number>0</number>
               </property>
               <property name="verticalScrollBarPolicy">
-               <enum>Qt::ScrollBarAlwaysOff</enum>
+               <enum>Qt::ScrollBarAsNeeded</enum>
               </property>
               <property name="horizontalScrollBarPolicy">
                <enum>Qt::ScrollBarAlwaysOff</enum>

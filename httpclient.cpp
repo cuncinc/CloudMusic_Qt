@@ -500,7 +500,15 @@ void HttpClientPrivate::handleFinish(HttpClientPrivateCache cache, QNetworkReply
 |----------------------------------------------------------------------------*/
 
 // 注意: 在异步请求中 HttpClient 的 HttpClientPrivate 成员变量 d 已经被析构，所以需要先缓存相关变量为栈对象，使用 = 以值的方式访问
-HttpClient::HttpClient(const QString &path) : d(new HttpClientPrivate(URL_PREFIX+path)) { }
+HttpClient::HttpClient(const QString &path, bool withPrefix)
+{
+	QString url = path;
+	if (withPrefix)
+	{
+		url = URL_PREFIX + url;
+	}
+	d = new HttpClientPrivate(url);
+}
 
 HttpClient::~HttpClient() {
 	delete d;

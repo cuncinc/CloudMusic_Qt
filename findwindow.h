@@ -27,10 +27,10 @@ private slots:
 
 private:
 	Ui::FindWindow *ui;
-	bool initRecView();
-	void setTableView(const QJsonArray& songs);
 	QList<QString> recIdList;
 	QStandardItemModel recItemModel;
+	void setTableView(const QJsonArray& songs);
+	void initBannerView();
 };
 
 #endif // FINDWINDOW_H

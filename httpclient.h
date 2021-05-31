@@ -31,7 +31,7 @@ class HttpClientPrivate;
 */
 class HttpClient {
 public:
-	HttpClient(const QString &path);
+	HttpClient(const QString &path, bool withPrefix = true);
 	~HttpClient();
 	void stop2();
 

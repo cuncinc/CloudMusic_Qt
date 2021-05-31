@@ -153,10 +153,7 @@ void Player::playSongId(const QString &id)
 		QJsonArray array = QJsonDocument::fromJson(response.toUtf8()).object().value("data").toArray();
 		QString songUrl = array[0].toObject().value("url").toString();
 		curSongNetworkUrl = songUrl;
-		if (state() == State::PlayingState)
-		{
-			this->stop();
-		}
+		this->stop();
 		playSong();
 	}).param("id", id).param("br", 128000).get();
 

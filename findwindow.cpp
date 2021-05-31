@@ -3,12 +3,15 @@
 #include "global.h"
 #include "toast.h"
 #include "httpclient.h"
+#include "quc/include/adswidget2.h"
 
 #include <QDate>
 #include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+
+#define BANNER_PATH "banner//"
 
 FindWindow::FindWindow(QWidget *parent) :
 	QWidget(parent),
@@ -25,6 +28,8 @@ FindWindow::FindWindow(QWidget *parent) :
 	ui->tableView->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
 
 	connect(ui->tableView, &QTableView::doubleClicked, this, &FindWindow::onItemClick);
+
+	initBannerView();
 }
 
 FindWindow::~FindWindow()
@@ -37,6 +42,36 @@ void FindWindow::onItemClick(QModelIndex index)
 	int d = index.row();
 	global::player->setPlayIdList(recIdList);
 	global::player->playSongId(recIdList.at(d));
+}
+
+void FindWindow::initBannerView()
+{
+
+	HttpClient("/banner").success([=](const QString &response) {
+		QJsonObject json = QJsonDocument::fromJson(response.toUtf8()).object();
+		int code = json.value("code").toInt();
+		if (200 != code)
+		{
+			QString msg = json.value("msg").toString();
+			Toast::showTip("获取banner失败：" + msg);
+			return;
+		}
+
+		QJsonArray banners = json.value("banners").toArray();
+
+		for (int i=0; i<banners.size(); ++i)
+		{
+			QString url = banners[i].toObject().value("imageUrl").toString();
+			qDebug() << url;
+			HttpClient(url, false).download(QString::number(i) + ".jpg");
+		}
+		QString names = "0.jpg";
+		for (int i=1; i<banners.size(); ++i)
+		{
+			names += "|" + QString::number(i) + ".jpg";
+		}
+		ui->banner->setImageNames(names);
+	}).param("type", 0).get();
 }
 
 void FindWindow::setTableView(const QJsonArray &songs)
@@ -64,7 +99,6 @@ void FindWindow::setTableView(const QJsonArray &songs)
 void FindWindow::on_fmButton_clicked()
 {
 	global::player->playFM();
-
 }
 
 void FindWindow::on_recButton_clicked()

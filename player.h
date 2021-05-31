@@ -29,6 +29,7 @@ struct SongInfo
 	QString name;
 	QString author;
 	QString coverUrl;
+	bool    like;
 };
 
 class Player : public QMediaPlayer
