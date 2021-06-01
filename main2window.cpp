@@ -191,8 +191,11 @@ void Main2Window::updateMe()
 	if (!global::isLogin)
 	{
 		ui->nickNameLabel->setText("未登录");
-		QIcon icon(":/img/default-avatar");
-		ui->avatarButton->setIcon(icon);
+		QPixmap pix(":/img/default-avatar");
+		QPixmap *rounded = roundedPixmap(pix);
+		QIcon buttonIcon(*rounded);
+		delete rounded;
+		ui->avatarButton->setIcon(buttonIcon);
 		return;
 	}
 

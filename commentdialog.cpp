@@ -5,6 +5,7 @@ CommentDialog::CommentDialog(const QString &replyName, QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::CommentDialog)
 {
+	setAttribute(Qt::WA_DeleteOnClose);
 	ui->setupUi(this);
 
 	if (nullptr == replyName)

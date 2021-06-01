@@ -20,7 +20,9 @@ UserInfoWindow::~UserInfoWindow()
 void UserInfoWindow::initView()
 {
 	HttpClient("/user/detail").success([=](const QString &response) {
-		QJsonObject profile = QJsonDocument::fromJson(response.toUtf8()).object().value("profile").toObject();
+		QJsonObject object = QJsonDocument::fromJson(response.toUtf8()).object();
+		int level = object.value("level").toInt();
+		QJsonObject profile = object.value("profile").toObject();
 		QString nickname = profile.value("nickname").toString();
 		QString avatarUrl = profile.value("avatarUrl").toString();
 		int eventNum = profile.value("eventCount").toInt();
@@ -28,6 +30,7 @@ void UserInfoWindow::initView()
 		int fanNum = profile.value("allSubscribedCount").toInt();	//此字段不确定
 		bool followMe = profile.value("followMe").toBool();
 
+		ui->levelLayout->setText("Lv"+QString::number(level));
 		ui->nickNameLabel->setText(nickname);
 		ui->eventNum->setText(QString::number(eventNum));
 		ui->followNum->setText(QString::number(followNum));
@@ -55,7 +58,7 @@ void UserInfoWindow::setAvatarUrl(const QString &path)
 void UserInfoWindow::on_quitButton_clicked()
 {
 	global::meId = -1;
-	global::token = nullptr;
-	global::cookie = nullptr;
+	global::token = "";
+	global::cookie = "";
 	global::isLogin = false;
 }

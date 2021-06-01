@@ -75,7 +75,7 @@ QPushButton:pressed {background-color:#BC2F2D}</string>
         </property>
         <property name="icon">
          <iconset resource="res.qrc">
-          <normaloff>:/icon/icon_return</normaloff>:/icon/icon_return</iconset>
+          <normaloff>:/icon/return</normaloff>:/icon/return</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -486,7 +486,7 @@ QTableView::item::selected
             <number>25</number>
            </property>
            <property name="interval">
-            <number>7000</number>
+            <number>4000</number>
            </property>
            <property name="navRadius">
             <number>3</number>
@@ -579,7 +579,7 @@ background-color: rgba(209, 87, 87, 50);
             </property>
             <property name="icon">
              <iconset resource="res.qrc">
-              <normaloff>:/icon/icon_fm</normaloff>:/icon/icon_fm</iconset>
+              <normaloff>:/icon/fm</normaloff>:/icon/fm</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -660,7 +660,7 @@ background-color: rgba(209, 87, 87, 50);
             </property>
             <property name="icon">
              <iconset resource="res.qrc">
-              <normaloff>:/icon/ic_rec</normaloff>:/icon/ic_rec</iconset>
+              <normaloff>:/icon/rec</normaloff>:/icon/rec</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -738,7 +738,7 @@ background-color: rgba(209, 87, 87, 50);
             </property>
             <property name="icon">
              <iconset resource="res.qrc">
-              <normaloff>:/icon/icon_top</normaloff>:/icon/icon_top</iconset>
+              <normaloff>:/icon/top</normaloff>:/icon/top</iconset>
             </property>
             <property name="iconSize">
              <size>

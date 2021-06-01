@@ -27,6 +27,7 @@ SOURCES += \
     main2window.cpp \
     mainwindow.cpp \
     player.cpp \
+    qrcode/QrCode.cpp \
     searchwindow.cpp \
     settingdialog.cpp \
     songlistwindow.cpp \
@@ -45,6 +46,7 @@ HEADERS += \
     main2window.h \
     mainwindow.h \
     player.h \
+    qrcode/QrCode.hpp \
     searchwindow.h \
     settingdialog.h \
     song.h \

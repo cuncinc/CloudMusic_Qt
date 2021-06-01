@@ -9,6 +9,7 @@ SettingDialog::SettingDialog(QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::SettingDialog)
 {
+	setAttribute(Qt::WA_DeleteOnClose);
 	ui->setupUi(this);
 	initView();
 }

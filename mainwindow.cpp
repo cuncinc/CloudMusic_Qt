@@ -16,16 +16,12 @@ MainWindow::MainWindow(QWidget *parent)
 {
 	ui->setupUi(this);
 
-	// 初始化UI
-	main2Window = new Main2Window();
-	ui->stackedWidget->addWidget(main2Window);
-	ui->stackedWidget->setCurrentWidget(main2Window);
-	detailWindow = new DetailWindow();
-	ui->stackedWidget->addWidget(detailWindow);
-
 	// 初始化音乐播放器
 	global::player = new Player();
 	player = global::player;
+
+	// 初始化UI
+	initView();
 
 	// 播放状态 -> 播放按钮图标
 	connect(player, &Player::stateChanged, this, &MainWindow::changePlayIcon);
@@ -51,6 +47,34 @@ MainWindow::~MainWindow()
 	global::xSize = this->width();
 	global::ySize = this->height();
 	global::StoreToFile();	// 保存一些配置信息到文件中
+}
+
+void MainWindow::initView()
+{
+	main2Window = new Main2Window();
+	ui->stackedWidget->addWidget(main2Window);
+	ui->stackedWidget->setCurrentWidget(main2Window);
+	detailWindow = new DetailWindow();
+	ui->stackedWidget->addWidget(detailWindow);
+
+	//播放顺序图标
+	QIcon icon;
+	switch (player->getOrder())
+	{
+	case PlayOrder::Sequence:
+		icon.addFile(":/icon/sequence");
+		break;
+	case PlayOrder::Random:
+		icon.addFile(":/icon/random");
+		break;
+	case PlayOrder::OneCircle:
+		icon.addFile(":/icon/one_circle");
+		break;
+	case PlayOrder::ListCircle:
+		icon.addFile(":/icon/list_circle");
+		break;
+	}
+	ui->orderButton->setIcon(icon);
 }
 
 // 修改播放按钮图标
@@ -174,20 +198,36 @@ void MainWindow::on_coverButton_clicked()
 void MainWindow::on_orderButton_clicked()
 {
 	player->nextPlayOrder();
+	QIcon icon;
 
 	switch (player->getOrder())
 	{
 	case PlayOrder::Sequence:
 		Toast::showTip("顺序播放");
+		icon.addFile(":/icon/sequence");
 		break;
 	case PlayOrder::Random:
 		Toast::showTip("随机播放");
+		icon.addFile(":/icon/random");
 		break;
 	case PlayOrder::OneCircle:
 		Toast::showTip("单曲循环");
+		icon.addFile(":/icon/one_circle");
 		break;
 	case PlayOrder::ListCircle:
 		Toast::showTip("列表循环");
+		icon.addFile(":/icon/list_circle");
 		break;
 	}
+	ui->orderButton->setIcon(icon);
+}
+
+void MainWindow::on_playListButton_clicked()
+{
+
+}
+
+void MainWindow::on_volumeButtom_clicked()
+{
+
 }

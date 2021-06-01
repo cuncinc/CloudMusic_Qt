@@ -5,6 +5,7 @@
 #include <QList>
 #include <QStandardItemModel>
 #include <QModelIndex>
+#include <QNetworkAccessManager>
 
 namespace Ui {
 class FindWindow;

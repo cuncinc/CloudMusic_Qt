@@ -19,9 +19,16 @@ public slots:
 
 signals:
 	void login(bool state);
+	void qrcodeLoaded();			//二维码加载完成
+	void qrcodeOverDues();			//二维码过期
+	void qrcodeOk(QString cookie);	//扫码登录
 
 private slots:
 	void login_result(const QString & resp);
+	void loadQRCode();
+	void pollingQRCodeResult();		//轮询二维码结果
+	void on_qrcode_ok(QString cookie);
+	void on_qrcode_overdues();
 	void on_toEmail_clicked();
 	void on_toPhone_clicked();
 	void on_toLogon_clicked();
@@ -33,9 +40,12 @@ private slots:
 	void on_phonePassword_textChanged(const QString &arg1);
 	void on_emeailAccount_textChanged(const QString &arg1);
 	void on_emailPassword_textChanged(const QString &arg1);
+	void on_refreshButton_clicked();
 
 private:
 	Ui::LoginDialog *ui;
+	QTimer *pollingTimer;
+	QString key;
 };
 
 #endif // LOGINDIALOG_H

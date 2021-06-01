@@ -44,7 +44,7 @@ void FindWindow::onItemClick(QModelIndex index)
 }
 
 void FindWindow::initBannerView()
-{
+{	
 	HttpClient("/banner").success([=](const QString &response) {
 		QJsonObject json = QJsonDocument::fromJson(response.toUtf8()).object();
 		int code = json.value("code").toInt();

@@ -146,7 +146,10 @@ void DetailWindow::on_downloadButton_clicked()
 		Toast::showTip("请设置下载路径");
 		return;
 	}
-
+	else
+	{
+		Toast::showTip("开始下载");
+	}
 	SongInfo info = global::player->getInfo();
 	QString fileBaseNmae = info.author + " - " + info.name;
 	HttpClient("/song/url").success([=](const QString &response) {

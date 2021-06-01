@@ -18,6 +18,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="spacing">
@@ -40,13 +43,6 @@
       <property name="spacing">
        <number>0</number>
       </property>
-      <item>
-       <widget class="Line" name="line">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
       <item>
        <widget class="NavListView" name="navigation">
         <property name="sizePolicy">
@@ -392,7 +388,7 @@ QScrollBar::add-line:vertical {
            </property>
            <property name="icon">
             <iconset resource="res.qrc">
-             <normaloff>:/icon/icon_setting</normaloff>:/icon/icon_setting</iconset>
+             <normaloff>:/icon/setting</normaloff>:/icon/setting</iconset>
            </property>
            <property name="iconSize">
             <size>

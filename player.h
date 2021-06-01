@@ -15,7 +15,7 @@ enum PlayOrder
 	Random = 4,		//随机
 };
 
-// 歌曲类型`
+// 歌曲类型
 enum SongFromType
 {
 	None,		//未设置

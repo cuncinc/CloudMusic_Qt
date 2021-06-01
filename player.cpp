@@ -55,6 +55,7 @@ void Player::playNetSongId(const QString &id, const QList<QString>* list)
 	if (list != nullptr)
 	{
 		setPlayIdList(*list);
+		curPlayIndex = list->indexOf(id);
 	}
 	playSongId(id);
 }

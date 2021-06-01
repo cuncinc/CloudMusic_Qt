@@ -32,13 +32,17 @@ private slots:
 	void on_playButton_clicked();
 	void on_nextButton_clicked();
 	void on_coverButton_clicked();
-
 	void on_orderButton_clicked();
+
+	void on_playListButton_clicked();
+
+	void on_volumeButtom_clicked();
 
 private:
     Ui::MainWindow *ui;
 	Main2Window *main2Window;
 	DetailWindow *detailWindow;
 	Player *player;
+	void initView();
 };
 #endif // MAINWINDOW_H
