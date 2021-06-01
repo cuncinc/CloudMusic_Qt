@@ -15,18 +15,16 @@
 
 using namespace qrcodegen;
 
-void paintQR(QPainter &painter, const QString &data)
+void paintQR(QPixmap *map, const QString &data)
 {
-	QSize sz(300, 300);
+	QPainter painter(map);
 	QrCode qr = QrCode::encodeText(data.toUtf8().constData(), QrCode::Ecc::LOW);
-	const int s=qr.getSize()>0?qr.getSize():1;
-	const double w=sz.width();
-	const double h=sz.height();
-	const double aspect=w/h;
-	const double size=((aspect>1.0)?h:w);
-	const double scale=size/(s+2);
-	// NOTE: For performance reasons my implementation only draws the foreground parts in supplied color.
-	// It expects background to be prepared already (in white or whatever is preferred).
+	const int s = qr.getSize()>0 ? qr.getSize() : 1;
+	const double w = map->width();
+	const double h = map->height();
+	const double aspect = w / h;
+	const double size = ((aspect>1.0) ? h : w);
+	const double scale = size / (s+2);
 	painter.setPen(Qt::NoPen);
 	painter.setBrush(QColor("#FFFFFF"));
 	for(int y=0; y<s; y++)
@@ -34,9 +32,9 @@ void paintQR(QPainter &painter, const QString &data)
 		for(int x=0; x<s; x++)
 		{
 			const int color=qr.getModule(x, y);  // 0 for white, 1 for black
-			if(0!=color)
+			if(0 != color)
 			{
-				const double rx1=(x+1)*scale, ry1=(y+1)*scale;
+				const double rx1 = (x+1)*scale, ry1=(y+1)*scale;
 				QRectF r(rx1, ry1, scale, scale);
 				painter.drawRects(&r,1);
 			}
@@ -53,8 +51,8 @@ LoginDialog::LoginDialog(QWidget *parent) :
 	pollingTimer = new QTimer(this);
 	connect(pollingTimer, &QTimer::timeout, this, QOverload<>::of(&LoginDialog::pollingQRCodeResult));
 //	connect(this, &LoginDialog::qrcodeLoaded, this, &LoginDialog::pollingQRCodeResult);
-	connect(this, &LoginDialog::qrcodeOk, this, &LoginDialog::on_qrcode_ok);
-	connect(this, &LoginDialog::qrcodeOverDues, this, &LoginDialog::on_qrcode_overdues);
+	connect(this, &LoginDialog::qrcodeOk, this, &LoginDialog::onQrcodeOk);
+	connect(this, &LoginDialog::qrcodeOverDues, this, &LoginDialog::onQrcodeOverdues);
 }
 
 LoginDialog::~LoginDialog()
@@ -189,13 +187,12 @@ void LoginDialog::loadQRCode()
 		HttpClient("/login/qr/create").success([=](const QString &response) {
 			QJsonObject json = QJsonDocument::fromJson(response.toUtf8()).object();
 			QString qrurl = json.value("data").toObject().value("qrurl").toString();
-			qDebug() << "QrUrl" << qrurl;
+			qDebug() << qrurl;
 			QPixmap map(300, 300);
-			QPainter painter(&map);
-			paintQR(painter, qrurl);
+			paintQR(&map, qrurl);
+			pollingTimer->start(1500);
 			ui->qrcodeLabel->setPixmap(map);
 //			emit qrcodeLoaded();
-			pollingTimer->start(1500);
 		}).param("key", key).param("timestamp", timestanp).get();
 	}).param("timestamp", timestanp).get();
 }
@@ -229,7 +226,7 @@ void LoginDialog::pollingQRCodeResult()
 	}).param("key", key).param("timestamp", timestanp).get();
 }
 
-void LoginDialog::on_qrcode_ok(QString cookie)
+void LoginDialog::onQrcodeOk(QString cookie)
 {
 	HttpClient("/user/account").success([=](const QString &response) {
 		QJsonObject json = QJsonDocument::fromJson(response.toUtf8()).object();
@@ -251,7 +248,7 @@ void LoginDialog::on_qrcode_ok(QString cookie)
 	}).param("cookie", cookie).get();
 }
 
-void LoginDialog::on_qrcode_overdues()
+void LoginDialog::onQrcodeOverdues()
 {
 	ui->notValidFrame->setVisible(true);
 }

@@ -27,8 +27,8 @@ private slots:
 	void login_result(const QString & resp);
 	void loadQRCode();
 	void pollingQRCodeResult();		//轮询二维码结果
-	void on_qrcode_ok(QString cookie);
-	void on_qrcode_overdues();
+	void onQrcodeOk(QString cookie);
+	void onQrcodeOverdues();
 	void on_toEmail_clicked();
 	void on_toPhone_clicked();
 	void on_toLogon_clicked();
