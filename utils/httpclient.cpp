@@ -1,5 +1,5 @@
-#include "httpclient.h"
-#include "global.h"
+#include "utils/httpclient.h"
+#include "utils/global.h"
 
 #include <QDebug>
 #include <QFile>

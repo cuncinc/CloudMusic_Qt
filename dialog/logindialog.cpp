@@ -1,9 +1,9 @@
-#include "logindialog.h"
+#include "dialog/logindialog.h"
 #include "ui_logindialog.h"
-#include "httpclient.h"
-#include "global.h"
-#include "toast.h"
-#include "qrcode/QrCode.hpp"
+#include "utils/httpclient.h"
+#include "utils/global.h"
+#include "utils/toast.h"
+#include "utils/QrCode.h"
 
 #include <QMap>
 #include <QJsonDocument>

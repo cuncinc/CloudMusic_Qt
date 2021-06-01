@@ -1,6 +1,6 @@
-#include "settingdialog.h"
+#include "dialog/settingdialog.h"
 #include "ui_settingdialog.h"
-#include "global.h"
+#include "utils/global.h"
 
 #include <QFileDialog>
 #include <QDebug>

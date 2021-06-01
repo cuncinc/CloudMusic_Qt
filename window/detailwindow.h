@@ -1,8 +1,8 @@
 #ifndef DETAILWINDOW_H
 #define DETAILWINDOW_H
 
-#include "player.h"
-#include "commentdialog.h"
+#include "utils/player.h"
+#include "dialog/commentdialog.h"
 
 #include <QWidget>
 

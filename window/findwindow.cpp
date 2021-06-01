@@ -1,8 +1,8 @@
-#include "findwindow.h"
+#include "window/findwindow.h"
 #include "ui_findwindow.h"
-#include "global.h"
-#include "toast.h"
-#include "httpclient.h"
+#include "utils/global.h"
+#include "utils/toast.h"
+#include "utils/httpclient.h"
 #include "quc/include/adswidget2.h"
 
 #include <QDate>
@@ -44,7 +44,7 @@ void FindWindow::onItemClick(QModelIndex index)
 }
 
 void FindWindow::initBannerView()
-{	
+{
 	HttpClient("/banner").success([=](const QString &response) {
 		QJsonObject json = QJsonDocument::fromJson(response.toUtf8()).object();
 		int code = json.value("code").toInt();

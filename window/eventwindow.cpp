@@ -1,4 +1,4 @@
-#include "eventwindow.h"
+#include "window/eventwindow.h"
 #include "ui_eventwindow.h"
 
 EventWindow::EventWindow(QWidget *parent) :

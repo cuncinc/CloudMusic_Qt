@@ -1,4 +1,4 @@
-#include "trackdialog.h"
+#include "dialog/trackdialog.h"
 #include "ui_trackdialog.h"
 
 TrackDialog::TrackDialog(QWidget *parent) :

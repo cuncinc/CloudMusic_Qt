@@ -1,7 +1,7 @@
-#include "player.h"
-#include "httpclient.h"
-#include "global.h"
-#include "toast.h"
+#include "utils/player.h"
+#include "utils/httpclient.h"
+#include "utils/global.h"
+#include "utils/toast.h"
 
 #include <QDebug>
 #include <QJsonDocument>

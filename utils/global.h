@@ -1,7 +1,7 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
-#include "player.h"
+#include "utils/player.h"
 
 #include <QString>
 #include <QMediaPlayer>

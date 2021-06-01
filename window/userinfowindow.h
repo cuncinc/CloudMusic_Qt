@@ -1,7 +1,7 @@
 #ifndef USERINFOWINDOW_H
 #define USERINFOWINDOW_H
 
-#include "global.h"
+#include "utils/global.h"
 #include <QWidget>
 
 namespace Ui {

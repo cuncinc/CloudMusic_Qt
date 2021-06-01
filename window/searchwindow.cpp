@@ -1,8 +1,8 @@
-#include "searchwindow.h"
+#include "window/searchwindow.h"
 #include "ui_searchwindow.h"
-#include "httpclient.h"
-#include "toast.h"
-#include "global.h"
+#include "utils/httpclient.h"
+#include "utils/toast.h"
+#include "utils/global.h"
 
 SearchWindow::SearchWindow(QWidget *parent) :
     QWidget(parent),

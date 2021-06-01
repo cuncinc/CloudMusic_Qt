@@ -2,11 +2,11 @@
 #define MAIN2WINDOW_H
 
 #include "quc/include/navlistview.h"
-#include "searchwindow.h"
-#include "findwindow.h"
-#include "eventwindow.h"
-#include "songlistwindow.h"
-#include "userinfowindow.h"
+#include "window/searchwindow.h"
+#include "window/findwindow.h"
+#include "window/eventwindow.h"
+#include "window/songlistwindow.h"
+#include "window/userinfowindow.h"
 
 #include <QMainWindow>
 

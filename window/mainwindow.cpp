@@ -1,8 +1,8 @@
-#include "mainwindow.h"
+#include "window/mainwindow.h"
 #include "ui_mainwindow.h"
-#include "httpclient.h"
-#include "global.h"
-#include "toast.h"
+#include "utils/httpclient.h"
+#include "utils/global.h"
+#include "utils/toast.h"
 
 #include <QJsonDocument>
 #include <QJsonArray>

@@ -2,7 +2,6 @@
 #define SEARCHWINDOW_H
 
 #include "quc/include/navbar.h"
-#include "song.h"
 
 #include <QWidget>
 #include <QJsonDocument>

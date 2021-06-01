@@ -1,7 +1,7 @@
-#include "userinfowindow.h"
+#include "window/userinfowindow.h"
 #include "ui_userinfowindow.h"
 
-#include "httpclient.h"
+#include "utils/httpclient.h"
 #include <QJsonObject>
 #include <QJsonDocument>
 

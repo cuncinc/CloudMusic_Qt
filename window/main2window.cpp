@@ -1,9 +1,9 @@
-#include "logindialog.h"
-#include "main2window.h"
+#include "dialog/logindialog.h"
+#include "window/main2window.h"
 #include "ui_main2window.h"
-#include "httpclient.h"
-#include "global.h"
-#include "settingdialog.h"
+#include "utils/httpclient.h"
+#include "utils/global.h"
+#include "dialog/settingdialog.h"
 
 #include <QDebug>
 #include <QJsonDocument>

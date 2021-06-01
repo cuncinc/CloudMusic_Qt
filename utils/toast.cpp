@@ -1,9 +1,10 @@
-#include "toast.h"
+#include "utils/toast.h"
 #include <QPropertyAnimation>
 #include <QScreen>
 #include <QGuiApplication>
 #include <QPainter>
 #include <QTimer>
+#include <QDebug>
 
 Toast::Toast(QWidget *parent)
 	: QWidget(parent)
@@ -49,7 +50,7 @@ void Toast::showAnimation(int timeout)
 	});
 }
 
-void Toast::showTip(const QString& text, const int time, QWidget* parent /*= nullptr*/)
+void Toast::showTip(const QString& text, const int time, QWidget* parent)
 {
 	Toast* toast = new Toast(parent);
 	toast->setWindowFlags(toast->windowFlags() | Qt::WindowStaysOnTopHint); // 置顶
@@ -58,7 +59,9 @@ void Toast::showTip(const QString& text, const int time, QWidget* parent /*= nul
 
 	// 测试显示位于主屏的70%高度位置
 	QScreen* pScreen = QGuiApplication::primaryScreen();
-	toast->move((pScreen->size().width() - toast->width()) / 2, pScreen->size().height() * 7 / 10);
+	int x = (pScreen->size().width() - toast->width()) / 2;
+	int y = pScreen->size().height() * 7 / 10;
+	toast->move(x, y);
 	toast->showAnimation(time);
 }
 

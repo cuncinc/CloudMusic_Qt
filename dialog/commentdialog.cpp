@@ -1,4 +1,4 @@
-#include "commentdialog.h"
+#include "dialog/commentdialog.h"
 #include "ui_commentdialog.h"
 
 CommentDialog::CommentDialog(const QString &replyName, QWidget *parent) :

@@ -1,6 +1,6 @@
-#include "mainwindow.h"
+#include "window/mainwindow.h"
 #include "gaugecar.h"
-#include "global.h"
+#include "utils/global.h"
 
 #include <QApplication>
 

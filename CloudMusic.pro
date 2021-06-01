@@ -16,69 +16,70 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    commentdialog.cpp \
-    detailwindow.cpp \
-    eventwindow.cpp \
-    findwindow.cpp \
-    global.cpp \
-    httpclient.cpp \
-    logindialog.cpp \
+    dialog/commentdialog.cpp \
+    dialog/logindialog.cpp \
+    dialog/settingdialog.cpp \
+    dialog/trackdialog.cpp \
     main.cpp \
-    main2window.cpp \
-    mainwindow.cpp \
-    player.cpp \
-    qrcode/QrCode.cpp \
-    searchwindow.cpp \
-    settingdialog.cpp \
-    songlistwindow.cpp \
-    toast.cpp \
-    trackdialog.cpp \
-    userinfowindow.cpp
+    utils/QrCode.cpp \
+    utils/global.cpp \
+    utils/httpclient.cpp \
+    utils/player.cpp \
+    utils/toast.cpp \
+    window/detailwindow.cpp \
+    window/eventwindow.cpp \
+    window/findwindow.cpp \
+    window/main2window.cpp \
+    window/mainwindow.cpp \
+    window/searchwindow.cpp \
+    window/songlistwindow.cpp \
+    window/userinfowindow.cpp
 
 HEADERS += \
-    commentdialog.h \
-    detailwindow.h \
-    eventwindow.h \
-    findwindow.h \
-    global.h \
-    httpclient.h \
-    logindialog.h \
-    main2window.h \
-    mainwindow.h \
-    player.h \
-    qrcode/QrCode.hpp \
-    searchwindow.h \
-    settingdialog.h \
-    song.h \
-    songlistwindow.h \
-    toast.h \
-    trackdialog.h \
-    userinfowindow.h
+    dialog/commentdialog.h \
+    dialog/logindialog.h \
+    dialog/settingdialog.h \
+    dialog/trackdialog.h \
+    utils/QrCode.h \
+    utils/QrCode.h \
+    utils/global.h \
+    utils/httpclient.h \
+    utils/player.h \
+    utils/song.h \
+    utils/toast.h \
+    window/detailwindow.h \
+    window/eventwindow.h \
+    window/findwindow.h \
+    window/main2window.h \
+    window/mainwindow.h \
+    window/searchwindow.h \
+    window/songlistwindow.h \
+    window/userinfowindow.h
 
 FORMS += \
-    commentdialog.ui \
-    detailwindow.ui \
-    eventwindow.ui \
-    findwindow.ui \
-    logindialog.ui \
-    main2window.ui \
-    mainwindow.ui \
-    searchwindow.ui \
-    settingdialog.ui \
-    songlistwindow.ui \
-    toast.ui \
-    trackdialog.ui \
-    userinfowindow.ui
+    dialog/commentdialog.ui \
+    dialog/logindialog.ui \
+    dialog/settingdialog.ui \
+    dialog/trackdialog.ui \
+    utils/toast.ui \
+    window/detailwindow.ui \
+    window/eventwindow.ui \
+    window/findwindow.ui \
+    window/main2window.ui \
+    window/mainwindow.ui \
+    window/searchwindow.ui \
+    window/songlistwindow.ui \
+    window/userinfowindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-#��次��引入自定义控件的所有头文件 懒得��个个拷贝
+#一次引入自定义控件的所有头文件 懒得个个拷贝
 INCLUDEPATH += $$PWD/quc/include
 
-#不同的构建套��debug release 依赖不同的链接库
+#不同的构建套debug release 依赖不同的链接库
 CONFIG(debug, debug|release){
 LIBS += -L$$PWD/quc/ -lqucd
 } else {

@@ -1,6 +1,6 @@
-#include "main2window.h"
-#include "detailwindow.h"
-#include "player.h"
+#include "window/main2window.h"
+#include "window/detailwindow.h"
+#include "utils/player.h"
 
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
