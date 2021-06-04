@@ -39,6 +39,7 @@ void DetailWindow::setView(SongInfo info)
 	curSongId = info.id;
 	ui->nameLabel->setText(info.name);
 	ui->authorLabel->setText(info.author);
+	ui->likeButton->setText("喜欢");
 	// lyric
 	HttpClient("/lyric").success([=](const QString &response) {
 		QJsonObject object = QJsonDocument::fromJson(response.toUtf8()).object().value("lrc").toObject();
@@ -184,6 +185,11 @@ void DetailWindow::on_favoriteButton_clicked()
 
 void DetailWindow::on_toCommentButton_clicked()
 {
+	if (!global::isLogin)
+	{
+		Toast::showTip("需要登录");
+		return;
+	}
 	CommentDialog *dialog = new CommentDialog();
 	connect(dialog, &CommentDialog::textInputed, this, &DetailWindow::comment);
 	dialog->setWindowModality(Qt::ApplicationModal); //设置界面不可点击

@@ -87,4 +87,4 @@ LIBS += -L$$PWD/quc/ -lquc
 }
 
 RESOURCES += \
-    res.qrc
+    res.qrc \

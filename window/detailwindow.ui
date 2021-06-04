@@ -168,7 +168,7 @@ QScrollBar::add-line:vertical {
                <string/>
               </property>
               <property name="pixmap">
-               <pixmap resource="res.qrc">:/img/default-cover</pixmap>
+               <pixmap resource="../res.qrc">:/img/default-cover</pixmap>
               </property>
               <property name="scaledContents">
                <bool>true</bool>
@@ -532,7 +532,7 @@ QScrollBar::add-line:vertical {
             </property>
             <property name="maximumSize">
              <size>
-              <width>16777215</width>
+              <width>200</width>
               <height>40</height>
              </size>
             </property>
@@ -561,7 +561,7 @@ border:1px solid #B5B6B9;</string>
   </layout>
  </widget>
  <resources>
-  <include location="res.qrc"/>
+  <include location="../res.qrc"/>
  </resources>
  <connections/>
 </ui>

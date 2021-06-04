@@ -62,7 +62,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="res.qrc">:/img/login-bg</pixmap>
+       <pixmap resource="../res.qrc">:/img/login-bg</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -327,7 +327,7 @@ color: #FFFFFF;
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="res.qrc">:/img/login-phone</pixmap>
+       <pixmap resource="../res.qrc">:/img/login-phone</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -493,7 +493,7 @@ background-color: #BF2828;
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="res.qrc">:/img/login-email</pixmap>
+       <pixmap resource="../res.qrc">:/img/login-email</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -659,7 +659,7 @@ background-color: #BF2828;
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="res.qrc">:/img/login-phone</pixmap>
+       <pixmap resource="../res.qrc">:/img/login-phone</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -846,7 +846,7 @@ background-color: #BF2828;
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="res.qrc">:/logo/logo88</pixmap>
+        <pixmap resource="../res.qrc">:/logo/logo88</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>
@@ -1039,7 +1039,7 @@ background-color: rgba(223, 59, 59, 30);
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="res.qrc">:/img/login-bg</pixmap>
+     <pixmap resource="../res.qrc">:/img/login-bg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -1053,7 +1053,7 @@ background-color: rgba(223, 59, 59, 30);
   </widget>
  </widget>
  <resources>
-  <include location="res.qrc"/>
+  <include location="../res.qrc"/>
  </resources>
  <connections/>
 </ui>

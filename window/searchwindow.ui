@@ -56,6 +56,9 @@
    </item>
    <item>
     <widget class="NavBar" name="tabBar">
+        <property name="visible">
+                <bool>false</bool>
+        </property>
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
        <horstretch>0</horstretch>
@@ -75,7 +78,7 @@
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">border-width: 3px; 
+      <string notr="true">border-width: 3px;
 border-style: solid;
 border-bottom-color: rgb(0, 85, 255);</string>
      </property>
@@ -156,7 +159,7 @@ border-bottom-color: rgb(0, 85, 255);</string>
      <property name="styleSheet">
       <string notr="true">QTableView
 {
-	
+
 	background-color: rgba(255, 255, 255, 0);
 }
 

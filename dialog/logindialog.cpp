@@ -18,6 +18,7 @@ using namespace qrcodegen;
 void paintQR(QPixmap *map, const QString &data)
 {
 	QPainter painter(map);
+	qDebug() << data;
 	QrCode qr = QrCode::encodeText(data.toUtf8().constData(), QrCode::Ecc::LOW);
 	const int s = qr.getSize()>0 ? qr.getSize() : 1;
 	const double w = map->width();
@@ -185,10 +186,9 @@ void LoginDialog::loadQRCode()
 		QJsonObject json = QJsonDocument::fromJson(response.toUtf8()).object();
 		key = json.value("data").toObject().value("unikey").toString();
 		HttpClient("/login/qr/create").success([=](const QString &response) {
+			QPixmap map(300, 300);
 			QJsonObject json = QJsonDocument::fromJson(response.toUtf8()).object();
 			QString qrurl = json.value("data").toObject().value("qrurl").toString();
-			qDebug() << qrurl;
-			QPixmap map(300, 300);
 			paintQR(&map, qrurl);
 			pollingTimer->start(1500);
 			ui->qrcodeLabel->setPixmap(map);

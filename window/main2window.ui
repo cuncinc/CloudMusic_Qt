@@ -120,155 +120,155 @@ QScrollBar::add-line:vertical {
         <property name="layoutMode">
          <enum>QListView::SinglePass</enum>
         </property>
-        <property name="items">
+        <property name="items" stdset="0">
          <string>主界面||0|正常|,搜索|主界面|||0xf03e,发现音乐|主界面|||0xf03d,动态|主界面|||0xf108,我的音乐||0||,本地音乐|我的音乐|||0xf0e8,下载管理|我的音乐|||0xf03e,最近播放|我的音乐|||0xf060,我的收藏|我的音乐|||0xf03e</string>
         </property>
-        <property name="rightIconVisible">
+        <property name="rightIconVisible" stdset="0">
          <bool>false</bool>
         </property>
-        <property name="tipVisible">
+        <property name="tipVisible" stdset="0">
          <bool>false</bool>
         </property>
-        <property name="tipWidth">
+        <property name="tipWidth" stdset="0">
          <number>200</number>
         </property>
-        <property name="separateVisible">
+        <property name="separateVisible" stdset="0">
          <bool>false</bool>
         </property>
-        <property name="separateHeight">
+        <property name="separateHeight" stdset="0">
          <number>1</number>
         </property>
-        <property name="separateColor">
+        <property name="separateColor" stdset="0">
          <color>
           <red>243</red>
           <green>243</green>
           <blue>245</blue>
          </color>
         </property>
-        <property name="lineLeft">
+        <property name="lineLeft" stdset="0">
          <bool>true</bool>
         </property>
-        <property name="lineVisible">
+        <property name="lineVisible" stdset="0">
          <bool>true</bool>
         </property>
-        <property name="lineColor">
+        <property name="lineColor" stdset="0">
          <color>
           <red>188</red>
           <green>47</green>
           <blue>45</blue>
          </color>
         </property>
-        <property name="triangleLeft">
+        <property name="triangleLeft" stdset="0">
          <bool>false</bool>
         </property>
-        <property name="triangleVisible">
+        <property name="triangleVisible" stdset="0">
          <bool>false</bool>
         </property>
-        <property name="triangleWidth">
+        <property name="triangleWidth" stdset="0">
          <number>8</number>
         </property>
-        <property name="parentIconMargin">
+        <property name="parentIconMargin" stdset="0">
          <number>8</number>
         </property>
-        <property name="parentMargin">
+        <property name="parentMargin" stdset="0">
          <number>28</number>
         </property>
-        <property name="parentFontSize">
+        <property name="parentFontSize" stdset="0">
          <number>16</number>
         </property>
-        <property name="parentHeight">
+        <property name="parentHeight" stdset="0">
          <number>50</number>
         </property>
-        <property name="parentBgNormalColor">
+        <property name="parentBgNormalColor" stdset="0">
          <color>
           <red>243</red>
           <green>243</green>
           <blue>245</blue>
          </color>
         </property>
-        <property name="parentBgSelectedColor">
+        <property name="parentBgSelectedColor" stdset="0">
          <color>
           <red>243</red>
           <green>243</green>
           <blue>245</blue>
          </color>
         </property>
-        <property name="parentBgHoverColor">
+        <property name="parentBgHoverColor" stdset="0">
          <color>
           <red>243</red>
           <green>243</green>
           <blue>225</blue>
          </color>
         </property>
-        <property name="parentTextNormalColor">
+        <property name="parentTextNormalColor" stdset="0">
          <color>
           <red>153</red>
           <green>153</green>
           <blue>153</blue>
          </color>
         </property>
-        <property name="parentTextSelectedColor">
+        <property name="parentTextSelectedColor" stdset="0">
          <color>
           <red>153</red>
           <green>153</green>
           <blue>153</blue>
          </color>
         </property>
-        <property name="parentTextHoverColor">
+        <property name="parentTextHoverColor" stdset="0">
          <color>
           <red>153</red>
           <green>153</green>
           <blue>153</blue>
          </color>
         </property>
-        <property name="childIconMargin">
+        <property name="childIconMargin" stdset="0">
          <number>10</number>
         </property>
-        <property name="childMargin">
+        <property name="childMargin" stdset="0">
          <number>40</number>
         </property>
-        <property name="childFontSize">
+        <property name="childFontSize" stdset="0">
          <number>18</number>
         </property>
-        <property name="childHeight">
+        <property name="childHeight" stdset="0">
          <number>50</number>
         </property>
-        <property name="childBgNormalColor">
+        <property name="childBgNormalColor" stdset="0">
          <color>
           <red>243</red>
           <green>243</green>
           <blue>245</blue>
          </color>
         </property>
-        <property name="childBgSelectedColor">
+        <property name="childBgSelectedColor" stdset="0">
          <color>
           <red>221</red>
           <green>221</green>
           <blue>225</blue>
          </color>
         </property>
-        <property name="childBgHoverColor">
+        <property name="childBgHoverColor" stdset="0">
          <color>
           <red>221</red>
           <green>221</green>
           <blue>225</blue>
          </color>
         </property>
-        <property name="childTextNormalColor">
+        <property name="childTextNormalColor" stdset="0">
          <color>
           <red>51</red>
           <green>51</green>
           <blue>51</blue>
          </color>
         </property>
-        <property name="childTextSelectedColor">
+        <property name="childTextSelectedColor" stdset="0">
          <color>
           <red>51</red>
           <green>51</green>
           <blue>51</blue>
          </color>
         </property>
-        <property name="childTextHoverColor">
+        <property name="childTextHoverColor" stdset="0">
          <color>
           <red>51</red>
           <green>51</green>
@@ -343,7 +343,7 @@ QScrollBar::add-line:vertical {
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="res.qrc">
+            <iconset resource="../res.qrc">
              <normaloff>:/img/default-avatar</normaloff>:/img/default-avatar</iconset>
            </property>
            <property name="iconSize">
@@ -387,7 +387,7 @@ QScrollBar::add-line:vertical {
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="res.qrc">
+            <iconset resource="../res.qrc">
              <normaloff>:/icon/setting</normaloff>:/icon/setting</iconset>
            </property>
            <property name="iconSize">
@@ -446,7 +446,7 @@ background-color:#FAFAFC
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="res.qrc"/>
+  <include location="../res.qrc"/>
  </resources>
  <connections/>
 </ui>

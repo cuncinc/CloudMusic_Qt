@@ -74,7 +74,7 @@ QPushButton:pressed {background-color:#BC2F2D}</string>
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="res.qrc">
+         <iconset resource="../res.qrc">
           <normaloff>:/icon/return</normaloff>:/icon/return</iconset>
         </property>
         <property name="iconSize">
@@ -399,6 +399,9 @@ QTableView::item::selected
       <bool>true</bool>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_8">
+      <property name="spacing">
+       <number>40</number>
+      </property>
       <item>
        <widget class="QWidget" name="widget_2" native="true">
         <property name="sizePolicy">
@@ -436,7 +439,7 @@ QTableView::item::selected
           <number>0</number>
          </property>
          <item>
-          <widget class="AdsWidget2" name="banner">
+          <widget class="AdsWidget2" name="banner" native="true">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -470,66 +473,60 @@ QTableView::item::selected
            <property name="layoutDirection">
             <enum>Qt::LeftToRight</enum>
            </property>
-           <property name="hoverStop">
+           <property name="hoverStop" stdset="0">
             <bool>true</bool>
            </property>
-           <property name="showNumber">
+           <property name="showNumber" stdset="0">
             <bool>false</bool>
            </property>
-           <property name="minHeight">
+           <property name="minHeight" stdset="0">
             <number>6</number>
            </property>
-           <property name="minWidth">
+           <property name="minWidth" stdset="0">
             <number>6</number>
            </property>
-           <property name="maxWidth">
+           <property name="maxWidth" stdset="0">
             <number>25</number>
            </property>
-           <property name="interval">
+           <property name="interval" stdset="0">
             <number>4000</number>
            </property>
-           <property name="navRadius">
+           <property name="navRadius" stdset="0">
             <number>3</number>
            </property>
-           <property name="navColor">
+           <property name="navColor" stdset="0">
             <color alpha="200">
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
             </color>
            </property>
-           <property name="textColor">
+           <property name="textColor" stdset="0">
             <color>
              <red>217</red>
              <green>79</green>
              <blue>79</blue>
             </color>
            </property>
-           <property name="tipColor">
+           <property name="tipColor" stdset="0">
             <color>
              <red>217</red>
              <green>79</green>
              <blue>78</blue>
             </color>
            </property>
-           <property name="darkColor">
+           <property name="darkColor" stdset="0">
             <color alpha="200">
              <red>198</red>
              <green>46</green>
              <blue>46</blue>
             </color>
            </property>
-           <property name="imageNames">
+           <property name="imageNames" stdset="0">
             <string>:/img/login-bg</string>
            </property>
-           <property name="imageTips">
+           <property name="imageTips" stdset="0">
             <string>数字专辑</string>
-           </property>
-           <property name="navPosition">
-            <enum>AdsWidget2::NavPosition_Center</enum>
-           </property>
-           <property name="navStyle">
-            <enum>AdsWidget2::NavStyle_Ellipse</enum>
            </property>
           </widget>
          </item>
@@ -578,7 +575,7 @@ background-color: rgba(209, 87, 87, 50);
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="res.qrc">
+             <iconset resource="../res.qrc">
               <normaloff>:/icon/fm</normaloff>:/icon/fm</iconset>
             </property>
             <property name="iconSize">
@@ -620,6 +617,19 @@ background-color: rgba(209, 87, 87, 50);
             </property>
            </widget>
           </item>
+          <item>
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
         </item>
         <item>
@@ -659,7 +669,7 @@ background-color: rgba(209, 87, 87, 50);
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="res.qrc">
+             <iconset resource="../res.qrc">
               <normaloff>:/icon/rec</normaloff>:/icon/rec</iconset>
             </property>
             <property name="iconSize">
@@ -701,10 +711,26 @@ background-color: rgba(209, 87, 87, 50);
             </property>
            </widget>
           </item>
+          <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
         </item>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_3">
+          <property name="spacing">
+           <number>10</number>
+          </property>
           <item>
            <widget class="QPushButton" name="topButton">
             <property name="minimumSize">
@@ -737,7 +763,7 @@ background-color: rgba(209, 87, 87, 50);
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="res.qrc">
+             <iconset resource="../res.qrc">
               <normaloff>:/icon/top</normaloff>:/icon/top</iconset>
             </property>
             <property name="iconSize">
@@ -779,6 +805,19 @@ background-color: rgba(209, 87, 87, 50);
             </property>
            </widget>
           </item>
+          <item>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
         </item>
        </layout>
@@ -796,7 +835,7 @@ background-color: rgba(209, 87, 87, 50);
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="res.qrc"/>
+  <include location="../res.qrc"/>
  </resources>
  <connections/>
 </ui>

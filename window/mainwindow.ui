@@ -26,7 +26,7 @@
    <string>Netease Music</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="res.qrc">
+   <iconset resource="../res.qrc">
     <normaloff>:/logo/logo88</normaloff>:/logo/logo88</iconset>
   </property>
   <property name="autoFillBackground">
@@ -139,7 +139,7 @@
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="res.qrc">
+          <iconset resource="../res.qrc">
            <normaloff>:/img/default-cover</normaloff>:/img/default-cover</iconset>
          </property>
          <property name="iconSize">
@@ -182,7 +182,7 @@ QPushButton:pressed {background-color:#BC2F2D}</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="res.qrc">
+            <iconset resource="../res.qrc">
              <normaloff>:/icon/last</normaloff>:/icon/last</iconset>
            </property>
            <property name="iconSize">
@@ -220,7 +220,7 @@ QPushButton:pressed {background-color:#BC2F2D}</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="res.qrc">
+            <iconset resource="../res.qrc">
              <normaloff>:/icon/play</normaloff>:/icon/play</iconset>
            </property>
            <property name="iconSize">
@@ -258,7 +258,7 @@ QPushButton:pressed {background-color:#BC2F2D}</string>
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="res.qrc">
+            <iconset resource="../res.qrc">
              <normaloff>:/icon/next</normaloff>:/icon/next</iconset>
            </property>
            <property name="iconSize">
@@ -588,38 +588,38 @@ QPushButton:pressed {background-color:#BC2F2D}</string>
            <property name="tickPosition">
             <enum>QSlider::NoTicks</enum>
            </property>
-           <property name="sliderHeight">
+           <property name="sliderHeight" stdset="0">
             <number>8</number>
            </property>
-           <property name="normalColor">
+           <property name="normalColor" stdset="0">
             <color>
              <red>229</red>
              <green>229</green>
              <blue>229</blue>
             </color>
            </property>
-           <property name="grooveColor">
+           <property name="grooveColor" stdset="0">
             <color>
              <red>209</red>
              <green>60</green>
              <blue>58</blue>
             </color>
            </property>
-           <property name="handleBorderColor">
+           <property name="handleBorderColor" stdset="0">
             <color>
              <red>203</red>
              <green>203</green>
              <blue>203</blue>
             </color>
            </property>
-           <property name="handleColor">
+           <property name="handleColor" stdset="0">
             <color>
              <red>255</red>
              <green>255</green>
              <blue>255</blue>
             </color>
            </property>
-           <property name="textColor">
+           <property name="textColor" stdset="0">
             <color>
              <red>255</red>
              <green>255</green>
@@ -668,7 +668,7 @@ border:none;
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="res.qrc">
+          <iconset resource="../res.qrc">
            <normaloff>:/icon/sequence</normaloff>:/icon/sequence</iconset>
          </property>
          <property name="iconSize">
@@ -713,7 +713,7 @@ border:none;
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="res.qrc">
+          <iconset resource="../res.qrc">
            <normaloff>:/icon/volume</normaloff>:/icon/volume</iconset>
          </property>
          <property name="iconSize">
@@ -758,7 +758,7 @@ border:none;
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="res.qrc">
+          <iconset resource="../res.qrc">
            <normaloff>:/icon/play_list</normaloff>:/icon/play_list</iconset>
          </property>
          <property name="iconSize">
@@ -792,7 +792,7 @@ border:none;
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="res.qrc"/>
+  <include location="../res.qrc"/>
  </resources>
  <connections/>
 </ui>
